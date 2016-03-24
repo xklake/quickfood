@@ -77,8 +77,11 @@ $menuItemsMain = [
         'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'System'),
         'url' => ['#'],
         'active' => false,
-        //'visible' => Yii::$app->user->can('haha'),
         'items' => [
+            [
+                'label' => '<i class="fa fa-user"></i> ' . Yii::t('app', 'Setting'),
+                'url' => ['/setting'],
+            ],
             [
                 'label' => '<i class="fa fa-user"></i> ' . Yii::t('app', 'User'),
                 'url' => ['/user'],

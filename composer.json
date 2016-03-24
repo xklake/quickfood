@@ -16,7 +16,8 @@
         "yiisoft/yii2": "*",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
-        "funson86/yii2-blog": "dev-master"
+        "funson86/yii2-blog": "dev-master",
+        "funson86/yii2-setting": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
@@ -25,7 +26,7 @@
         "yiisoft/yii2-faker": "*"
     },
     "config": {
-        "process-timeout": 1800
+        "process-timeout": 18000
     },
     "extra": {
         "asset-installer-paths": {

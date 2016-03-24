@@ -9,6 +9,13 @@ return [
             'class' => 'yii\rbac\DbManager',
             //'defaultRoles' => ['guest'],
         ],
+        'cache' => [
+            'class' => 'yii\caching\FileCache',
+        ],
+
+        'setting' => [
+            'class' => 'funson86\setting\Setting',
+        ],
 
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -20,9 +27,6 @@ return [
             ],
         ],
 
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-        ],
         'i18n' => [
             'translations' => [
                 '*' => [
@@ -42,8 +46,8 @@ return [
             ],
         ],
         'formatter' => [
-            'dateFormat' => 'dd-MM-yyyyy',
-            'datetimeFormat' => 'dd-MM-yyyyy HH:mm:ss',
+            'dateFormat' => 'dd-MM-yyyy',
+            'datetimeFormat' => 'dd-MM-yyyy HH:mm:ss',
             'decimalSeparator' => ',',
             'thousandSeparator' => ' ',
             'currencyCode' => 'GBP',

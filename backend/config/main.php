@@ -16,6 +16,10 @@ return [
             'class' => 'funson86\blog\Module',
             'controllerNamespace' => 'funson86\blog\controllers\backend'
         ],
+        'setting' => [
+            'class' => 'funson86\setting\Module',
+            'controllerNamespace' => 'funson86\setting\controllers'
+        ],
     ],
     'components' => [
         'user' => [
