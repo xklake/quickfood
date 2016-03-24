@@ -1,6 +1,6 @@
 <?php
 return [
-    'name' => 'Yii2-Adminlte',
+    'name' => 'Panda CMS 2.0.0.1',
     'language' => 'en-gb',
     'timeZone' => 'Europe/London',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
