@@ -50,7 +50,7 @@ echo Menu::widget(
                     ],
                     [
                         'label' => Yii::t('app', 'Role'),
-                        'url' => ['/role/index'],
+                        'url' => ['/auth'],
                         'icon' => 'fa fa-lock',
                     ],
                 ],
