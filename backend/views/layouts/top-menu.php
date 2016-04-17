@@ -49,8 +49,9 @@ $menuItemsMain = [
             ],
         ],
     ],
+    /*
     [
-        'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'Cms'),
+        'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'Blog'),
         'url' => ['#'],
         'active' => false,
         'items' => [
@@ -72,7 +73,7 @@ $menuItemsMain = [
             ],
         ],
         'visible' => Yii::$app->user->can('readPost'),
-    ],
+    ],*/
     [
         'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'System'),
         'url' => ['#'],
@@ -88,7 +89,7 @@ $menuItemsMain = [
             ],
             [
                 'label' => '<i class="fa fa-lock"></i> ' . Yii::t('app', 'Role'),
-                'url' => ['/role'],
+                'url' => ['/auth'],
             ],
         ],
     ],

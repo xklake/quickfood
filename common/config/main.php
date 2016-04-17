@@ -1,6 +1,6 @@
 <?php
 return [
-    'name' => 'Panda CMS 2.0.0.1',
+    'name' => 'Panda Blog 2.0',
     'language' => 'en-gb',
     'timeZone' => 'Europe/London',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
@@ -9,6 +9,12 @@ return [
             'class' => 'yii\rbac\DbManager',
             //'defaultRoles' => ['guest'],
         ],
+
+        'user' => [
+            'class' => 'funson86\auth\User',
+            'enableAutoLogin' => true,
+        ],
+
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],

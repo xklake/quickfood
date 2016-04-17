@@ -1,7 +1,7 @@
 <?php
 /* @var $this yii\web\View */
 
-$this->title = 'Dashboard - Welcome to backend of Panda Content Management System';
+$this->title = 'Dashboard - Welcome to backend of Panda Blog';
 ?>
 <div class="site-index">
 
@@ -12,14 +12,14 @@ $this->title = 'Dashboard - Welcome to backend of Panda Content Management Syste
         </p>
 
         <p class="lead">
-            Generally please do not change System->setting. If you really need do this, please contact <a href="http://epandaeye.com" target="_blank">epandaeye.com</a> for helps.
+            If you have any question of your website, please contact <a href="http://epandaeye.com" target="_blank">epandaeye.com</a> for helps.
         </p>
 
         <!--p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p-->
     </div>
 
     <div class="body-content">
-        Panda CMS, powered by <a href="http://epandaeye.com" target="_blank">epandaeye.com</a>
+        Panda Blog, powered by <a href="http://epandaeye.com" target="_blank">epandaeye.com</a>
     </div>
 
 

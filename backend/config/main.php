@@ -20,7 +20,13 @@ return [
             'class' => 'funson86\setting\Module',
             'controllerNamespace' => 'funson86\setting\controllers'
         ],
+        'auth' => [
+            'class' => 'funson86\auth\Module',
+            'controllerNamespace' => 'funson86\auth\controllers'
+        ],
     ],
+
+
     'components' => [
         'user' => [
             'identityClass' => 'common\models\User',
@@ -32,7 +38,6 @@ return [
             //'enableStrictParsing' => true,
             'rules' => [
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
-                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ],
         ],
