@@ -7,9 +7,9 @@
  */
 
 return [
-    'STATUS_ACTIVE' => '启用',
-    'STATUS_INACTIVE' => '禁用',
-    'STATUS_DELETED' => '删除',
+    'Active' => '启用',
+    'Inactive' => '禁用',
+    'Deleted' => '删除',
     'YES' => '是',
     'NO' => '否',
     'SEX_MALE' => '男',
@@ -25,6 +25,7 @@ return [
     'Create' => '创建',
     'Update ' => '更新',
     'Update' => '更新',
+    'View' => '查看',
     'Delete' => '删除',
     'Are you sure you want to delete this item?' => '您确定要删除此项吗？',
     'Login' => '登录',
@@ -36,8 +37,16 @@ return [
     'The file "{file}" is not an image.' => '文件 "{file}" 不是一个图像文件。',
     'Hello, {name}' => '你好,{name}',
 
+    'Catalogs' => '分类',
+    'Catalog' => '分类',
+    'Post' => '文章',
+    'Posts' => '文章',
+    'Comment' => '评论',
+    'Comments' => '评论',
+    'Tag' => '标签',
+    'Tags' => '标签',
+
     'System' => '系统',
-    'Settings' => '设置',
     'User' => '用户',
     'Users' => '用户',
     'Role' => '角色',
@@ -53,26 +62,43 @@ return [
     'successfully removed' => '删除成功',
     'still used' => '还在使用',
 
-    'Username' => '账户',
-    'Password' => '密码',
-    'Repassword' => '确认密码',
-    'Remember Me' => '自动登录',
-    'Email' => '电子邮箱',
-    'Role' => '角色',
+    'Root Catalog' => '顶级目录',
+    'Parent ID' => '上级名称',
+    'Title' => '名称',
+    'Surname' => '优化名称',
+    'Banner' => 'Banner图片',
+    'Is Nav' => '导航是否显示',
+    'Sort Order' => '排序',
+    'Page Size' => '每页显示数量',
+    'Template' => '栏目模板',
+    'Redirect Url' => '外部链接',
     'Status' => '状态',
-    'Created At' => '创建时间',
+    'Create Time' => '录入时间',
+    'Update Time' => '更新时间',
+    'Created At' => '录入时间',
     'Updated At' => '更新时间',
-    'Create User Id' => '创建用户',
-    'Update User Id' => '更新用户',
+
+    'Catalog ID' => '分类名称',
+    'Add Sub Catelog'=>'增加子栏目',
+    'User Id' => '用户',
+    'Brief' => '摘要',
+    'Content' => '内容',
+    'Tags' => '标签',
+    'Click' => '点击数',
+    'Comments Count' => '评论次数',
+    
+    'Post ID' => '文章',
+    'Author' => '作者',
+    'Email' => '电子邮箱',
+    'Url' => 'Url网址',
+
+    'Frequency' => '次数',
 
     'Directly Input Time' => '可直接输入日期，格式：2015-01-01',
-
-    'Blog' => '博客',
-    'Catalog' => '分类',
-    'Post' => '文章',
-    'Comment' => '评论',
-    'Tag' => '标签',
-    'Setting' => '配置'
-
-
+    'Unit comments' => '条评论',
+    'Write comments' => '留下评论',
+    'Add comments' => '发表评论',
+    'Actions' => '操作',
+    'themeName' => '模板',
 ];
+
