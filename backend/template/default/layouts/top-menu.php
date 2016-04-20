@@ -27,7 +27,7 @@ echo Nav::widget([
 
 $menuItemsMain = [
     [
-        'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'Blog'),
+        'label' => '<i class="fa fa-file-archive-o"></i> ' . Yii::t('app', 'Blog'),
         'url' => ['#'],
         'active' => false,
         'items' => [
@@ -80,7 +80,7 @@ $menuItemsMain = [
         'active' => false,
         'items' => [
             [
-                'label' => '<i class="fa fa-user"></i> ' . Yii::t('app', 'Setting'),
+                'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'Setting'),
                 'url' => ['/setting'],
             ],
             [

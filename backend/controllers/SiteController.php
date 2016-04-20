@@ -15,6 +15,28 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
+
+    /*
+     *  public function init(){
+
+        Parent::init();
+
+        if(isset(Yii::$app->params['blogTheme']) && file_exists(Yii::getAlias('@frontend').'/template/'.Yii::$app->params['blogTheme'])){
+                if(file_exists(Yii::getAlias('@backend').'/template/'.Yii::$app->params['blogTheme'].'/views')){
+                    Yii::$app->setViewPath('@backend/template/'.Yii::$app->params['blogTheme'].'/views');
+                    Yii::$app->setLayoutPath('@backend/template/'.Yii::$app->params['blogTheme'].'/layouts');
+                }else {
+                    Yii::$app->setViewPath('@backend/template/default/views');
+                    Yii::$app->setLayoutPath('@backend/template/default/layouts');
+                }
+        }else {
+            Yii::$app->setViewPath('@backend/template/default/views');
+            Yii::$app->setLayoutPath('@backend/template/default/layouts');
+        }
+    }
+    */
+
+
     public function behaviors()
     {
         return [

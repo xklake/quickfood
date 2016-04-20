@@ -37,7 +37,7 @@ AppAsset::register($this);
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <?= $this->render('//layouts/top-menu.php') ?>
+            <?= $this->render('top-menu.php') ?>
             <?php
             /*$menuItemsMain = [
                 ['label' => 'Catalog', 'url' => ['/catalog']],
@@ -85,7 +85,7 @@ AppAsset::register($this);
                     </div>
                 </div>
                 <!-- sidebar menu: : style can be found in sidebar.less -->
-                <?= $this->render('//layouts/sidebar-menu') ?>
+                <?= $this->render('sidebar-menu') ?>
             </section>
             <!-- /.sidebar -->
         </aside>
