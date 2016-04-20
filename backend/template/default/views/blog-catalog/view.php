@@ -8,7 +8,7 @@ use funson86\blog\Module;
 /* @var $model funson86\blog\models\BlogCatalog */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => Module::t('blog', 'Blog Catalogs'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Module::t('blog', 'Catalogs'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="blog-catalog-view">
@@ -34,8 +34,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'title',
             'surname',
-            'keywords',
-            'description',
             'banner',
             [
                 'attribute' => 'is_nav',

@@ -8,7 +8,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\modules\blog\models\BlogPost */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => Module::t('blog', 'Blog Posts'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Module::t('blog', 'Posts'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="blog-post-view">
@@ -28,38 +28,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-    		'sku',
             [
                 'attribute' => 'catalog_id',
                 'value' => $model->catalog->title,
             ],
-            
             'title',
-            'keywords',
-            'description',
-            'banner',
-            'endtime',
-            'exurl',
             'brief:ntext',
-            'surname',
-            'click',
-            'heat',
-            'market_price',
-            'price',
-            
-            [
-                'attribute' => 'tax_included',
-                'value' => $model->getTaxStatus(),
-            ],
-            [
-                'attribute' => 'delivery_included',
-                'value' => $model->getDeliveryStatus(),
-            ],
             'content:ntext',
-            [
-                'attribute' => 'type',
-                'value' => $model->getType()->label,
-            ],
+            'tags',
+            'surname',
+            'banner',
+            'click',
             [
                 'attribute' => 'user_id',
                 'value' => $model->user->username,
@@ -68,9 +47,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'status',
                 'value' => $model->getStatus()->label,
             ],
-
-            'endtime:datetime',
-            'tags',
             'created_at:datetime',
             'updated_at:datetime',
         ],

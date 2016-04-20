@@ -5,13 +5,12 @@ use yii\grid\GridView;
 use yii\helpers\ArrayHelper;
 use funson86\blog\Module;
 use funson86\blog\models\Status;
-use funson86\blog\models\Type;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\modules\blog\models\BlogPostSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Module::t('blog', 'Blog Posts');
+$this->title = Module::t('blog', 'Posts');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="blog-post-index">
@@ -19,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Module::t('blog', 'Create ') . Module::t('blog', 'Blog Post'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Module::t('blog', 'Create ') . Module::t('blog', 'Post'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -27,8 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\CheckboxColumn'],
-            ['class' => 'yii\grid\ActionColumn'],
-            
+
             [
                 'attribute'=>'catalog_id',
                 'value'=>function ($model) {
@@ -41,11 +39,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         ['class' => 'form-control', 'prompt' => Module::t('blog', 'Please Filter')]
                     )
             ],
-            'id', 
             'title',
-            'keywords',
-            'description',
-
+            // 'content:ntext',
+            // 'tags',
+            // 'surname',
+            // 'click',
+            // 'user_id',
             'commentsCount',
             [
                 'attribute' => 'status',
@@ -71,6 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_at:date',
             // 'update_time',
 
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 

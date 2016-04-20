@@ -8,7 +8,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\modules\blog\models\BlogComment */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Module::t('blog', 'Blog Comments'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Module::t('blog', 'Comments'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="blog-comment-view">

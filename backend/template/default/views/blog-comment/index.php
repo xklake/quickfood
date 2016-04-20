@@ -10,7 +10,7 @@ use funson86\blog\models\Status;
 /* @var $searchModel backend\modules\blog\models\BlogCommentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Module::t('blog', 'Blog Comments');
+$this->title = Module::t('blog', 'Comments');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="blog-comment-index">
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Module::t('blog', 'Create ') . Module::t('blog', 'Blog Comment'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Module::t('blog', 'Create ') . Module::t('blog', 'Comment'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

@@ -21,7 +21,7 @@ unset($parentCatalog[$model->id]);
     <?php $form = ActiveForm::begin([
         'options'=>['class' => 'form-horizontal', 'enctype'=>'multipart/form-data'],
         'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-5\">{error}</div>",
+            'template' => "{label}\n<div class=\"col-lg-5\">{input}</div>\n<div class=\"col-lg-3\">{error}</div>",
             'labelOptions' => ['class' => 'col-lg-2 control-label'],
         ],
     ]); ?>
@@ -31,10 +31,6 @@ unset($parentCatalog[$model->id]);
     <?= $form->field($model, 'title')->textInput(['maxlength' => 255]) ?>
 
     <?= $form->field($model, 'surname')->textInput(['maxlength' => 128]) ?>
-
-    <?= $form->field($model, 'keywords')->textInput(['maxlength' => 255]) ?>
-
-    <?= $form->field($model, 'description')->textInput(['maxlength' => 500]) ?>
 
     <?= $form->field($model, 'banner')->fileInput() ?>
 

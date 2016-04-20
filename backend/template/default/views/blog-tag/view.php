@@ -8,7 +8,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\modules\blog\models\BlogTag */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Module::t('blog', 'Blog Tags'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Module::t('blog', 'Tags'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="blog-tag-view">
