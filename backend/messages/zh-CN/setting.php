@@ -25,6 +25,6 @@ return [
     'smtpUser' => '用户名',
     'smtpPassword' => '密码',
     'smtpMail' => '显示地址',
-    'themeName' => '模板'
+    'theme' => '主题'
 
 ];
