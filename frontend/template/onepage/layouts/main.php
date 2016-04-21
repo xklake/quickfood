@@ -78,11 +78,12 @@ AppAsset::register($this);
                 'maxComments' => 5,
             ]) ?>
 
-            <?php /*
+            <?php
             Links::widget([
                 'title' => '<i class="icon-st"></i>友情链接',
-                'links' => Yii::$app->params['blogLinks'],
-            ])*/ ?>
+                'links' => 'pandacms',
+                /*'links' => Yii::$app->params['blogLinks'],*/
+            ]) ?>
 
             <?= SiteStat::widget([
                 'title' => '<i class="icon-st"></i>网站统计',

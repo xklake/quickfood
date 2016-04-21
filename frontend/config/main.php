@@ -45,6 +45,16 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+
+        /*
+         * please do not configure theme
+         */
+        'view' => [
+            'theme' => [
+                'basePath' => 'red',
+                'baseUrl' => 'red',
+            ]
+        ]
     ],
     'params' => $params,
 ];

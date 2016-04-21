@@ -86,19 +86,17 @@ return [
     'Tags' => '标签',
     'Click' => '点击数',
     'Comments Count' => '评论次数',
-    
     'Post ID' => '文章',
     'Author' => '作者',
     'Email' => '电子邮箱',
     'Url' => 'Url网址',
-
     'Frequency' => '次数',
-
     'Directly Input Time' => '可直接输入日期，格式：2015-01-01',
     'Unit comments' => '条评论',
     'Write comments' => '留下评论',
     'Add comments' => '发表评论',
     'Actions' => '操作',
-    'themeName' => '模板',
+    'theme' => '主题',
+    'template' => '模板',
 ];
 

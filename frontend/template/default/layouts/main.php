@@ -1,16 +1,12 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use funson86\blog\assets\AppAsset;
-use funson86\blog\widgets\Alert;
 use funson86\blog\widgets\Search;
 use funson86\blog\widgets\TagCloud;
-use funson86\blog\widgets\Links;
 use funson86\blog\widgets\RecentComments;
 use funson86\blog\widgets\SiteStat;
-use funson86\blog\widgets\RecentPosts;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -24,18 +20,17 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>"/>
     <meta name="language" content="en" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <meta name="Robots" Content="All">
     <meta name="googlebot" content="All">
     <meta name="keywords" content="<?//= Html::encode($this->seoKeywords) ?>" />
     <meta name="description" content="<?//= Html::encode($this->seoDescription) ?>" />
-    <meta name="author" content="Babyblog" />
-    <meta name="Copyright" content="Babyblog" />
-
+    <meta name="author" content="Panda Blog" />
+    <meta name="Copyright" content="Panda Blog" />
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
+
 <body>
 <?php $this->beginBody() ?>
 <div class="container" id="page">

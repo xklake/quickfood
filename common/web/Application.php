@@ -39,19 +39,39 @@ class Application extends \yii\web\Application
      * */
 
     public function initTemplate(){
+        $template = $this->setting->get('template');
+        $theme = $this->setting->get('theme');
+        $viewPath = null;
 
-        $theme = $this->setting->get('themeName');
-
-        if(!isset($theme)){
-            $theme = 'default';
+        if(!isset($template)){
+            $template = 'default';
         }
 
-        if(file_exists($this->prefix.'/template/'.$theme) && file_exists($this->prefix. '/template/' . $theme . '/views')) {
-            $this->setViewPath($this->prefix . '/template/' . $theme . '/views');
-            $this->setLayoutPath($this->prefix . '/template/' . $theme . '/layouts');
+        $viewPath  = $this->prefix.'/template/'.$template;
+
+        $this->setViewPath($viewPath . '/views');
+        $this->setLayoutPath($viewPath . '/layouts');
+
+        $view = $this->getView();
+
+
+        if(isset($theme)){
+            $config = [
+                'class' => 'yii\base\Theme',
+                'pathMap'=>[
+                    $viewPath => $viewPath . '/theme/'. $theme,
+                ],
+                'basePath' => $viewPath . '/theme/'. $theme,
+            ];
+
+            $themeObj =  \Yii::createObject($config);
+
+            if(isset($themeObj)){
+                $view->theme = $themeObj;
+            }
         } else {
-            $this->setViewPath($this->prefix .'/template/default/views');
-            $this->setLayoutPath($this->prefix .'/template/default/layouts');
+            //remove any theme from configuration file..
+            $view->theme = null;
         }
     }
 }

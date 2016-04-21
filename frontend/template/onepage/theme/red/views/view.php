@@ -1,6 +1,4 @@
 <?php
-use yii\helpers\Html;
-use yii\widgets\ListView;
 use funson86\blog\Module;
 
 $this->title = Yii::$app->params['blogTitle'] . ' - ' . Yii::$app->params['blogTitleSeo'];
