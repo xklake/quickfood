@@ -9,7 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log', 'blog'],
     'controllerNamespace' => 'frontend\controllers',
     'modules' => [
         'blog' => [
@@ -28,6 +28,10 @@ return [
             'showScriptName' => false,
             //'enableStrictParsing' => true,
             'rules' => [
+                'catelog/<id:\d+>' => 'blog/default/catalog',
+                'catelog/<id:\d+>/<page:\d+>' => 'blog/default/catalog',
+                'catelog/<id:\d+>/<surname:\w+>' => 'blog/default/catalog',
+
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
@@ -48,13 +52,13 @@ return [
 
         /*
          * please do not configure theme
-         */
+
         'view' => [
             'theme' => [
                 'basePath' => 'red',
                 'baseUrl' => 'red',
             ]
-        ]
+        ]*/
     ],
     'params' => $params,
 ];

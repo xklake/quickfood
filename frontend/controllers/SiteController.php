@@ -67,7 +67,8 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        //return $this->render('index');
+        return $this->redirect('http://petrelnaturalhealth.com/catelog/1?surname=Introduction');
     }
 
     public function actionLogin()

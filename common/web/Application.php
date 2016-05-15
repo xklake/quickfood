@@ -28,9 +28,8 @@ class Application extends \yii\web\Application
             $this->prefix =  \Yii::getAlias("@backend");
         } else {
             $this->prefix =  \Yii::getAlias("@frontend");;
+            $this->initTemplate();
         }
-
-        $this->initTemplate();
     }
 
 
@@ -43,19 +42,28 @@ class Application extends \yii\web\Application
         $theme = $this->setting->get('theme');
         $viewPath = null;
 
-        if(!isset($template)){
+        $viewPath  = $this->prefix.'/template/'.$template;
+        if(!isset($template)  || !file_exists($viewPath . '/' . $template)){
             $template = 'default';
         }
 
-        $viewPath  = $this->prefix.'/template/'.$template;
-
-        $this->setViewPath($viewPath . '/views');
-        $this->setLayoutPath($viewPath . '/layouts');
-
         $view = $this->getView();
 
+        $blog = $this->getModule('blog');
 
         if(isset($theme)){
+            if(file_exists($viewPath . '/theme/' . $theme . '/views')){
+                $blog->setViewPath($viewPath . '/theme/' . $theme . '/views' );
+            } else {
+                $blog->setViewPath($viewPath . '/views');
+            }
+
+            if(file_exists($viewPath . '/theme/' . $theme .'/layouts')){
+                $blog->setLayoutPath($viewPath . '/theme/' . $theme .'/layouts');
+            }else {
+                $blog->setLayoutPath($viewPath . '/layouts');
+            }
+
             $config = [
                 'class' => 'yii\base\Theme',
                 'pathMap'=>[
@@ -70,6 +78,9 @@ class Application extends \yii\web\Application
                 $view->theme = $themeObj;
             }
         } else {
+            $blog->setViewPath($viewPath . '/views');
+            $blog->setLayoutPath($viewPath . '/layouts');
+
             //remove any theme from configuration file..
             $view->theme = null;
         }

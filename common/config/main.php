@@ -9,6 +9,10 @@ return [
             'class' => 'yii\rbac\DbManager',
             //'defaultRoles' => ['guest'],
         ],
+        /*'blog' => [
+            'class' => 'funson86\blog\Module',
+            'controllerNamespace' => 'funson86\blog\controllers\frontend',
+        ],*/
 
         'user' => [
             'class' => 'funson86\auth\User',
@@ -21,16 +25,6 @@ return [
 
         'setting' => [
             'class' => 'funson86\setting\Setting',
-        ],
-
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-                '<controller:\w+>/<id:\d+>' => '<controller>/view',
-                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
-                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-            ],
         ],
 
         'i18n' => [
