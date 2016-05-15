@@ -16,7 +16,7 @@ class HealthAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'frontend/web/css/health/style.css',
+        'css/health/style.css',
     ];
     public $js = [
     ];
