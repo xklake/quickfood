@@ -12,5 +12,12 @@ return [
         'Funson86 Blog' => 'http://github.com/funson86/yii2-blog',
     ],*/
     'blogUploadPath' => 'upload/', //default to frontend/web/upload
-
+    'elfinderDefaultConfig' => [
+        'controller' => 'elfinder', //
+        'filter'     => 'image',
+        'template'      => '<div class="input-group">{input}<span class="input-group-btn">{button}</span></div>',
+        'options'       => ['class' => 'form-control'],
+        'buttonOptions' => ['class' => 'btn btn-default'],
+        'buttonName'    => 'Browser Images'
+    ],
 ];
