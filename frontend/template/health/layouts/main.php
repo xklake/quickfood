@@ -17,13 +17,13 @@ use yii\helpers\Html;
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Robots" Content="All">
     <meta name="googlebot" content="All">
-    <meta name="keywords" content="<?= Html::encode(Yii::$app->setting->get('seoKeywords')) ?>" />
-    <meta name="description" content="<?= Html::encode(Yii::$app->setting->get('seoDescription')) ?>" />
+    <meta name="keywords" content="<?= Html::encode(Yii::$app->params['keywords']) ?>" />
+    <meta name="description" content="<?= Html::encode(Yii::$app->params['description']) ?>" />
     <meta name="author" content="Panda blog Team" />
     <meta name="Copyright" content="Panda blog" />
 
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= Html::encode(Yii::$app->params['title']) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
