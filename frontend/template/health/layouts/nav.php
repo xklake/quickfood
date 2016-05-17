@@ -19,7 +19,15 @@ $cats = Yii::$app->params['mainMenu'];
 <?php } ?>
 </ul>
 
-<div style="margin-top:100px; text-align: center; width:300px;">
+<div style="margin-top:50px; text-align: center; width:300px;">
+    <div style="text-align: center;"><h2>FREE CONSULTATION</h2></div>
+    <div style="width:300px; text-align: center;">
+        <h2><?=Yii::$app->setting->get('mobile')?></h2>
+    </div>
+</div>
+
+
+<div style="margin-top:50px; text-align: center; width:300px;">
     <div style="text-align: center;"><h2>We are members of</h2></div>
     <div style="width:300px; text-align: center;">
         <img src="/pandacms/frontend/web/images/health/member.png" id="memberimg" style="text-align:center; margin:0 auto;display:block;padding:0px;float:none;">
