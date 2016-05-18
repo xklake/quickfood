@@ -49,6 +49,10 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'request'=>[
+            'class' => 'common\web\Request',
+            'web'=> '/frontend/web'
+        ],
 
         /*
          * please do not configure theme

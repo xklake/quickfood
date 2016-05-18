@@ -54,6 +54,12 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+
+        'request'=>[
+            'class' => 'common\web\Request',
+            'web'=> '/backend/web',
+            'adminUrl' => '/admin'
+        ],
     ],
     'params' => $params,
     'controllerMap' => [

@@ -6,7 +6,8 @@
  * Time: 8:53 AM
  */
 
-namespace common\components;
+namespace common\web;
+
 class Request extends \yii\web\Request {
     public $web;
     public $adminUrl;

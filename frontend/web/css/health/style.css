@@ -39,20 +39,21 @@ p a, span a{
 
 #header  .logo {
 	float:left;
-	width:189px;
+	width:229px;
 }
 
 .logo img {
-	width:189px;
+	width:229px;
+	margin-left: 40px;
 }
 
 #header .title {
 	float:left;
 	font-size: 1.3rem;
-	width:720px;
-	margin-left:50px;
-	margin-top:50px;
-	color:rgb(191, 203, 155);
+	width:600px;
+	margin-left:130px;
+	margin-top:65px;
+	color:limegreen;
 }
 
 .greenboard {
