@@ -10,6 +10,9 @@ $cats = Yii::$app->params['mainMenu'];
 ?>
 
 <ul>
+    <li>
+        <a href="<?=Yii::$app->homeUrl?>">Home</a>
+    </li>
 <?php foreach($cats as $item) {?>
     <li>
         <a href="<?=$item['url']?>">
