@@ -46,9 +46,13 @@ return [
                 ],
             ],
         ],
+
+        /*
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'blog/default/error',
         ],
+        */
+
         'request'=>[
             'class' => 'common\web\Request',
             'web'=> '/frontend/web'
