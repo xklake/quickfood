@@ -24,6 +24,19 @@ return [
             'class' => 'funson86\auth\Module',
             'controllerNamespace' => 'funson86\auth\controllers'
         ],
+        /*'backup' => [
+            'class' => 'spanjeta\modules\backup\Module',
+        ],
+        */
+        'backuprestore' => [
+            'class' => '\oe\modules\backuprestore\Module',
+            'layout' => '@backend/views/layouts/main',
+            'modules' => [
+                'gridview' =>  [
+                    'class' => '\kartik\grid\Module'
+                ]
+            ],
+        ],
     ],
 
 

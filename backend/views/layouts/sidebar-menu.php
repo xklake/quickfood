@@ -37,6 +37,12 @@ echo Menu::widget(
                         'url' => ['/auth'],
                         'icon' => 'fa fa-lock',
                     ],
+
+                    [
+                        'label' => Yii::t('app', 'Manage Backup'),
+                        'url' => ['/backuprestore'],
+                        'icon' => 'fa fa-lock',
+                    ],
                 ],
             ],
         ]

@@ -91,6 +91,10 @@ $menuItemsMain = [
                 'label' => '<i class="fa fa-lock"></i> ' . Yii::t('app', 'Role'),
                 'url' => ['/auth'],
             ],
+            [
+                'label' => '<i class="fa fa-lock"></i> ' . Yii::t('app', 'Manage Backup'),
+                'url' => ['/backuprestore'],
+            ],
         ],
     ],
 ];
