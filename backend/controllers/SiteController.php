@@ -80,6 +80,12 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+    public function actionError(){
+        $this->layout = 'main';
+
+        return $this->render('error', []);
+    }
+
     public function actionLogin()
     {
         $this->layout = 'guest';

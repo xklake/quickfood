@@ -8,7 +8,7 @@ use yii\helpers\Html;
 /* @var $exception Exception */
 
 $this->title = $name;
-$this->context->layout = 'error';
+$this->context->layout = 'main';
 ?>
 <div class="site-error">
 
@@ -19,10 +19,7 @@ $this->context->layout = 'error';
     </div>
 
     <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
+        This link does not exists or there is something wrong with server, please contact web administrator.
     </p>
 
 </div>
