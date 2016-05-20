@@ -72,7 +72,7 @@ return [
     'Post' => '文章',
     'Comment' => '评论',
     'Tag' => '标签',
-    'Setting' => '配置'
+    'Setting' => '配置',
 
-
+    'Group Id' => '分组号'
 ];

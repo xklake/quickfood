@@ -75,6 +75,24 @@ $menuItemsMain = [
         'visible' => Yii::$app->user->can('readPost'),
     ],*/
     [
+        'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'Widgets'),
+        'url' => ['#'],
+        'active' => false,
+        'items' => [
+            [
+                'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'Banner'),
+                'url' => ['/banner'],
+            ],
+            [
+                'label' => '<i class="fa fa-user"></i> ' . Yii::t('app', 'Block'),
+                'url' => ['/block'],
+            ],
+
+        ],
+    ],
+
+
+    [
         'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'System'),
         'url' => ['#'],
         'active' => false,
