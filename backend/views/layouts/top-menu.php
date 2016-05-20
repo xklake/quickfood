@@ -82,7 +82,7 @@ $menuItemsMain = [
                 'url' => ['/user'],
             ],
             [
-                'label' => '<i class="fa fa-lock"></i> ' . Yii::t('app', 'Role'),
+                'label' => '<i class="fa fa-users"></i> ' . Yii::t('app', 'Role'),
                 'url' => ['/auth'],
             ],
             [

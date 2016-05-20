@@ -82,7 +82,7 @@ echo Menu::widget(
                     [
                         'label' => Yii::t('app', 'User'),
                         'url' => ['/user/index'],
-                        'icon' => 'fa fa-user',
+                        'icon' => 'fa fa-users',
                     ],
                     [
                         'label' => Yii::t('app', 'Role'),
