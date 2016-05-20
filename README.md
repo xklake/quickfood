@@ -3,7 +3,7 @@ Yii2-Adminlte
 
 Backend user & password:
 Login: `admin`
-Password: `qwe1234`
+Password: `123456`
 
 Installation and getting started:
 ---------------------------------
@@ -56,4 +56,8 @@ Related:
 - [Yii2-Setting](https://github.com/funson86/yii2-Setting) : Common Setting for Yii2
 - [Yii2-Blog](https://github.com/funson86/yii2-blog) : A Blog extension for Yii2
 - [Yii2-Cms](https://github.com/funson86/yii2-cms) : A Cms extension for Yii2
+
+
+------version history
+v2.0.0.1  2016 5 20 (everybody talks about 520 today)
 
