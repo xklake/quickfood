@@ -24,10 +24,7 @@ return [
             'class' => 'funson86\auth\Module',
             'controllerNamespace' => 'funson86\auth\controllers'
         ],
-        /*'backup' => [
-            'class' => 'spanjeta\modules\backup\Module',
-        ],
-        */
+
         'backuprestore' => [
             'class' => '\oe\modules\backuprestore\Module',
             'layout' => '@backend/views/layouts/main',
@@ -55,6 +52,21 @@ return [
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ],
         ],
+
+        'urlManagerFrontEnd' => [
+            'class' => 'yii\web\urlManager',
+            'scriptUrl' => '/pandacms/frontend/web', //代替'baseUrl'
+            'enablePrettyUrl' => true,
+            'showScriptName' => true,
+
+            'rules' => [
+                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+            ],
+        ],
+
+
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
