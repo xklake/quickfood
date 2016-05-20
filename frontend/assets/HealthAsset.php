@@ -10,16 +10,26 @@
 namespace frontend\assets;
 
 use yii\web\AssetBundle;
+use Yii;
 
 class HealthAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
-    public $css = [
+    /*public $css = [
         'css/health/style.css',
-    ];
+    ];*/
+
     public $js = [
     ];
     public $depends = [
     ];
+
+
+    function __construct(){
+        parent::init();
+
+        $css =  'css/'.Yii::$app->setting->get('template') . '/style.css';
+        $this->css[] = $css;
+    }
 }
