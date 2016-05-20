@@ -86,7 +86,7 @@ $menuItemsMain = [
                 'url' => ['/auth'],
             ],
             [
-                'label' => '<i class="fa fa-database"></i> ' . Yii::t('app', 'Manage Backup'),
+                'label' => '<i class="fa fa-database"></i> ' . Yii::t('app', 'Database'),
                 'url' => ['/backuprestore'],
             ],
         ],

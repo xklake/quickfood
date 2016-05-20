@@ -90,7 +90,7 @@ echo Menu::widget(
                         'icon' => 'fa fa-lock',
                     ],
                     [
-                        'label' => Yii::t('app', 'Manage Backup'),
+                        'label' => Yii::t('app', 'Database'),
                         'url' => ['/backuprestore'],
                         'icon' => 'fa fa-database',
                     ],
