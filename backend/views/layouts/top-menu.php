@@ -27,64 +27,40 @@ echo Nav::widget([
 
 $menuItemsMain = [
     [
-        'label' => '<i class="fa fa-file-archive-o"></i> ' . Yii::t('app', 'Blog'),
+        'label' => '<i class="fa fa-file-text-o"></i> ' . Yii::t('app', 'Blog'),
         'url' => ['#'],
         'active' => false,
         'items' => [
             [
-                'label' => '<i class="fa fa-user"></i> ' . Yii::t('app', 'Catalog'),
+                'label' => '<i class="fa fa-list-ul"></i> ' . Yii::t('app', 'Catalog'),
                 'url' => ['/blog/blog-catalog'],
             ],
             [
-                'label' => '<i class="fa fa-user-md"></i> ' . Yii::t('app', 'Post'),
+                'label' => '<i class="fa fa-file-text-o"></i> ' . Yii::t('app', 'Post'),
                 'url' => ['/blog/blog-post'],
             ],
             [
-                'label' => '<i class="fa fa-user-md"></i> ' . Yii::t('app', 'Comment'),
+                'label' => '<i class="fa fa-commenting-o"></i> ' . Yii::t('app', 'Comment'),
                 'url' => ['/blog/blog-comment'],
             ],
             [
-                'label' => '<i class="fa fa-user-md"></i> ' . Yii::t('app', 'Tag'),
+                'label' => '<i class="fa fa-tag"></i> ' . Yii::t('app', 'Tag'),
                 'url' => ['/blog/blog-tag'],
             ],
         ],
     ],
-    /*
+
     [
-        'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'Blog'),
+        'label' => '<i class="fa fa-plug"></i> ' . Yii::t('app', 'Widgets'),
         'url' => ['#'],
         'active' => false,
         'items' => [
             [
-                'label' => '<i class="fa fa-user"></i> ' . Yii::t('app', 'Catalog'),
-                'url' => ['/blog/default/blog-catalog'],
-            ],
-            [
-                'label' => '<i class="fa fa-user-md"></i> ' . Yii::t('app', 'Post'),
-                'url' => ['/blog/default/blog-post'],
-            ],
-            [
-                'label' => '<i class="fa fa-user-md"></i> ' . Yii::t('app', 'Comment'),
-                'url' => ['/blog/default/blog-comment'],
-            ],
-            [
-                'label' => '<i class="fa fa-user-md"></i> ' . Yii::t('app', 'Tag'),
-                'url' => ['/blog/default/blog-tag'],
-            ],
-        ],
-        'visible' => Yii::$app->user->can('readPost'),
-    ],*/
-    [
-        'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'Widgets'),
-        'url' => ['#'],
-        'active' => false,
-        'items' => [
-            [
-                'label' => '<i class="fa fa-cog"></i> ' . Yii::t('app', 'Banner'),
+                'label' => '<i class="fa fa-picture-o"></i> ' . Yii::t('app', 'Banner'),
                 'url' => ['/banner'],
             ],
             [
-                'label' => '<i class="fa fa-user"></i> ' . Yii::t('app', 'Block'),
+                'label' => '<i class="fa fa-puzzle-piece"></i> ' . Yii::t('app', 'Block'),
                 'url' => ['/block'],
             ],
 
@@ -110,11 +86,12 @@ $menuItemsMain = [
                 'url' => ['/auth'],
             ],
             [
-                'label' => '<i class="fa fa-lock"></i> ' . Yii::t('app', 'Manage Backup'),
+                'label' => '<i class="fa fa-database"></i> ' . Yii::t('app', 'Manage Backup'),
                 'url' => ['/backuprestore'],
             ],
         ],
     ],
+
 ];
 echo Nav::widget([
     'options' => ['class' => 'navbar-nav navbar-left'],

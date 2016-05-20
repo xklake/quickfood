@@ -15,9 +15,40 @@ echo Menu::widget(
             ],
 
             [
+                'label' => Yii::t('app', 'Blog'),
+                'url' => ['#'],
+                'icon' => 'fa-file-text-o',
+                'options' => [
+                    'class' => 'treeview',
+                ],
+
+                'items' => [
+                    [
+                        'label' => Yii::t('app', 'Catalog'),
+                        'url' => ['/blog/blog-catalog'],
+                        'icon' => 'fa fa-list-ul'
+                    ],
+                    [
+                        'label' => Yii::t('app', 'Post'),
+                        'url' => ['/blog/blog-post'],
+                        'icon' => 'fa fa-file-text-o'
+                    ],
+                    [
+                        'label' => Yii::t('app', 'Comment'),
+                        'url' => ['/blog/blog-comment'],
+                        'icon' => 'fa fa-commenting-o'
+                    ],
+                    [
+                        'label' => Yii::t('app', 'Tag'),
+                        'url' => ['/blog/blog-tag'],
+                        'icon' => 'fa fa-tag'
+                    ],
+                ],
+            ],
+            [
                 'label' => Yii::t('app', 'Widgets'),
                 'url' => ['#'],
-                'icon' => 'fa-dashboard',
+                'icon' => 'fa-plug',
                 'options' => [
                     'class' => 'treeview',
                 ],
@@ -26,16 +57,15 @@ echo Menu::widget(
                     [
                         'label' => Yii::t('app', 'Banner'),
                         'url' => ['/banner'],
-                        'icon' => 'fa fa-cog',
+                        'icon' => 'fa fa-picture-o',
                     ],
                     [
                         'label' => Yii::t('app', 'Block'),
                         'url' => ['/block'],
-                        'icon' => 'fa fa-user',
+                        'icon' => 'fa fa-puzzle-piece',
                     ],
                 ],
             ],
-
             [
                 'label' => Yii::t('app', 'System'),
                 'url' => ['#'],
@@ -62,7 +92,7 @@ echo Menu::widget(
                     [
                         'label' => Yii::t('app', 'Manage Backup'),
                         'url' => ['/backuprestore'],
-                        'icon' => 'fa fa-lock',
+                        'icon' => 'fa fa-database',
                     ],
                 ],
             ],
