@@ -14,22 +14,24 @@ use Yii;
 
 class HealthAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
-    public $baseUrl = '@web';
-    /*public $css = [
-        'css/health/style.css',
-    ];*/
+    //public $basePath = '@webroot';
+    public $sourcePath = '@frontend/template/health/assets';
+
+    public $css = [
+        'css/style.css',
+    ];
 
     public $js = [
+        'js/yii.js'
     ];
     public $depends = [
     ];
 
 
-    function __construct(){
+    /*function __construct(){
         parent::init();
 
-        $css =  'css/'.Yii::$app->setting->get('template') . '/style.css';
+        $css =  '/css/'.Yii::$app->setting->get('template') . '/style.css';
         $this->css[] = $css;
-    }
+    }*/
 }
