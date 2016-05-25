@@ -92,6 +92,8 @@ return [
             'class' => 'mihaildev\elfinder\PathController',
             'access' => ['@'],
             'root' => [
+                'baseUrl' =>'',
+                'basePath' => '@frontend/web',
                 'path' => 'uploads', //主目录路径
                 'name' => 'Files',
             ],/*

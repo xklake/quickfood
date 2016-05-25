@@ -30,7 +30,6 @@ return [
             'rules' => [
                 'catelog/<id:\d+>' => 'blog/default/catalog',
                 'catelog/<id:\d+>/<page:\d+>' => 'blog/default/catalog',
-                'catelog/<id:\d+>/<surname:\w+>' => 'blog/default/catalog',
 
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',

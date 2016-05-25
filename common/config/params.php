@@ -11,7 +11,9 @@ return [
         'Google' => 'http://www.google.com',
         'Funson86 Blog' => 'http://github.com/funson86/yii2-blog',
     ],*/
-    'blogUploadPath' => 'upload/', //default to frontend/web/upload
+
+    'blogUploadPath' => 'uploads/', //default to frontend/web/upload
+
     'elfinderDefaultConfig' => [
         'controller' => 'elfinder', //
         'filter'     => 'image',
