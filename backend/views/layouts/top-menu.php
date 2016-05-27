@@ -60,10 +60,13 @@ $menuItemsMain = [
                 'url' => ['/banner'],
             ],
             [
-                'label' => '<i class="fa fa-puzzle-piece"></i> ' . Yii::t('app', 'Block'),
-                'url' => ['/block'],
+                'label' => '<i class="fa fa-pencil-square-o"></i> ' . Yii::t('app', 'Text Block'),
+                'url' => ['/text-block'],
             ],
-
+            [
+                'label' => '<i class="fa fa-html5"></i> ' . Yii::t('app', 'Html Block'),
+                'url' => ['/html-block'],
+            ],
         ],
     ],
 

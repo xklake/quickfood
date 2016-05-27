@@ -60,9 +60,15 @@ echo Menu::widget(
                         'icon' => 'fa fa-picture-o',
                     ],
                     [
-                        'label' => Yii::t('app', 'Block'),
-                        'url' => ['/block'],
-                        'icon' => 'fa fa-puzzle-piece',
+                        'label' => Yii::t('app', 'Text Block'),
+                        'url' => ['/text-block'],
+                        'icon' => 'fa fa-pencil-square-o',
+                    ],
+
+                    [
+                        'label' => Yii::t('app', 'Html Block'),
+                        'url' => ['/html-block'],
+                        'icon' => 'fa fa-html5',
                     ],
                 ],
             ],

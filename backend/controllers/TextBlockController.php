@@ -3,8 +3,8 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\Banner;
-use yii\data\ActiveDataProvider;
+use common\models\TextBlock;
+use common\models\TextBlockSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -12,9 +12,9 @@ use yii\filters\AccessControl;
 
 
 /**
- * BannerController implements the CRUD actions for Banner model.
+ * TextBlockController implements the CRUD actions for TextBlock model.
  */
-class BannerController extends Controller
+class TextBlockController extends Controller
 {
     public function behaviors()
     {
@@ -25,7 +25,8 @@ class BannerController extends Controller
                     'delete' => ['post'],
                 ],
             ],
-            
+
+
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
@@ -35,27 +36,26 @@ class BannerController extends Controller
                     ]
                 ]
             ],
-            
         ];
     }
 
     /**
-     * Lists all Banner models.
+     * Lists all TextBlock models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Banner::find(),
-        ]);
+        $searchModel = new TextBlockSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Banner model.
+     * Displays a single TextBlock model.
      * @param integer $id
      * @return mixed
      */
@@ -67,13 +67,13 @@ class BannerController extends Controller
     }
 
     /**
-     * Creates a new Banner model.
+     * Creates a new TextBlock model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Banner();
+        $model = new TextBlock();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -85,7 +85,7 @@ class BannerController extends Controller
     }
 
     /**
-     * Updates an existing Banner model.
+     * Updates an existing TextBlock model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -104,7 +104,7 @@ class BannerController extends Controller
     }
 
     /**
-     * Deletes an existing Banner model.
+     * Deletes an existing TextBlock model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -117,15 +117,15 @@ class BannerController extends Controller
     }
 
     /**
-     * Finds the Banner model based on its primary key value.
+     * Finds the TextBlock model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Banner the loaded model
+     * @return TextBlock the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Banner::findOne($id)) !== null) {
+        if (($model = TextBlock::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
