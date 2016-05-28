@@ -32,12 +32,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'image',
                 'format' => 'html',
                 'value' => function ($data) {
-                    return Html::img($data['image'],
-                        ['width' => '300']);
+                    if($data['image'] != null ){
+                    return Html::img('/'.$data['image'],
+                        ['maxwidth' => '300']);
+                    } else {
+                        return Html::img('/images/noimage.png',
+                            ['maxwidth' => '300']);
+                    }
                 },
 
                 'contentOptions'=>['style'=>'max-width: 300px;']
             ],
+
+            'image',
             'url:url',
 
             [

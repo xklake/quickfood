@@ -10,7 +10,12 @@ use yii\widgets\ActiveForm;
 
 <div class="banner-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'options'=>['class' => 'form-horizontal', 'enctype'=>'multipart/form-data'],
+        'fieldConfig' => [
+            'template' => "{label}\n<div class=\"col-lg-7\">{input}</div>\n<div class=\"col-lg-1\">{error}</div>",
+            'labelOptions' => ['class' => 'col-lg-2 control-label'],
+        ]]); ?>
 
     <?= $form->field($model, 'id')->textInput() ?>
 
@@ -18,7 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
 
-    <?= $form->field($model, 'image')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'image')->fileInput() ?>
 
     <?= $form->field($model, 'keywords')->textInput(['maxlength' => 255]) ?>
 

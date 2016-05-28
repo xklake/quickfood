@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\web\UploadedFile;
+
 
 
 /**
@@ -74,9 +76,25 @@ class BannerController extends Controller
     public function actionCreate()
     {
         $model = new Banner();
+        $model->loadDefaultValues();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()))
+        {
+            $model->image = UploadedFile::getInstance($model, 'image');
+            if ($model->validate()) {
+                if ($model->image != null) {
+                    $bannerName = Yii::$app->params['blogUploadPath'] . date('Ymdhis') . rand(1000, 9999) . '.' . $model->image->extension;
+                    $model->image->saveAs(Yii::getAlias('@frontend/web') . DIRECTORY_SEPARATOR . $bannerName);
+                    $model->image = $bannerName;
+                }
+                $model->save(false);
+
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -93,9 +111,28 @@ class BannerController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $oldImage = $model->image;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()))
+        {
+            $model->image = UploadedFile::getInstance($model, 'image');
+            if ($model->validate()) {
+                if ($model->image != null) {
+                    $ImageName = Yii::$app->params['blogUploadPath'] . date('Ymdhis') . rand(1000, 9999) . '.' . $model->image->extension;
+                    $model->image->saveAs(Yii::getAlias('@frontend/web') . DIRECTORY_SEPARATOR . $ImageName);
+                    $model->image = $ImageName;
+                }else{
+                    $model->image = $oldImage;
+                }
+                $model->save(false);
+
+
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                return $this->render('create', [
+                    'model' => $model,
+                ]);
+            }
         } else {
             return $this->render('update', [
                 'model' => $model,

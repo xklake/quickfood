@@ -57,7 +57,7 @@ class Banner extends \yii\db\ActiveRecord
             [['id', 'sort_order', 'status', 'created_at', 'updated_at', 'groupid'], 'integer'],
             [['description'], 'string'],
             [['name'], 'string', 'max' => 128],
-            [['image', 'keywords', 'url'], 'string', 'max' => 255]
+            [['image'], 'file', 'extensions' => 'jpg, png', 'mimeTypes' => 'image/jpeg, image/png',],
         ];
     }
 
