@@ -34,14 +34,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function ($data) {
                     if($data['image'] != null ){
                     return Html::img('/'.$data['image'],
-                        ['maxwidth' => '300']);
+                        ['maxwidth' => '100']);
                     } else {
                         return Html::img('/images/noimage.png',
-                            ['maxwidth' => '300']);
+                            ['maxwidth' => '100']);
                     }
                 },
 
-                'contentOptions'=>['style'=>'max-width: 300px;']
+                'contentOptions'=>['style'=>'max-width: 100px;']
             ],
 
             'image',
