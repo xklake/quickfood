@@ -104,5 +104,14 @@ return [
     'Update Text Block' => '更新文板块',
     'Create Html Block' => '创建Html代码块',
     'Update Html Block' => '更新Html代码块',
+    'Database backup files' => '数据库备份列表',
+    'File Name' => '文件名',
+    'Create Backup' => '创建备份',
+    'Upload Backup File' => '上传备份',
+    'Restore DB' => '恢复数据库',
+    'Delete file' => '删除备份',
+    'The file was created !!!' => '备份创建成功 !!!',
+    ' was successfully deleted.' => '已经删除!!!',
+    'The File ' => '备份文件'
 
 ];
