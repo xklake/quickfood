@@ -112,6 +112,22 @@ return [
     'Delete file' => '删除备份',
     'The file was created !!!' => '备份创建成功 !!!',
     ' was successfully deleted.' => '已经删除!!!',
-    'The File ' => '备份文件'
+    'The File ' => '备份文件',
+
+    'contact' => '联系方式',
+    'contacter' => '联系人',
+    'mobile' => '手机号码',
+    'phone' => '电话号码',
+    'email' => '电子邮件',
+    'address' => '联系地址',
+    'googlemap' => 'Google地图链接',
+    'facebook' => 'Facebook',
+    'twitter' => 'Twitter',
+    'wechat' => '微信号码',
+    'qq' => 'QQ号码',
+    'worktime' => '工作时间',
+    'theme' => '主题',
+    'template' => '模板',
+    'slogan' => '网站标语'
 
 ];
