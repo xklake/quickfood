@@ -98,5 +98,9 @@ return [
     'Actions' => '操作',
     'theme' => '主题',
     'template' => '模板',
+    'Keywords' => '关键字',
+    'Description' =>'关键字描述',
+    'Banner Image' => 'Banner图片'
+
 ];
 
