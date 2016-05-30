@@ -74,5 +74,36 @@ return [
     'Tag' => '标签',
     'Setting' => '配置',
 
-    'Group Id' => '分组号'
+    'Group Id' => '分组号',
+    'Group Id' => '分组号',
+    'Widgets' => '小插件',
+    'Banner' => '图片集',
+    'Banners' => '图片集',
+
+    'Create Banner' => '创建图片',
+    'Create Banners' => '创建图片',
+    'Update Banner' => '更新图片',
+    'Delete Banner' => '删除图片',
+    'View Banner' => '查看图片',
+    'Text Block' => '文本块',
+    'Create Text Block' => '创建文本块',
+    'Create Banners' => '创建图片',
+    'Html Block' => 'Html代码块',
+    'Html Blocks' => 'Html代码块',
+    'Database' => '数据库管理',
+    'Keywords' => '关键字',
+    'Text Blocks' => '文本块',
+    'Create TextBlock' => '创建文本块',
+    'Group ID' => '组号',
+    'Image' => '图片',
+    'Sort Order' => '排序(越小越靠前)',
+    'Url' => '超链接Url',
+    'Banner Image' => 'Banner 图片',
+    'Photo' => '是否启用',
+    'Content' => '内容',
+    'Update Text Block' => '更新文板块',
+    'Create Html Block' => '创建Html代码块',
+    'Update Html Block' => '更新Html代码块',
+
+
 ];

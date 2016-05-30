@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\HtmlBlock */
 
-$this->title = Yii::t('app', 'Create {modelClass}', [
+$this->title = Yii::t('app', 'Create Html Block', [
     'modelClass' => 'Html Block',
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Html Blocks'), 'url' => ['index']];

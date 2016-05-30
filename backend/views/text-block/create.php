@@ -6,10 +6,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\TextBlock */
 
-$this->title = Yii::t('app', 'Create {modelClass}', [
+$this->title = Yii::t('app', 'Create Text Block', [
     'modelClass' => 'Text Block',
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Text Blocks'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Create Text Block'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="text-block-create">

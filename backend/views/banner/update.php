@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Banner */
 
-$this->title = Yii::t('app', 'Update Banner: ', [
+$this->title = Yii::t('app', 'Update Banner', [
     'modelClass' => 'Banner',
 ]) . ' ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Banners'), 'url' => ['index']];

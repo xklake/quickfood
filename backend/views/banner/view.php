@@ -43,12 +43,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'sort_order',
 
             [
-                'attribute'=>'photo',
+                'attribute'=>'Status',
                 'value' => $model->getStatus()->label
             ],
 
-            'created_at',
-            'updated_at',
+            'created_at:datetime',
+            'updated_at:datetime',
         ],
     ]) ?>
 
