@@ -128,6 +128,7 @@ return [
     'worktime' => '工作时间',
     'theme' => '主题',
     'template' => '模板',
-    'slogan' => '网站标语'
+    'slogan' => '网站标语',
+    'Dashboard - Welcome to backend of Panda Blog' => '欢迎访问Panda Blog系统后台'
 
 ];

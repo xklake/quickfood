@@ -1,10 +1,10 @@
 <?php
 /* @var $this yii\web\View */
 
-$this->title = 'Dashboard - Welcome to backend of Panda Blog';
+$this->title = Yii::t('app','Dashboard - Welcome to backend of Panda Blog');
 ?>
 <div class="site-index">
-
+    
     <div class="jumbotron">
 
         <p class="lead">
