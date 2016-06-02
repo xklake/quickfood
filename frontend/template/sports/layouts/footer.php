@@ -16,10 +16,20 @@
                 <div class="col-md-3 widget">
                     <h3 class="widget-title">Contact</h3>
                     <div class="widget-body">
-                        <p><?=Yii::$app->setting->get('phone')?><br>
-                            <a href="mailto:#"><?=Yii::$app->setting->get('email')?></a><br>
-                            <br>
-                            <?=Yii::$app->setting->get('address')?>
+                        <p>
+                            <a href='tel:<?=Yii::$app->setting->get('phone')?>' class="fa fa-phone">
+                                <?=Yii::$app->setting->get('phone')?>
+                            </a>
+                            <br/>
+                            <a href="mailto:<?=Yii::$app->setting->get('email')?>"   class="fa fa-envelope-o">
+                                <?=Yii::$app->setting->get('email')?>
+                            </a> <br/>
+
+
+                            <a href='#'  class="fa fa-map-marker">
+                                <?=Yii::$app->setting->get('address')?>
+                            </a
+
                         </p>
                     </div>
                 </div>
@@ -37,9 +47,15 @@
                 </div>
 
                 <div class="col-md-6 widget">
-                    <h3 class="widget-title">Text widget</h3>
+                    <h3 class="widget-title">About XU Huaiwen 徐怀雯</h3>
                     <div class="widget-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, dolores, quibusdam architecto voluptatem amet fugiat nesciunt placeat provident cumque accusamus itaque voluptate modi quidem dolore optio velit hic iusto vero praesentium repellat commodi ad id expedita cupiditate repellendus possimus unde?</p>
+                        <p>
+                            <?php
+                            if(($text = Yii::$app->getTextBlock('xuhuaiwen')) != null){
+                                echo ($text->content);
+                            }
+                            ?>
+                        </p>
                     </div>
                 </div>
 
@@ -54,11 +70,11 @@
                 <div class="col-md-6 widget">
                     <div class="widget-body">
                         <p class="simplenav">
-                            <a href="#">Home</a> |
-                            <a href="about.html">About</a> |
-                            <a href="sidebar-right.html">Sidebar</a> |
-                            <a href="contact.html">Contact</a> |
-                            <b><a href="signup.html">Sign up</a></b>
+                            <a href="<?=Yii::$app->homeUrl?>">Home</a> |
+                            <a href="<?=Yii::$app->urlManager->createUrl(['blog/default/catalog', 'id'=>14])?>">About</a> |
+                            <a href="<?=Yii::$app->urlManager->createUrl(['blog/default/catalog', 'id'=>16])?>">Coaching</a> |
+                            <a href="<?=Yii::$app->urlManager->createUrl(['blog/default/catalog', 'id'=>17])?>">Blog</a>
+                            <!--b><a href="signup.html">Sign up</a></b-->
                         </p>
                     </div>
                 </div>
@@ -66,7 +82,7 @@
                 <div class="col-md-6 widget">
                     <div class="widget-body">
                         <p class="text-right">
-                            Copyright &copy; <?=date('Y')?>, xuhuaiwen.org. Powered by <a href="http://epandaeye.com/" rel="designer" target="_blank">epandaeye</a>
+                            Copyright &copy; <?=date('Y')?>, <a href="<?=Yii::$app->homeUrl?>" style="font-size:1.6rem;;"> xuhuaiwen.org </a>. Powered by <a href="http://epandaeye.com/" rel="designer" target="_blank">epandaeye</a>
                         </p>
                     </div>
                 </div>
@@ -75,9 +91,11 @@
         </div>
     </div>
 </footer>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 <?php
-$google_analysis = \common\models\HtmlBlock::findOne(['name'=> 'google-analysis']);
+$google_analysis = Yii::$app->getHtmlBlock('google-analysis');
 
 if($google_analysis != null){
     echo($google_analysis->content);

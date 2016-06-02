@@ -1,20 +1,98 @@
+<style>
+	.carousel-inner > .item > img,
+	.carousel-inner > .item > a > img {
+		width: 100%;
+		margin: 0px;
+	}
+</style>
+<!-- for prev and next button -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+
+	<div class="container-full text-center">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+			<?php
+				$banners = Yii::$app->getBannerByGroup(1);
+			?>
+
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<?php
+				$index = 0;
+
+				foreach($banners as $item) {
+					if ($index == 0) { ?>
+						<li data-target="#myCarousel" data-slide-to="<?= $index ?>" class="active"></li>
+					<?php } else { ?>
+						<li data-target="#myCarousel" data-slide-to="<?= $index ?>"></li>
+					<?php }
+					$index = $index + 1;
+				}
+				?>
+			</ol>
+
+
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<?php
+				$index = 0;
+				foreach($banners as $item) {
+					if ($index == 0) { ?>
+						<div class="item active">
+							<img src="<?= '/' . $item->image ?>" alt="<?= $item->keywords ?>">
+
+							<div class="carousel-caption">
+								<h3><?= $item->keywords ?></h3>
+
+								<p><?= $item->description ?></p>
+							</div>
+						</div>
+					<?php } else { ?>
+						<div class="item">
+							<img src="<?= '/' . $item->image ?>" alt="<?= $item->keywords ?>">
+
+							<div class="carousel-caption">
+								<h3><?= $item->keywords ?></h3>
+
+								<p><?= $item->description ?></p>
+							</div>
+						</div>
+						<?php
+					}
+					$index++;
+				}
+				?>
+			</div>
+
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+
 	<!-- Intro -->
 	<div class="container text-center">
 		<br> <br>
 		<h2 class="thin">The best place to tell people why they are here</h2>
 		<p class="text-muted">
-			The difference between involvement and commitment is like an eggs-and-ham breakfast:<br> 
+			The difference between involvement and commitment is like an eggs-and-ham breakfast:<br>
 			the chicken was involved; the pig was committed.
 		</p>
 	</div>
 
-
 	<!-- Highlights - jumbotron -->
 	<div class="jumbotron top-space">
 		<div class="container">
-			
+
 			<h3 class="text-center thin">Reasons to use this template</h3>
-			
+
 			<div class="row">
 				<div class="col-md-3 col-sm-6 highlight">
 					<div class="h-caption"><h4><i class="fa fa-cogs fa-5"></i>Bootstrap-powered</h4></div>
@@ -41,7 +119,7 @@
 					</div>
 				</div>
 			</div> <!-- /row  -->
-		
+
 		</div>
 	</div>
 	<!-- /Highlights -->
@@ -60,8 +138,8 @@
 			<div class="col-sm-6">
 				<h3>Nice header. Where do I find more images like that one?</h3>
 				<p>
-					Well, there are thousands of stock art galleries, but personally, 
-					I prefer to use photos from these sites: <a href="http://unsplash.com">Unsplash.com</a> 
+					Well, there are thousands of stock art galleries, but personally,
+					I prefer to use photos from these sites: <a href="http://unsplash.com">Unsplash.com</a>
 					and <a href="http://www.flickr.com/creativecommons/by-2.0/tags/">Flickr - Creative Commons</a></p>
 			</div>
 		</div> <!-- /row -->
@@ -70,8 +148,8 @@
 			<div class="col-sm-6">
 				<h3>Can I use it to build a site for my client?</h3>
 				<p>
-					Yes, you can. You may use this template for any purpose, just don't forget about the <a href="http://creativecommons.org/licenses/by/3.0/">license</a>, 
-					which says: "You must give appropriate credit", i.e. you must provide the name of the creator and a link to the original template in your work. 
+					Yes, you can. You may use this template for any purpose, just don't forget about the <a href="http://creativecommons.org/licenses/by/3.0/">license</a>,
+					which says: "You must give appropriate credit", i.e. you must provide the name of the creator and a link to the original template in your work.
 				</p>
 			</div>
 			<div class="col-sm-6">
@@ -85,23 +163,4 @@
      		<p class="text-right"><a class="btn btn-primary btn-large">Learn more »</a></p>
   		</div>
 
-</div>	<!-- /container -->
-	
-	<!-- Social links. @TODO: replace by link/instructions in template -->
-	<section id="social">
-		<div class="container">
-			<div class="wrapper clearfix">
-				<!-- AddThis Button BEGIN -->
-				<div class="addthis_toolbox addthis_default_style">
-				<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-				<a class="addthis_button_tweet"></a>
-				<a class="addthis_button_linkedin_counter"></a>
-				<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
-				</div>
-				<!-- AddThis Button END -->
-			</div>
-		</div>
-	</section>
-	<!-- /social links -->
-
-
+	</div>	<!-- /container -->

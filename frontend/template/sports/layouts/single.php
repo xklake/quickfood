@@ -35,9 +35,10 @@ if(!isset(Yii::$app->params['title'])){
     <meta name="description" content="<?= Html::encode(Yii::$app->params['description']) ?>" />
     <meta name="author" content="Panda blog Team" />
     <meta name="Copyright" content="Panda blog" />
+    <link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 
     <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode(Yii::$app->params['title']) ?></title>
+    <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
@@ -55,9 +56,7 @@ if(!isset(Yii::$app->params['title'])){
         <!-- /Article -->
 
         <!-- Sidebar -->
-        <aside class="col-sm-4 sidebar sidebar-right">
-            <?php echo($this->render('/contactdetail')) ?>
-        </aside>
+            <?php echo($this->render('recentpost')) ?>
         <!-- /Sidebar -->
 
     </div>

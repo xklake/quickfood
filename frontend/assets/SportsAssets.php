@@ -24,10 +24,9 @@ class SportsAssets extends AssetBundle
 
     public $js = [
         'js/headroom.min.js',
-        'js/html5shiv.js',
         'js/jQuery.headroom.min.js',
         'js/respond.min.js',
-        'js/template.js'
+        'js/template.js',
     ];
     public $depends = [
     ];

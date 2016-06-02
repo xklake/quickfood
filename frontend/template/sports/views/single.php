@@ -7,6 +7,12 @@
  */
 
 Yii::$app->controller->layout = 'single';
+
+$this->title = $catalog->title . ' - ' .Yii::$app->setting->get('siteName');
+Yii::$app->params['keywords'] = $catalog->keywords != null? $catalog->keywords . ' - ' . Yii::$app->setting->get('siteName'):Yii::$app->setting->get('siteName');
+
+Yii::$app->params['description'] = $catalog->keywords != null? $catalog->description . ' - ' . Yii::$app->setting->get('siteName'):Yii::$app->setting->get('description');
+
 ?>
 
 
