@@ -115,7 +115,7 @@ class Application extends \yii\web\Application
      */
     public function getBannerByGroup($groupid){
         if(!is_array($groupid)){
-            return Banner::find()->where(['status'=> Status::STATUS_ACTIVE])->andwhere(['groupid'=> $groupid])->one();
+            return Banner::find()->where(['status'=> Status::STATUS_ACTIVE])->andwhere(['groupid'=> $groupid])->all();
         } else {
             return Banner::find()->where(['status'=> Status::STATUS_ACTIVE])->andwhere(['in', 'groupid', $groupid])->all();
         }
@@ -127,7 +127,7 @@ class Application extends \yii\web\Application
      */
     public function getTextBlock($id){
         if(!is_array($id)){
-            return TextBlock::find()->where(['or', ['id'=> $id, 'name'=>$id]])->one();
+            return TextBlock::find()->where(['or', ['id'=> $id], ['name'=>$id]])->one();
         } else {
             return TextBlock::find()->where(['or', ['in', 'id',  $id], ['in', 'name', $id]])->all();
         }
@@ -139,7 +139,7 @@ class Application extends \yii\web\Application
      */
     public function getHtmlBlock($id){
         if(!is_array($id)){
-            return HtmlBlock::find()->where(['or', ['id'=> $id, 'name'=>$id]])->one();
+            return HtmlBlock::find()->where(['or', ['id'=> $id], ['name'=>$id]])->one();
         } else {
             return HtmlBlock::find()->where(['or', ['in', 'id',  $id], ['in', 'name', $id]])->all();
         }
