@@ -67,6 +67,10 @@ $menuItemsMain = [
                 'label' => '<i class="fa fa-html5"></i> ' . Yii::t('app', 'Html Block'),
                 'url' => ['/html-block'],
             ],
+            [
+                'label' => '<i class="fa fa-cart-plus"></i> ' . Yii::t('app', 'Product'),
+                'url' => ['/product'],
+            ],
         ],
     ],
 

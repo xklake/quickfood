@@ -70,6 +70,12 @@ echo Menu::widget(
                         'url' => ['/html-block'],
                         'icon' => 'fa fa-html5',
                     ],
+
+                    [
+                        'label' => Yii::t('app', 'Product'),
+                        'url' => ['/product'],
+                        'icon' => 'fa fa-cart-plus',
+                    ],
                 ],
             ],
             [

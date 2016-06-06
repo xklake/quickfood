@@ -129,6 +129,20 @@ return [
     'theme' => '主题',
     'template' => '模板',
     'slogan' => '网站标语',
-    'Dashboard - Welcome to backend of Panda Blog' => '欢迎访问Panda Blog系统后台'
-
+    'Dashboard - Welcome to backend of Panda Blog' => '欢迎访问Panda Blog系统后台',
+    'Product' => '产品',
+    'Products' => '产品',
+    'Create Product' => '创建产品',
+    'Update Product' => '更新产品',
+    'Catalog ID' => '分类ID',
+    'Stock' => '库存',
+    'Weight' => '重量',
+    'Price' => '价格',
+    'Brief' => '简介',
+    'Introduction' => '介绍',
+    'Thumb' => '缩略图',
+    'Brand' => '品牌',
+    'Sales' => '销售量',
+    'End Time' => '结束时间',
+    'Start Time' => '开始时间'
 ];

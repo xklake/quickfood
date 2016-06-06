@@ -5,10 +5,6 @@
  * Date: 5/23/16
  * Time: 3:43 PM
  */
-
-?>
-
-<?php
 use yii\helpers\Html;
 
 /* @var $this \yii\web\View */

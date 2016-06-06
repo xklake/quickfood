@@ -6,6 +6,7 @@
  * Time: 5:02 PM
  */
 
+
 $item = $post;
 
 $this->title = $item->title . ' - ' . Yii::$app->setting->get('siteName');

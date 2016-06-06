@@ -80,44 +80,42 @@
 	<!-- Intro -->
 	<div class="container text-center">
 		<br> <br>
-		<h2 class="thin">The best place to tell people why they are here</h2>
-		<p class="text-muted">
-			The difference between involvement and commitment is like an eggs-and-ham breakfast:<br>
-			the chicken was involved; the pig was committed.
-		</p>
+
+		<?=Yii::$app->getHtmlBlock('index-joinustoday')->content;?>
 	</div>
 
 	<!-- Highlights - jumbotron -->
-	<div class="jumbotron top-space">
+	<div class="jumbotron top-space" style="margin-bottom:0px;">
 		<div class="container">
 
-			<h3 class="text-center thin">Reasons to use this template</h3>
+			<h3 class="text-center thin"><strong><?=Yii::$app->getTextBlock('home-coaching-title')->content?></strong></h3>
 
 			<div class="row">
-				<div class="col-md-3 col-sm-6 highlight">
-					<div class="h-caption"><h4><i class="fa fa-cogs fa-5"></i>Bootstrap-powered</h4></div>
-					<div class="h-body text-center">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6 highlight">
-					<div class="h-caption"><h4><i class="fa fa-flash fa-5"></i>Fat-free</h4></div>
-					<div class="h-body text-center">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, commodi, sequi quis ad fugit omnis cumque a libero error nesciunt molestiae repellat quos perferendis numquam quibusdam rerum repellendus laboriosam reprehenderit! </p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6 highlight">
-					<div class="h-caption"><h4><i class="fa fa-heart fa-5"></i>Creative Commons</h4></div>
-					<div class="h-body text-center">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, vitae, perferendis, perspiciatis nobis voluptate quod illum soluta minima ipsam ratione quia numquam eveniet eum reprehenderit dolorem dicta nesciunt corporis?</p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6 highlight">
-					<div class="h-caption"><h4><i class="fa fa-smile-o fa-5"></i>Author's support</h4></div>
-					<div class="h-body text-center">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, excepturi, maiores, dolorem quasi reprehenderit illo accusamus nulla minima repudiandae quas ducimus reiciendis odio sequi atque temporibus facere corporis eos expedita? </p>
-					</div>
-				</div>
+				<?php $coaching = Yii::$app->controller->getCoaching(16, 3);
+					foreach($coaching as $item) { ?>
+						<div class="col-md-4 col-sm-12 highlight">
+							<div class="h-caption">
+								<h4>
+									<?php if($item->thumb != null) {?>
+										<a href="<?=Yii::$app->urlManager->createAbsoluteUrl(['blog/default/product', 'id'=>$item->id])?>" target="_self">
+											<img src="<?=$item->thumb?>" alt='<?=$item->name?>'>
+										</a>
+									<?php } else { ?>
+									<a href="<?=Yii::$app->urlManager->createAbsoluteUrl(['blog/default/product', 'id'=>$item->id])?>" target="_self">
+										<img src="/images/noimage.png" alt='<?=$item->name?>'>
+									</a>
+									<?php } ?>
+								</h4>
+							</div>
+
+							<div class="h-body text-center">
+								<p><strong><?=$item->name?></strong></p>
+								<p style="font-size: 1.4rem;">
+									<?=$item->brief?>
+								</p>
+							</div>
+						</div>
+				<?php } ?>
 			</div> <!-- /row  -->
 
 		</div>
@@ -127,40 +125,49 @@
 	<!-- container -->
 	<div class="container">
 
-		<h2 class="text-center top-space">Frequently Asked Questions</h2>
-		<br>
+		<h3 class="text-center top-space">Latest posts, keep updated</h3>
+		<br/>
 
-		<div class="row">
-			<div class="col-sm-6">
-				<h3>Which code editor would you recommend?</h3>
-				<p>I'd highly recommend you <a href="http://www.sublimetext.com/">Sublime Text</a> - a free to try text editor which I'm using daily. Awesome tool!</p>
-			</div>
-			<div class="col-sm-6">
-				<h3>Nice header. Where do I find more images like that one?</h3>
-				<p>
-					Well, there are thousands of stock art galleries, but personally,
-					I prefer to use photos from these sites: <a href="http://unsplash.com">Unsplash.com</a>
-					and <a href="http://www.flickr.com/creativecommons/by-2.0/tags/">Flickr - Creative Commons</a></p>
-			</div>
-		</div> <!-- /row -->
+		<?php
+		$posts = Yii::$app->controller->getRecentPosts();
 
-		<div class="row">
-			<div class="col-sm-6">
-				<h3>Can I use it to build a site for my client?</h3>
-				<p>
-					Yes, you can. You may use this template for any purpose, just don't forget about the <a href="http://creativecommons.org/licenses/by/3.0/">license</a>,
-					which says: "You must give appropriate credit", i.e. you must provide the name of the creator and a link to the original template in your work.
-				</p>
-			</div>
-			<div class="col-sm-6">
-				<h3>Can you customize this template for me?</h3>
-				<p>Yes, I can. Please drop me a line to sergey-at-pozhilov.com and describe your needs in details. Please note, my services are not cheap.</p>
-			</div>
-		</div> <!-- /row -->
+		foreach($posts as $item){?>
+			<div class="blog-item">
+				<div class="row">
+					<div class="col-xs-12 col-sm-3">
 
-		<div class="jumbotron top-space">
-			<h4>Dicta, nostrum nemo soluta sapiente sit dolor quae voluptas quidem doloribus recusandae facere magni ullam suscipit sunt atque rerum eaque iusto facilis esse nam veniam incidunt officia perspiciatis at voluptatibus. Libero, aliquid illum possimus numquam fuga.</h4>
-     		<p class="text-right"><a class="btn btn-primary btn-large">Learn more »</a></p>
-  		</div>
+						<a href="<?=Yii::$app->urlManager->createAbsoluteUrl(['blog/default/view', 'id'=> $item->id])?>">
+							<img class="img-responsive  img-thumbnail" src="<?='/'.$item->banner?>" /></a>
+
+					</div>
+
+
+					<div class="col-xs-12 col-sm-9">
+						<div style="margin:0px 0px 10px 0px;">
+							<a href="<?=Yii::$app->urlManager->createAbsoluteUrl(['blog/default/view', 'id'=> $item->id])?>"> <h4 style="margin-top:0px;"><?=$item->title?></h4></a>
+						</div>
+
+						<div class="entry-meta">
+							<span id="publish_date"><i class="fa fa-calendar"></i><?= ' '.Yii::$app->formatter->asDate($item->created_at); ?></span>
+							<span><i class="fa fa-user"></i> <a href="#">Xuhuai Wen</a></span>
+							<!--span><i class="fa fa-comment"></i> <a href="#">2 Comments</a></span>
+                            <!--span><i class="fa fa-heart"></i><a href="#">56 Likes</a></span-->
+						</div>
+
+						<div>
+							<blockquote>
+								<?=$item->brief?>
+							</blockquote>
+							<!--a class="readmore" style="margin-left:20px;" href="<?=Yii::$app->urlManager->createAbsoluteUrl(['blog/default/view', 'id'=> $item->id])?>">  Read More <i class="fa fa-angle-right"></i></a-->
+						</div>
+
+						<div style="border-top:1px dashed #C0C0C0; margin-top:4px;"></div>
+					</div>
+
+				</div>
+			</div><!--/.blog-item-->
+
+			<div style="height: 20px;"></div>
+		<?php } ?>
 
 	</div>	<!-- /container -->

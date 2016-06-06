@@ -1,7 +1,8 @@
 <?php
 return [
     'name' => 'Panda Blog 2.0',
-    'language' => 'en-gb',
+//    'language' => 'en-gb',
+    'language' => 'zh-cn',
     'timeZone' => 'Europe/London',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
