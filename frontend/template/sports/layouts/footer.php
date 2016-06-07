@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="col-md-6 widget">
-                    <h3 class="widget-title">About XU Huaiwen 徐怀雯</h3>
+                    <h3 class="widget-title">About Xu Huaiwen 徐怀雯</h3>
                     <div class="widget-body">
                         <p>
                             <?php

@@ -7,13 +7,9 @@ use yii\helpers\Html;
 \frontend\assets\SportsAssets::register($this);
 
 
-if(!isset(Yii::$app->params['keywords'])){
-    Yii::$app->params['keywords'] = Yii::$app->setting->get('siteName');
-}
+Yii::$app->params['keywords'] = Yii::$app->setting->get('siteKeyword') .','. Yii::$app->setting->get('siteName');
 
-if(!isset(Yii::$app->params['description'])){
-    Yii::$app->params['description'] = Yii::$app->setting->get('siteName');
-}
+Yii::$app->params['description'] = Yii::$app->setting->get('siteName');
 
 if(!isset(Yii::$app->params['title'])){
     Yii::$app->params['title'] = Yii::$app->setting->get('siteName');

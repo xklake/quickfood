@@ -7,12 +7,17 @@ $cats = Yii::$app->params['mainMenu'];
     <div class="container">
         <div class="navbar-header">
             <!-- Button for smallest screens -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+
             <a class="navbar-brand" href="<?=Yii::$app->homeUrl?>">
                 <!--img src="/images/sports/logo.png" alt="Progressus HTML5 template"-->
                 <span style="font-size: 2rem;"> Xu Huaiwen's Badminton Club </span>
             </a>
         </div>
+
+
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav pull-right">
                 <?php foreach($cats as $item) {?>

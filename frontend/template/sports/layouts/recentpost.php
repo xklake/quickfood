@@ -41,7 +41,6 @@ $coaching = Yii::$app->controller->getCoaching(16);
         <div class="panel panel-default" style="margin-top:20px;">
             <div class="panel-heading"><b>Recent Posts</b></div>
             <div class="panel-body">
-
                 <?php foreach($posts as $item){ ?>
                         <div class="row" style="margin-bottom:20px;">
                             <div class="col-md-3">
@@ -53,9 +52,9 @@ $coaching = Yii::$app->controller->getCoaching(16);
                                     <?php } ?>
                                 </a>
                             </div>
-                            <div class="col-md-9">
+                            <div class="col-md-9" style="vertical-align: middle;">
                                 <a href="<?=Yii::$app->urlManager->createAbsoluteUrl(['blog/default/view', 'id'=> $item->id])?>">
-                                    <?=$item->title?>
+                                   <span style="vertical-align: middle;"> <?=$item->title?>  </span>
                                 </a>
                             </div>
                         </div>

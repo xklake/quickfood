@@ -1,3 +1,4 @@
+
 <style>
 	.carousel-inner > .item > img,
 	.carousel-inner > .item > a > img {
@@ -6,7 +7,8 @@
 	}
 </style>
 <!-- for prev and next button -->
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!--link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"-->
 
 
 	<div class="container-full text-center">
@@ -66,13 +68,13 @@
 			</div>
 
 			<!-- Left and right controls -->
-			<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			<!--a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
 				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 				<span class="sr-only">Previous</span>
 			</a>
 			<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
 				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
+				<span class="sr-only">Next</span-->
 			</a>
 		</div>
 	</div>
@@ -115,7 +117,7 @@
 								</p>
 							</div>
 						</div>
-				<?php } ?>
+					<?php } ?>
 			</div> <!-- /row  -->
 
 		</div>
@@ -143,7 +145,7 @@
 
 
 					<div class="col-xs-12 col-sm-9">
-						<div style="margin:0px 0px 10px 0px;">
+						<div style="margin:10px 0px 10px 0px;">
 							<a href="<?=Yii::$app->urlManager->createAbsoluteUrl(['blog/default/view', 'id'=> $item->id])?>"> <h4 style="margin-top:0px;"><?=$item->title?></h4></a>
 						</div>
 
@@ -161,13 +163,13 @@
 							<!--a class="readmore" style="margin-left:20px;" href="<?=Yii::$app->urlManager->createAbsoluteUrl(['blog/default/view', 'id'=> $item->id])?>">  Read More <i class="fa fa-angle-right"></i></a-->
 						</div>
 
-						<div style="border-top:1px dashed #C0C0C0; margin-top:4px;"></div>
 					</div>
 
 				</div>
+
+				<div style="border-top:1px dashed #C0C0C0; margin-top:17px;"></div>
 			</div><!--/.blog-item-->
 
-			<div style="height: 20px;"></div>
 		<?php } ?>
 
 	</div>	<!-- /container -->
