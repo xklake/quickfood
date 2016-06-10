@@ -144,4 +144,12 @@ class Application extends \yii\web\Application
             return HtmlBlock::find()->where(['or', ['in', 'id',  $id], ['in', 'name', $id]])->all();
         }
     }
+
+    /***
+     * return the catalog list
+     */
+    public function getCatalogs(){
+        $cats = $this->params['mainMenu'];
+        return $cats;
+    }
 }
