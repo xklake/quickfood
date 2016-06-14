@@ -17,8 +17,6 @@ use yii\widgets\ActiveForm;
             'labelOptions' => ['class' => 'col-lg-2 control-label'],
         ]]); ?>
 
-    <?= $form->field($model, 'id')->textInput() ?>
-
     <?= $form->field($model, 'groupid')->textInput() ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
