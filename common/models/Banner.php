@@ -53,9 +53,9 @@ class Banner extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'name', 'keywords'], 'required'],
+            [['name', 'keywords'], 'required'],
             [['id', 'sort_order', 'status', 'created_at', 'updated_at', 'groupid'], 'integer'],
-            [['description'], 'string'],
+            [['description', 'url'], 'string'],
             [['name'], 'string', 'max' => 128],
             [['image'], 'file', 'extensions' => 'jpg, png', 'mimeTypes' => 'image/jpeg, image/png',],
         ];
