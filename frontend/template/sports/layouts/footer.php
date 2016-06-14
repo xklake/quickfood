@@ -29,7 +29,6 @@
                             <a href='#'  class="fa fa-map-marker">
                                 <?=Yii::$app->setting->get('address')?>
                             </a
-
                         </p>
                     </div>
                 </div>
