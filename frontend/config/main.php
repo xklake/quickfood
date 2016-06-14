@@ -51,11 +51,9 @@ return [
             ],
         ],
 
-        /*
         'errorHandler' => [
             'errorAction' => 'blog/default/error',
         ],
-        */
 
         'request'=>[
             'class' => 'common\web\Request',
