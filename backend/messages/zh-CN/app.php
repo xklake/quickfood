@@ -144,5 +144,6 @@ return [
     'Brand' => '品牌',
     'Sales' => '销售量',
     'End Time' => '结束时间',
-    'Start Time' => '开始时间'
+    'Start Time' => '开始时间',
+    'copyright' => '版权申明'
 ];

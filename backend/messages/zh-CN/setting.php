@@ -16,6 +16,7 @@ return [
     'siteName' => '站点名称',
     'siteTitle' => '站点标题',
     'siteKeyword' => '站点关键字',
+    'siteDescription' => '站点描述',
 
     'timezone' => '时区',
     'commentCheck' => '评论审核',
@@ -27,5 +28,6 @@ return [
     'smtpMail' => '显示地址',
     'theme' => '主题',
     'contact' => '联系方式',
+    'Copyright' => '版权申明'
 
 ];
