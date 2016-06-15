@@ -29,13 +29,11 @@ return [
             //'enableStrictParsing' => true,
             'suffix' => '.html',
             'rules' => [
-                'catelog/<id:\d+>' => 'blog/default/catalog',
-                'catelog/<id:\d+>/<page:\d+>' => 'blog/default/catalog',
-
+                'catalog/<id:\d+>' => 'blog/default/catalog',
+                'catalog/<id:\d+>/<page:\d+>' => 'blog/default/catalog',
                 'coaching/<id:\d+>' => 'blog/default/product',
                 'blog/<id:\d+>/<page:\d+>' => 'blog/default/view',
                 'blog/<id:\d+>' => 'blog/default/view',
-
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
