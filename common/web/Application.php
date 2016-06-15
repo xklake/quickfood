@@ -5,10 +5,7 @@
  * Date: 4/19/16
  * Time: 5:17 PM
  */
-
 namespace yii\common\web;
-
-
 use common\models\Banner;
 use common\models\HtmlBlock;
 use common\models\TextBlock;
@@ -32,7 +29,7 @@ class Application extends \yii\web\Application
         if($isBackEnd){
             $this->prefix =  \Yii::getAlias("@backend");
         } else {
-            $this->prefix =  \Yii::getAlias("@frontend");;
+            $this->prefix =  \Yii::getAlias("@frontend/web");;
             $this->initTemplate();
         }
     }
@@ -145,6 +142,16 @@ class Application extends \yii\web\Application
         }
     }
 
+    /******
+     * as above
+     * 	Yii::$app->getHtmlBlock([5, 'test']);
+     */
+    public function getHtmlBlockContent($id){
+        $obj = $this->getHtmlBlock($id);
+        if($obj != null){
+            return $obj->content;
+        }
+    }
     /***
      * return the catalog list
      */
