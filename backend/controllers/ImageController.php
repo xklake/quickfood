@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\Banner;
+use common\models\Image;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -14,9 +14,9 @@ use yii\web\UploadedFile;
 
 
 /**
- * BannerController implements the CRUD actions for Banner model.
+ * ImageController implements the CRUD actions for Image model.
  */
-class BannerController extends Controller
+class ImageController extends Controller
 {
     public function behaviors()
     {
@@ -42,13 +42,13 @@ class BannerController extends Controller
     }
 
     /**
-     * Lists all Banner models.
+     * Lists all Image models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Banner::find(),
+            'query' => Image::find(),
         ]);
 
         return $this->render('index', [
@@ -57,7 +57,7 @@ class BannerController extends Controller
     }
 
     /**
-     * Displays a single Banner model.
+     * Displays a single Image model.
      * @param integer $id
      * @return mixed
      */
@@ -69,13 +69,13 @@ class BannerController extends Controller
     }
 
     /**
-     * Creates a new Banner model.
+     * Creates a new Image model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Banner();
+        $model = new Image();
         $model->loadDefaultValues();
 
         if ($model->load(Yii::$app->request->post()))
@@ -83,9 +83,9 @@ class BannerController extends Controller
             $model->image = UploadedFile::getInstance($model, 'image');
             if ($model->validate()) {
                 if ($model->image != null) {
-                    $bannerName = Yii::$app->params['blogUploadPath'] . date('Ymdhis') . rand(1000, 9999) . '.' . $model->image->extension;
-                    $model->image->saveAs(Yii::getAlias('@frontend/web') . DIRECTORY_SEPARATOR . $bannerName);
-                    $model->image = $bannerName;
+                    $ImageName = Yii::$app->params['blogUploadPath'] . date('Ymdhis') . rand(1000, 9999) . '.' . $model->image->extension;
+                    $model->image->saveAs(Yii::getAlias('@frontend/web') . DIRECTORY_SEPARATOR . $ImageName);
+                    $model->image = $ImageName;
                 }
                 $model->save(false);
 
@@ -103,7 +103,7 @@ class BannerController extends Controller
     }
 
     /**
-     * Updates an existing Banner model.
+     * Updates an existing Image model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -141,7 +141,7 @@ class BannerController extends Controller
     }
 
     /**
-     * Deletes an existing Banner model.
+     * Deletes an existing Image model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -154,15 +154,15 @@ class BannerController extends Controller
     }
 
     /**
-     * Finds the Banner model based on its primary key value.
+     * Finds the Image model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Banner the loaded model
+     * @return Image the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Banner::findOne($id)) !== null) {
+        if (($model = Image::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

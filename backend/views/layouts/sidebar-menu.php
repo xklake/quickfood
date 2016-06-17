@@ -55,8 +55,8 @@ echo Menu::widget(
 
                 'items' => [
                     [
-                        'label' => Yii::t('app', 'Banner'),
-                        'url' => ['/banner'],
+                        'label' => Yii::t('app', 'Image'),
+                        'url' => ['/image'],
                         'icon' => 'fa fa-picture-o',
                     ],
                     [

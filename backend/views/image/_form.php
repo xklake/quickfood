@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Banner */
+/* @var $model common\models\images */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="banner-form">
+<div class="image-form">
 
     <?php $form = ActiveForm::begin([
         'options'=>['class' => 'form-horizontal', 'enctype'=>'multipart/form-data'],
@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
             'labelOptions' => ['class' => 'col-lg-2 control-label'],
         ]]); ?>
 
-    <?= $form->field($model, 'groupid')->textInput() ?>
+    <?= $form->field($model, 'group_name')->textInput() ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => 128]) ?>
 

@@ -6,7 +6,7 @@
  * Time: 5:17 PM
  */
 namespace yii\common\web;
-use common\models\Banner;
+use common\models\Image;
 use common\models\HtmlBlock;
 use common\models\TextBlock;
 use funson86\blog\models\Status;
@@ -89,38 +89,38 @@ class Application extends \yii\web\Application
     }
 
     /****
-     * get banner or gallary from db, this could be commonly used by frontend code
+     * get Image or gallary from db, this could be commonly used by frontend code
      *
      * id can be  a id or can be name
-     * if pass a id list then it will return a group of banner otherwise, it will check a matched id or name
-     * eg. 	$banner = Yii::$app->getBanners(['1232', 'namd']);
+     * if pass a id list then it will return a group of Image otherwise, it will check a matched id or name
+     * eg. 	$Image = Yii::$app->getImages(['1232', 'namd']);
      */
-   public function getBanners($id){
+   public function getImages($id){
        if(!is_array($id)){
-           return Banner::find()->where(['status'=> Status::STATUS_ACTIVE])->andWhere(['or', ['id'=> $id], ['name'=>$id]])->one();
+           return Image::find()->where(['status'=> Status::STATUS_ACTIVE])->andWhere(['or', ['id'=> $id], ['name'=>$id]])->one();
        }
        else {
-           return Banner::find()->where(['status'=> Status::STATUS_ACTIVE])->andwhere(['or', ['in', 'id', $id], ['in','name', $id]])->all();
+           return Image::find()->where(['status'=> Status::STATUS_ACTIVE])->andwhere(['or', ['in', 'id', $id], ['in','name', $id]])->all();
        }
     }
 
     /****
-     * get a group of banners from db, this could be commonly used by frontend code
+     * get a group of Images from db, this could be commonly used by frontend code
      *
      * $groupid: just a group id or several group via array
-     * eg. 	$banner = Yii::$app->getBannerByGroup(123);
+     * eg. 	$Image = Yii::$app->getImageByGroup(123);
      */
-    public function getBannerByGroup($groupid){
+    public function getImageByGroup($groupid){
         if(!is_array($groupid)){
-            return Banner::find()->where(['status'=> Status::STATUS_ACTIVE])->andwhere(['groupid'=> $groupid])->all();
+            return Image::find()->where(['status'=> Status::STATUS_ACTIVE])->andwhere(['group_name'=> $groupid])->all();
         } else {
-            return Banner::find()->where(['status'=> Status::STATUS_ACTIVE])->andwhere(['in', 'groupid', $groupid])->all();
+            return Image::find()->where(['status'=> Status::STATUS_ACTIVE])->andwhere(['in', 'group_name', $groupid])->all();
         }
     }
 
     /******
      * as above
-     * 	$textbanner = Yii::$app->getTextBlock([1, 2, 3]);
+     * 	$textImage = Yii::$app->getTextBlock([1, 2, 3]);
      */
     public function getTextBlock($id){
         if(!is_array($id)){

@@ -6,26 +6,25 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Banners');
+$this->title = Yii::t('app', 'Images');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="banner-index">
+<div class="images-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Banner', [
-    'modelClass' => 'Banner',
+        <?= Html::a(Yii::t('app', 'Create Images', [
+    'modelClass' => 'Image',
 ]), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'groupid',
+            'group_name',
             'name',
 
             [

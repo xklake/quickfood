@@ -56,8 +56,8 @@ $menuItemsMain = [
         'active' => false,
         'items' => [
             [
-                'label' => '<i class="fa fa-picture-o"></i> ' . Yii::t('app', 'Banner'),
-                'url' => ['/banner'],
+                'label' => '<i class="fa fa-picture-o"></i> ' . Yii::t('app', 'Image'),
+                'url' => ['/image'],
             ],
             [
                 'label' => '<i class="fa fa-pencil-square-o"></i> ' . Yii::t('app', 'Text Block'),

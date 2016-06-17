@@ -8,7 +8,7 @@ use yii\behaviors\TimestampBehavior;
 
 
 /**
- * This is the model class for table "banner".
+ * This is the model class for table "Images".
  *
  * @property integer $id
  * @property string $name
@@ -21,7 +21,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $created_at
  * @property integer $updated_at
  */
-class Banner extends \yii\db\ActiveRecord
+class Image extends \yii\db\ActiveRecord
 {
 
     public $_status;
@@ -31,7 +31,7 @@ class Banner extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'banner';
+        return 'image';
     }
 
 
@@ -54,10 +54,11 @@ class Banner extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'keywords'], 'required'],
-            [['id', 'sort_order', 'status', 'created_at', 'updated_at', 'groupid'], 'integer'],
+            [['id', 'sort_order', 'status', 'created_at', 'updated_at'], 'integer'],
             [['description', 'url'], 'string'],
             [['name'], 'string', 'max' => 128],
-            [['image'], 'file', 'extensions' => 'jpg, png', 'mimeTypes' => 'image/jpeg, image/png',],
+            [['group_name'], 'string', 'max' => 32],
+            [['image'], 'file', 'extensions' => 'jpg, png, gif', 'mimeTypes' => 'image/jpeg, image/png, image/gif',],
         ];
     }
 
@@ -77,7 +78,7 @@ class Banner extends \yii\db\ActiveRecord
             'status' => Yii::t('app', 'Status'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
-            'groupid' => Yii::t('app', 'Group ID'),
+            'group_name' => Yii::t('app', 'group_name'),
         ];
     }
 

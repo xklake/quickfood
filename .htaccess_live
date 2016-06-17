@@ -1,0 +1,29 @@
+AddHandler application/x-httpd-php55 .php .php5 .php4 .php3
+
+Options +FollowSymlinks
+RewriteEngine On
+
+#deal with admin first
+RewriteCond %{REQUEST_URI} ^/(admin)
+RewriteRule ^admin/assets/(.*)$ backend/web/assets/$1 [L]
+RewriteRule ^admin/adminlte/(.*)$ backend/web/adminlte/$1 [L]
+
+RewriteCond %{REQUEST_URI} !^/backend/web/(assets|adminlte)/
+RewriteCond %{REQUEST_URI} ^/(admin)
+RewriteRule ^.*$ backend/web/index.php [L]
+
+RewriteCond %{REQUEST_URI} ^/assets
+RewriteRule ^assets/(.*)$  frontend/web/template/modern/assets/$1 [L]
+
+RewriteCond %{REQUEST_URI} ^/images
+RewriteRule ^images/(.*)$  frontend/web/template/modern/images/$1 [L]
+
+RewriteCond %{REQUEST_URI} ^/uploads
+RewriteRule ^uploads/(.*)$ frontend/web/uploads/$1 [L]
+
+RewriteCond %{REQUEST_URI} !^/(frontend|backend)/web/(uploads|adminlte|assets)/
+RewriteCond %{REQUEST_URI} !^/(frontend)/web/template/modern/(assets|images)/
+RewriteCond %{REQUEST_URI} !index.php
+RewriteCond %{REQUEST_FILENAME} !-f [OR]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ frontend/web/index.php
