@@ -45,7 +45,7 @@ class Application extends \yii\web\Application
         $viewPath = null;
 
         $viewPath  = $this->prefix.'/template/'.$template;
-        if(!isset($template)  || !file_exists($viewPath . '/' . $template)){
+        if(!isset($template)  || !file_exists($viewPath)){
             $template = 'default';
         }
 
