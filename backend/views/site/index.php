@@ -19,6 +19,6 @@ $this->title = Yii::t('app','Dashboard - Welcome to backend of Panda Blog');
     </div>
 
     <div class="body-content">
-        Panda Blog, powered by <a href="http://epandaeye.com" target="_blank">epandaeye.com</a>
+        Panda Blog, powered by <a href="http://chinasoftware.co.uk" target="_blank">chinasoftware.co.uk</a>
     </div>
 </div>
