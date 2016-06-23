@@ -12,7 +12,7 @@ $this->title = Yii::t('app','Dashboard - Welcome to backend of Panda Blog');
         </p>
 
         <p class="lead">
-            If you have any question of your website, please contact <a href="http://epandaeye.com" target="_blank">epandaeye.com</a> for helps.
+            If you have any question of your website, please contact <a href="http://chinasoftware.co.uk" target="_blank">chinasoftware.co.uk</a> for helps.
         </p>
 
         <!--p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p-->
