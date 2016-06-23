@@ -66,7 +66,7 @@ return [
     'Parent ID' => '上级名称',
     'Title' => '名称',
     'Surname' => '优化名称',
-    'Banner' => 'Banner图片',
+    'Banner' => '分类图',
     'Is Nav' => '导航是否显示',
     'Sort Order' => '排序',
     'Page Size' => '每页显示数量',
