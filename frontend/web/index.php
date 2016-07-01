@@ -20,4 +20,5 @@ $application = new \yii\common\web\Application($config);
 
 $application->initSetting(false);
 
+
 $application->run();
