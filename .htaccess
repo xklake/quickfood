@@ -21,7 +21,8 @@ RewriteRule ^images/(.*)$ frontend/web/template/modern/images/$1 [L]
 RewriteCond %{REQUEST_URI} ^/uploads
 RewriteRule ^uploads/(.*)$ frontend/web/uploads/$1 [L]
 
-RewriteCond %{REQUEST_URI} !^/(frontend|backend)/web/(assets|uploads|images|adminlte)/
+RewriteCond %{REQUEST_URI} !^/(frontend|backend)/web/(uploads|adminlte|assets)/
+RewriteCond %{REQUEST_URI} !^/(frontend)/web/template/modern/(assets|images)/
 RewriteCond %{REQUEST_URI} !index.php
 RewriteCond %{REQUEST_FILENAME} !-f [OR]
 RewriteCond %{REQUEST_FILENAME} !-d
