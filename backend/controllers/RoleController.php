@@ -33,7 +33,7 @@ class RoleController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['@']
+                        'roles' => ['viewRole','createRole','deleteRole','updateRole']
                     ]
                 ]
             ],
