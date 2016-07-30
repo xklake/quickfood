@@ -56,14 +56,18 @@ class Application extends \yii\web\Application
         if(isset($theme)){
             if(file_exists($viewPath . '/theme/' . $theme . '/views')){
                 $blog->setViewPath($viewPath . '/theme/' . $theme . '/views' );
+                $this->setViewPath($viewPath . '/theme/' . $theme . '/views');
             } else {
                 $blog->setViewPath($viewPath . '/views');
+                $this->setViewPath($viewPath . '/views');
             }
 
             if(file_exists($viewPath . '/theme/' . $theme .'/layouts')){
                 $blog->setLayoutPath($viewPath . '/theme/' . $theme .'/layouts');
+                $this->setViewPath($viewPath . '/theme/' . $theme .'/layouts');
             }else {
                 $blog->setLayoutPath($viewPath . '/layouts');
+                $this->setViewPath($viewPath . '/layouts');
             }
 
             $config = [
@@ -81,7 +85,10 @@ class Application extends \yii\web\Application
             }
         } else {
             $blog->setViewPath($viewPath . '/views');
+            $this->setViewPath($viewPath . '/views');
+
             $blog->setLayoutPath($viewPath . '/layouts');
+            $this->setLayoutPath($viewPath . '/layouts');
 
             //remove any theme from configuration file..
             $view->theme = null;
