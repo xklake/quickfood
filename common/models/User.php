@@ -56,8 +56,8 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
 
-            ['role', 'default', 'value' => self::ROLE_USER],
-            ['role', 'in', 'range' => [self::ROLE_USER]],
+  //          ['role', 'default', 'value' => self::ROLE_USER],
+  //          ['role', 'in', 'range' => [self::ROLE_USER]],
         ];
     }
 
@@ -73,6 +73,7 @@ class User extends ActiveRecord implements IdentityInterface
             'repassword' => Yii::t('app', 'Repassword'),
             'email' => Yii::t('app', 'Email'),
             'role' => Yii::t('app', 'Role'),
+            'auth_role' => Yii::t('app', 'Auth Role'),
             'status' => Yii::t('app', 'Status'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
