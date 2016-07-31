@@ -18,6 +18,8 @@ use yii\filters\AccessControl;
  */
 class SiteController extends Controller
 {
+    public $layout = 'main';
+
     /**
      * @inheritdoc
      */
@@ -72,6 +74,7 @@ class SiteController extends Controller
 
     public function actionLogin()
     {
+        $this->layout = 'main';
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -80,7 +83,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
-            return $this->render('login', [
+            return $this->render('/login', [
                 'model' => $model,
             ]);
         }
@@ -127,7 +130,7 @@ class SiteController extends Controller
             }
         }
 
-        return $this->render('signup', [
+        return $this->render('/signup', [
             'model' => $model,
         ]);
     }
