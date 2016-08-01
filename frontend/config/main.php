@@ -35,6 +35,7 @@ return [
                 'blog/<id:\d+>/<page:\d+>' => 'blog/default/view',
                 'blog/<id:\d+>' => 'blog/default/view',
                 'changePassword' => 'blog/default/resetpassword',
+                'usercentre' => 'blog/default/usercentre',
                 'login' => 'blog/default/signin',
                 'signup' => 'blog/default/signup',
                 'requestpasswordreset' => 'blog/default/requestpasswordreset',
