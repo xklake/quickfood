@@ -13,7 +13,10 @@ RewriteCond %{REQUEST_URI} ^/(admin)
 RewriteRule ^.*$ backend/web/index.php [L]
 
 RewriteCond %{REQUEST_URI} ^/assets
-RewriteRule ^assets/(.*)$ frontend/web/template/modern/assets/$1 [L]
+RewriteRule ^assets/(.*)$ frontend/web/assets/$1 [L]
+
+RewriteCond %{REQUEST_URI} ^/themeassets
+RewriteRule ^themeassets/(.*)$ frontend/web/template/modern/themeassets/$1 [L]
 
 RewriteCond %{REQUEST_URI} ^/images
 RewriteRule ^images/(.*)$ frontend/web/template/modern/images/$1 [L]
@@ -22,7 +25,8 @@ RewriteCond %{REQUEST_URI} ^/uploads
 RewriteRule ^uploads/(.*)$ frontend/web/uploads/$1 [L]
 
 RewriteCond %{REQUEST_URI} !^/(frontend|backend)/web/(uploads|adminlte|assets)/
-RewriteCond %{REQUEST_URI} !^/(frontend)/web/template/modern/(assets|images)/
+RewriteCond %{REQUEST_URI} !^/(frontend)/web/assets/
+RewriteCond %{REQUEST_URI} !^/(frontend)/web/template/modern/(themeassets|images)/
 RewriteCond %{REQUEST_URI} !index.php
 RewriteCond %{REQUEST_FILENAME} !-f [OR]
 RewriteCond %{REQUEST_FILENAME} !-d
