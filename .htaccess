@@ -15,8 +15,8 @@ RewriteRule ^.*$ backend/web/index.php [L]
 RewriteCond %{REQUEST_URI} ^/assets
 RewriteRule ^assets/(.*)$ frontend/web/assets/$1 [L]
 
-RewriteCond %{REQUEST_URI} ^/themeassets
-RewriteRule ^themeassets/(.*)$ frontend/web/template/modern/themeassets/$1 [L]
+RewriteCond %{REQUEST_URI} ^/modern/asset
+RewriteRule ^modern/asset/(.*)$ frontend/web/template/modern/assets/$1 [L]
 
 RewriteCond %{REQUEST_URI} ^/images
 RewriteRule ^images/(.*)$ frontend/web/template/modern/images/$1 [L]
