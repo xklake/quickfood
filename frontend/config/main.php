@@ -39,6 +39,7 @@ return [
                 'login' => 'blog/default/signin',
                 'signup' => 'blog/default/signup',
                 'requestpasswordreset' => 'blog/default/requestpasswordreset',
+                'comment' => 'blog/default/comment',
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
