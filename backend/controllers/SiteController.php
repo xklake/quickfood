@@ -88,8 +88,21 @@ class SiteController extends Controller
 
         $model = new \backend\models\LoginForm();
 
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+        if ($model->load(Yii::$app->request->post())) {
+            //need check whether the user has backend login auth
+
+
+            if($model->login()) {
+                if(Yii::$app->user->can('backendLogin') == false){
+                    //need check whether the client can access backend
+                    Yii::$app->user->logout();
+                    return $this->render('login', [
+                        'model' => $model,
+                    ]);
+                } else {
+                    return $this->goBack();
+                }
+            }
         } else {
             return $this->render('login', [
                 'model' => $model,
