@@ -17,6 +17,20 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'username')->textInput(['placeholder' => $model->getAttributeLabel('username')])->label(false) ?>
         <?= $form->field($model, 'password')->passwordInput(['placeholder' => $model->getAttributeLabel('password')])->label(false) ?>
         <?= $form->field($model, 'rememberMe')->checkbox() ?>
+
+        <?= $form->field($model, 'verifyCode', ['options'=>['class'=>''], ])->label(false)->widget(\yii\captcha\Captcha::className(),
+            [
+                'captchaAction'=>'site/captcha',
+                'template' => '<div style="margin-bottom:3px;">{image}</div><div>{input}</div>',
+                'options' => ['class'=>'form-control'],
+                'imageOptions' => [
+                    'title'=>'换一个', 'alt'=>'换一个',
+                    'style'=>'cursor:pointer;',
+
+                ]
+            ])
+        ?>
+
     </div>
     <div class="footer bg-gray">
         <?= Html::submitButton(Yii::t('app', 'Login'), ['class' => 'btn bg-olive btn-block']) ?>

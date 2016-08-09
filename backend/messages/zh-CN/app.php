@@ -146,5 +146,6 @@ return [
     'End Time' => '结束时间',
     'Start Time' => '开始时间',
     'copyright' => '版权申明',
-    'group_name' => '分组名称'
+    'group_name' => '分组名称',
+    'Verifycode' => '请输入验证码'
 ];

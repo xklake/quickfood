@@ -4,7 +4,6 @@ namespace backend\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
-use common\models\LoginForm;
 use yii\filters\VerbFilter;
 
 /**
@@ -16,27 +15,6 @@ class SiteController extends Controller
      * @inheritdoc
      */
 
-    /*
-     *  public function init(){
-
-        Parent::init();
-
-        if(isset(Yii::$app->params['blogTheme']) && file_exists(Yii::getAlias('@frontend').'/template/'.Yii::$app->params['blogTheme'])){
-                if(file_exists(Yii::getAlias('@backend').'/template/'.Yii::$app->params['blogTheme'].'/views')){
-                    Yii::$app->setViewPath('@backend/template/'.Yii::$app->params['blogTheme'].'/views');
-                    Yii::$app->setLayoutPath('@backend/template/'.Yii::$app->params['blogTheme'].'/layouts');
-                }else {
-                    Yii::$app->setViewPath('@backend/template/default/views');
-                    Yii::$app->setLayoutPath('@backend/template/default/layouts');
-                }
-        }else {
-            Yii::$app->setViewPath('@backend/template/default/views');
-            Yii::$app->setLayoutPath('@backend/template/default/layouts');
-        }
-    }
-    */
-
-
     public function behaviors()
     {
         return [
@@ -44,8 +22,9 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error', 'captcha'],
                         'allow' => true,
+                        'roles' => ['?'],
                     ],
                     [
                         'actions' => ['logout', 'index'],
@@ -54,6 +33,7 @@ class SiteController extends Controller
                     ],
                 ],
             ],
+
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -71,6 +51,18 @@ class SiteController extends Controller
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
+            ],
+
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'fixedVerifyCode'=> YII_ENV_TEST?'testme':null,
+                'height' => 40,
+                'width' => 80,
+                'maxLength' => 4,
+                'minLength' => 4,
+                'offset' => -1,
+                'testLimit' => 10,
+                'backColor' => '0xEAEAEC',
             ],
         ];
     }
@@ -94,7 +86,8 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
-        $model = new LoginForm();
+        $model = new \backend\models\LoginForm();
+
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
