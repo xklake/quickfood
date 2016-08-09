@@ -3,6 +3,8 @@ namespace common\models;
 
 use Yii;
 use yii\base\Model;
+use yii\captcha\Captcha;
+
 
 /**
  * Login form
@@ -14,6 +16,7 @@ class LoginForm extends Model
     public $rememberMe = true;
 
     private $_user = false;
+    public $verifyCode;
 
     /**
      * @inheritdoc
@@ -27,6 +30,8 @@ class LoginForm extends Model
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
+            ['verifyCode', 'captcha', 'captchaAction'=>'/blog/default/captcha'],
+
         ];
     }
 
@@ -39,6 +44,7 @@ class LoginForm extends Model
             'username' => Yii::t('app', 'Username'),
             'password' => Yii::t('app', 'Password'),
             'rememberMe' => Yii::t('app', 'Remember Me'),
+            'verifyCode' => Yii::t('app', 'Verifycode'),
         ];
     }
 
