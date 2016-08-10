@@ -69,6 +69,18 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        if(Yii::$app->user->can('backendLogin') == false){
+            //need check whether the client can access backend
+            Yii::$app->user->logout();
+
+            $model = new \backend\models\LoginForm();
+            $this->layout = 'guest';
+
+            return $this->render('login', [
+                'model' => $model,
+            ]);
+        }
+
         return $this->render('index');
     }
 
