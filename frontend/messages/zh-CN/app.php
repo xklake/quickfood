@@ -290,5 +290,6 @@ return [
     'Height'=> '高度 (厘米)',
     'From' => '出发地',
     'To' => '目的地',
-    'Verifycode' => '请输入验证码'
+    'Verifycode' => '请输入验证码',
+    'Update' => '更新 '
 ];
