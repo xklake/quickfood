@@ -6,7 +6,7 @@
  * Time: 2:27 PM
  */
 
-$this->beginContent('@frontend/template/acura/layouts/main.php');
+$this->beginContent('@frontend/template/quickfood/layouts/main.php');
 ?>
 
 

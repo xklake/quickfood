@@ -1,7 +1,8 @@
 <?php
 use yii\helpers\Html;
-use frontend\web\template\acura\AcuraAssets;
-AcuraAssets::register($this);
+use frontend\web\template\quickfood\QuickfoodAssets;
+
+QuickfoodAssets::register($this);
 ?>
 
 <?php $this->beginPage() ?>
@@ -21,8 +22,8 @@ AcuraAssets::register($this);
     <title><?=$this->title?></title>
 
     <!--[if lt IE 9]>
-        <script src="<?=Yii::$app->urlManager->getHostInfo().'/acura/assets/js/html5shiv.js'?>"></script>
-        <script src="<?=Yii::$app->urlManager->getHostInfo().'/acura/assets/js/respond.min.js'?>"></script>
+        <script src="<?=Yii::$app->urlManager->getHostInfo().'/quickfood/assets/js/html5shiv.js'?>"></script>
+        <script src="<?=Yii::$app->urlManager->getHostInfo().'/quickfood/assets/js/respond.min.js'?>"></script>
     <![endif]-->
 
     <?php $this->head() ?>
