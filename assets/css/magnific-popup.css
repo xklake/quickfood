@@ -296,6 +296,64 @@ img.mfp-img {
 .mfp-gallery .mfp-image-holder .mfp-figure {
   cursor: pointer; }
 
+/* custom preloader  */
+.mfp-preloader {
+  width: 30px;
+  height: 30px;
+  background: #FFF url(../img/loader.gif) no-repeat center center;
+  opacity: 0.8;
+  margin: 0 auto;
+  -webkit-animation: rotateplane 1.2s infinite ease-in-out;
+  animation: rotateplane 1.2s infinite ease-in-out;
+}
+
+/*
+====== Move-horizontal effect ======
+
+*/
+.mfp-move-horizontal {
+  /* start state */
+  /* animate in */
+  /* animate out */
+}
+.mfp-move-horizontal .mfp-with-anim {
+  opacity: 0;
+  transition: all 0.3s;
+  transform: translateX(-50px);
+}
+.mfp-move-horizontal.mfp-bg {
+  opacity: 0;
+  transition: all 0.3s;
+}
+.mfp-move-horizontal.mfp-ready .mfp-with-anim {
+  opacity: 1;
+  transform: translateX(0);
+}
+.mfp-move-horizontal.mfp-ready.mfp-bg {
+  opacity: 0.8;
+}
+.mfp-move-horizontal.mfp-removing .mfp-with-anim {
+  transform: translateX(50px);
+  opacity: 0;
+}
+.mfp-move-horizontal.mfp-removing.mfp-bg {
+  opacity: 0;
+}
+
+/* 
+
+@-webkit-keyframes rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes rotateplane {
+  0% { transform: perspective(120px) rotateX(0deg) rotateY(0deg) }
+  50% { transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) }
+  100% { transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg) }
+}
+/* end custom preloader  */
 @media screen and (max-width: 800px) and (orientation: landscape), screen and (max-height: 300px) {
   /**
        * Remove all paddings around the image on small screen

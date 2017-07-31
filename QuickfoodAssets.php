@@ -16,11 +16,11 @@ class QuickfoodAssets extends AssetBundle
     public $baseUrl = '/quickfood/assets';    
 
     public $css = [
-        'css/bootstrap.min.css',
+        'css/base.css',
         //'css/font-awesome.css',
-        'css/fancybox/jquery.fancybox.css',
-        'css/flexslider.css',
-        'css/style.css',
+        //'css/fancybox/jquery.fancybox.css',
+        //'css/flexslider.css',
+        //'css/style.css',
         //'css/prettyPhoto.css',
         //'css/animate.min.css',
         //'css/responsive.css',
@@ -29,10 +29,11 @@ class QuickfoodAssets extends AssetBundle
     ];
 
     public $js = [
-        'js/jquery.easing.1.3.js',
-        'js/bootstrap.min.js',
-        'js/jquery.fancybox.pack.js',
-        'js/jquery.fancybox-media.js',  
+        'js/common_scripts_min.js',
+        'js/functions.js',
+        'js/validate.js',
+        //'js/modernizr.js'
+        /*'js/jquery.fancybox-media.js',  
         'js/jquery.flexslider.js',
         'js/animate.js',
         'js/modernizr.custom.js',
@@ -40,7 +41,7 @@ class QuickfoodAssets extends AssetBundle
         'js/jquery.magnific-popup.min.js',
         'js/animate.js',
         'js/custom.js', 
-        'js/jqBootstrapValidation.js', 
+        'js/jqBootstrapValidation.js', */
     ];
 
     public $depends = [
