@@ -61,5 +61,6 @@
                 <?php } ?>
             </tbody>
         </table>
+        <hr/>
     <?php }} ?>        
 </div><!-- End box_style_1 -->
