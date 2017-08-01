@@ -47,7 +47,7 @@
                                 </li>
                             <?php } else { ?>
                                 <li class="dropdown">
-                                    <a href="javascript:void(0);" class="show-submenu"><?= $item['surname'] ?><i class="icon-down-open-mini"></i></a>
+                                    <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['blog/default/catalog', 'id' => $item['id']]) ?>" class="show-submenu"><?= $item['surname'] ?><i class="icon-down-open-mini"></i></a>
                                     <ul>
                                         <?php foreach ($sons as $subcata) { ?>
                                             <li>
