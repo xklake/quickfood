@@ -13,7 +13,7 @@
             <div class="col-md-4 col-sm-3">
                 <h3>Secure payments with</h3>
                 <p>
-                    <img src="images/cards.png" alt="" class="img-responsive">
+                    <img src="/images/cards.png" alt="" class="img-responsive">
                 </p>
             </div>
             <div class="col-md-3 col-sm-3">

@@ -21,7 +21,7 @@
             <div class="col--md-4 col-sm-4 col-xs-4">
                 <a href="<?= Yii::$app->urlManager->getHostInfo() . Yii::$app->homeUrl?>" id="logo">
                     <img src="<?= Yii::$app->urlManager->getHostInfo() . '/' . $logo ?>" width="190" height="23" alt="" data-retina="true" class="hidden-xs">
-                    <img src="<?= $logo_mobile ?>" width="59" height="23" alt="" data-retina="true" class="hidden-lg hidden-md hidden-sm">
+                    <img src="<?= Yii::$app->urlManager->getHostInfo() . '/' . $logo_mobile ?>" width="59" height="23" alt="" data-retina="true" class="hidden-lg hidden-md hidden-sm">
                 </a>
             </div>    
 
@@ -33,7 +33,7 @@
                     </div>
                     <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
                     <ul>
-                        <li><a href="<?= Yii::$app->urlManager->getHostInfo() . Yii::$app->homeUrl ?>">Home</a></li>
+                        <li><a href="<?= Yii::$app->urlManager->getHostInfo() .'/'. Yii::$app->homeUrl ?>">Home</a></li>
 
                         <?php
                         foreach (Yii::$app->params['mainMenu'] as $item) {
@@ -47,7 +47,7 @@
                                 </li>
                             <?php } else { ?>
                                 <li class="dropdown">
-                                    <a href="javascript:void(0);" class="show-submenu"><?= $item['surname'] ?><i class="icon-down-open-mini"></i></a>
+                                    <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['blog/default/catalog', 'id' => $item['id']]) ?>" class="show-submenu"><?= $item['surname'] ?><i class="icon-down-open-mini"></i></a>
                                     <ul>
                                         <?php foreach ($sons as $subcata) { ?>
                                             <li>

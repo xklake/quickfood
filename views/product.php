@@ -20,9 +20,7 @@
     
         <h3 class="nomargin_top" id="<?='nav_'.$index?>"><?=$menu->surname?></h3>
         <?php if($menu->content != null){?>
-            <p>
-                <?=$menu->content?>
-            </p>    
+            <?=$menu->content?>
         <?php } ?>
 
         <table class="table table-striped cart-list">
@@ -41,6 +39,7 @@
             </thead>
             <tbody>
                 <?php  
+                    $index = $index + 1;
                     $products = common\models\Product::find()->where(['catalog_id'=> $menu->id])->andWhere(['status'=> \funson86\blog\models\Status::STATUS_ACTIVE])->orderBy(['sort_order' => SORT_ASC])->all();
                     foreach ($products as $item){
                 ?>
@@ -55,7 +54,10 @@
                     <td>
                         <strong><?=$item->price?></strong>
                     </td>
-                    <td class="options">
+                    <td class="options text-left">
+                        <a href="#" class="addtocart">
+                            <i class="icon_plus_alt2"></i>
+                        </a>
                     </td>
                 </tr>
                 <?php } ?>
