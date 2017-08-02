@@ -46,15 +46,19 @@
                                     </a>
                                 </li>
                             <?php } else { ?>
-                                <li class="dropdown">
-                                    <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['blog/default/catalog', 'id' => $item['id']]) ?>" class="show-submenu"><?= $item['surname'] ?><i class="icon-down-open-mini"></i></a>
-                                    <ul>
-                                        <?php foreach ($sons as $subcata) { ?>
-                                            <li>
-                                                <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['blog/default/catalog', 'id' => $subcata->id]) ?>"><?= $subcata['surname'] ?></a>
-                                            </li>
-                                        <?php } ?>
-                                    </ul>
+                                <li> <!-- class='dropdown' -->
+                                    <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['blog/default/catalog', 'id' => $item['id']]) ?>" class="show-submenu"><?= $item['surname'] ?>
+                                        <!--i class="icon-down-open-mini"></i-->
+                                    </a>
+                                    <?php
+                                        /*<ul>
+                                            <?php foreach ($sons as $subcata) { ?>
+                                                <li>
+                                                    <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['blog/default/catalog', 'id' => $subcata->id]) ?>"><?= $subcata['surname'] ?></a>
+                                                </li>
+                                            <?php } ?>
+                                        </ul>*/
+                                    ?>
                                 </li>                        
                             <?php } ?>
                         <?php } ?>
