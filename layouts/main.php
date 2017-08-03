@@ -9,7 +9,7 @@ QuickfoodAssets::register($this);
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <!--[if IE 9]><html class="ie ie9"> <![endif]-->
-<html lang="<?= Yii::$app->language ?>">
+<html lang="<?= Yii::$app->language ?>" class="js flexbox flexboxlegacy canvas canvastext webgl touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface no-generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths">
     <head>
         <meta charset="<?= Yii::$app->charset ?>"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">    
@@ -36,7 +36,7 @@ QuickfoodAssets::register($this);
 <?php $this->head() ?>
     </head><!--/head-->
 
-    <body id="page-top" data-spy="scroll" data-target=".navbar">
+    <body style="overflow: visible;">
         <div id="wrapper" class="home-page">
         <?php $this->beginBody() ?>
             <div id="preloader">
