@@ -11,8 +11,44 @@
 		<div class="row">
         
 			<div class="col-md-4">
-				<div>
+				<div class='box_style_2'>
+                    <?php 
+                        $storeimage = Yii::$app->getImages('storeimage');
+                        if($storeimage != null){
+                    ?>  
+                        <img src='<?='/'.$storeimage->image?>' class='img-thumbnail'>
+                    <?php } ?>
+				</div>
+                
+				<div class="box_style_2" id="help">
+					<i class="icon_lifesaver"></i>
+                    <h4><span>Contact Us</span></h4>
+                    <?php
+                        $phone = Yii::$app->setting->get('phone');
+                        if ($phone != null) {
+                    ?>
+                        <a href="<?= 'tel:' . $phone ?>" class="phone">
+                            <?= $phone ?>
+                        </a>
+                    <?php } ?>
+
+                    <?php
+                        $mobile = Yii::$app->setting->get('mobile');
+                        if ($mobile != null) {
+                    ?>
+                        <a href="<?= 'tel:' . $mobile ?>" class="phone">
+                            <?= $mobile ?>
+                        </a>
+                    <?php } ?>    
                     
+                    <?php
+                        $email = Yii::$app->setting->get('email');
+                        if ($email != null) {
+                    ?>
+                        <a href="<?= 'tel:' . $email ?>" class="email">
+                            <?=$email?>
+                        </a>
+                    <?php } ?>
 				</div>
                 
 				<div class="box_style_2">
@@ -26,28 +62,35 @@
                     ?>
                     </ul>
 				</div>
-				<div class="box_style_2 hidden-xs" id="help">
-					<i class="icon_lifesaver"></i>
-					<h4>Need <span>Help?</span></h4>
-					<a href="tel://004542344599" class="phone">+45 423 445 99</a>
-					<a href="tel://004542344599" class="mobile">+45 423 445 99</a>
-					<small>Monday to Friday 9.00am - 7.30pm</small>
-				</div>
 			</div>
             
 			<div class="col-md-8">
 				<div class="box_style_2">
 					<h2 class="inner">Description</h2>
-                    <div >
-                        <img src='/images/slider_single_restaurant/1_large.jpg'>
-                    </div>
+                    <?php 
+                        $address = Yii::$app->setting->get('address');
+                        if($address != null){
+                    ?>        
+                    <div style="margin-bottom: 10px;">
+                            <strong>Address:</strong><?=$address?>
+                        </div>
+                    <?php } ?>
+                    <?php 
+                        $googlemap = Yii::$app->setting->get('googlemap');
+                        if($googlemap != null){
+                    ?> 
+                        <div>
+                            <iframe src="<?= Yii::$app->setting->get('googlemap') ?>" frameborder="0" style="border:0;width:100%;min-height:435px;" height="435px" allowfullscreen></iframe>
+                        </div>
+                    <?php } ?>
 
                     <h3>About us</h3>
                     <?php 
-                    $aboutus = Yii::$app->getHtmlBlock('aboutus');
-                    if($aboutus != null){
-                        echo($aboutus->content);
-                    } ?>
+                        $aboutus = Yii::$app->getHtmlBlock('aboutus');
+                        if($aboutus != null){
+                            echo($aboutus->content);
+                        } 
+                    ?>
                 </div>
 			</div>
 		</div><!-- End row -->

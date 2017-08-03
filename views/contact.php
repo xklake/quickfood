@@ -56,7 +56,7 @@
                 </p>
                 <!--p>
                     <a href='tel:<?= Yii::$app->setting->get('wechat') ?>' class="fa fa-weixin">
-                <?= Yii::$app->setting->get('wechat') ?>
+                        <?= Yii::$app->setting->get('wechat') ?>
                     </a>
                 </p-->
             </div>
