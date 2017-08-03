@@ -5,11 +5,13 @@
  * Date: 6/10/16
  * Time: 11:35 AM
  */
+    echo \frontend\web\template\quickfood\widgets\BreadcrumbsEx::widget();
+
 ?>
+
 <!-- Content ================================================== -->
 <div class="container margin_60_35">
 		<div class="row">
-        
 			<div class="col-md-4">
 				<div class='box_style_2'>
                     <?php 

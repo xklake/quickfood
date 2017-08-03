@@ -5,6 +5,8 @@
  * Date: 6/10/16
  * Time: 2:18 PM
  */
+
+    echo \frontend\web\template\quickfood\widgets\BreadcrumbsEx::widget();
 ?>
 
 <section id="inner-headline">
