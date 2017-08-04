@@ -90,9 +90,16 @@
     </div><!-- End subheader -->
     <div id="count" class="hidden-xs">
         <ul>
-            <li><span class="number">2650</span> Restaurant</li>
-            <li><span class="number">5350</span> People Served</li>
-            <li><span class="number">12350</span> Registered Users</li>
+            <?php
+                $welcome = Yii::$app->getTextBlock('home-welcome');
+                if ($welcome != null) {
+            ?>
+                <li>
+                    <?= $welcome->content ?>
+                </li> 
+            <?php } ?>     
+            <!--li><span class="number">5350</span> </li>
+            <li><span class="number">12350</span> </li-->
         </ul>
     </div>
 </section><!-- End section -->
