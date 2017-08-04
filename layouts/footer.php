@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
             
-            <div class="col-md-4 col-sm-3">
+            <div class="col-md-3 col-sm-3">
                 <h3>Contact</h3>
                 <ul>
                     <?php 
@@ -54,7 +54,7 @@
                 </ul>
             </div>     
             
-            <div class="col-md-4 col-sm-3">
+            <div class="col-md-3 col-sm-3">
                 <h3>Opening Hour</h3>
                 <ul style="">
                     <?php 
@@ -66,18 +66,20 @@
                 </ul>
             </div>                       
             
-            <div class="col-md-4 col-sm-3">
+            <div class="col-md-3 col-sm-3">
                 <h3>About</h3>
                 <ul>
                     <li><a href="about.html">About us</a></li>
                     <li><a href="menu.html">Menu</a></li>
                     <li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a></li>
                     <li><a href="#0" data-toggle="modal" data-target="#register">Register</a></li>
-                    <li>
-                        Supported Payment<img src="/images/cards.png" alt="" class="img-responsive">
-                    </li>
                 </ul>
             </div>
+            
+            <div class="col-md-3 col-sm-3">
+                <h3>Supported Payment</h3>
+                <img src="/images/cards.png" alt="" class="img-responsive">
+            </div>            
         </div><!-- End row -->
         <div class="row">
             <div class="col-md-12">
@@ -92,37 +94,37 @@
                         <?php 
                             $google = Yii::$app->setting->get('google');
                             if($google != null){ ?>
-                            <li><a href="<?=$google?>"><i class="icon-google"></i></a></li>
+                            <li><a href="<?=$google?>" target="_blank"><i class="icon-google"></i></a></li>
                         <?php } ?>
 
                         <?php 
                             $instagram = Yii::$app->setting->get('instagram');
                             if($instagram != null){ ?>
-                            <li><a href="<?=$instagram?>"><i class="icon-instagram"></i></a></li>
+                            <li><a href="<?=$instagram?>"  target="_blank"><i class="icon-instagram"></i></a></li>
                         <?php } ?>
                             
                         <?php 
                             $twitter = Yii::$app->setting->get('twitter');
                             if($twitter != null){ ?>
-                            <li><a href="<?=$twitter?>"><i class="icon-twitter"></i></a></li>
+                            <li><a href="<?=$twitter?>"  target="_blank"><i class="icon-twitter"></i></a></li>
                         <?php } ?>
                             
                         <?php 
                             $pinterest = Yii::$app->setting->get('pinterest');
                             if($pinterest != null){ ?>
-                            <li><a href="<?=$pinterest?>"><i class="icon-pinterest"></i></a></li>
+                            <li><a href="<?=$pinterest?>"  target="_blank"><i class="icon-pinterest"></i></a></li>
                         <?php } ?>
                             
                         <?php 
                             $vimeo = Yii::$app->setting->get('vimeo');
                             if($vimeo != null){ ?>
-                            <li><a href="<?=$vimeo?>"><i class="icon-vimeo"></i></a></li>
+                            <li><a href="<?=$vimeo?>"  target="_blank"><i class="icon-vimeo"></i></a></li>
                         <?php } ?>
                             
                         <?php 
                             $youtube = Yii::$app->setting->get('youtube');
                             if($youtube != null){ ?>
-                            <li><a href="<?=$youtube?>"><i class="icon-youtube-play"></i></a></li>
+                            <li><a href="<?=$youtube?>"  target="_blank"><i class="icon-youtube-play"></i></a></li>
                         <?php } ?>
                     </ul>
                     <?php 
