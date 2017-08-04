@@ -37,7 +37,14 @@
     </ul>
 </div><!-- End box_style_1 -->
 
+<div class="hidden-xs">
 <?php 
     echo \frontend\web\template\quickfood\widgets\Contact::widget();
-    echo \frontend\web\template\quickfood\widgets\OpeningHour::widget();
 ?>
+</div>
+
+<div class="hidden-xs">
+    <?php 
+        echo \frontend\web\template\quickfood\widgets\OpeningHour::widget();
+    ?>
+</div>
