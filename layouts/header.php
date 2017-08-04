@@ -72,20 +72,22 @@
 <section class="parallax-window" id="home" data-parallax="scroll" data-image-src="/images/sub_header_home.jpg" data-natural-width="1400" data-natural-height="550">
     <div id="subheader">
         <div id="sub_content">
-            <h1>Order Takeaway or Delivery Food</h1>
+            <h1>
+                <?php 
+                $homebannertitle = Yii::$app->getTextBlock('home-banner-title');
+                if($homebannertitle != null){
+                    echo($homebannertitle->content);
+                }
+                ?>
+            </h1>
             <p>
-                Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.
+                <?php 
+                    $homebannercontent = Yii::$app->getTextBlock('home-banner-content'); 
+                    if($homebannercontent != null){
+                        echo($homebannercontent->content); 
+                    }
+                ?>
             </p>
-            <form method="post" action="list_page.html">
-                <div id="custom-search-input">
-                    <div class="input-group ">
-                        <input type="text" class=" search-query" placeholder="Your Address or postal code">
-                        <span class="input-group-btn">
-                            <input type="submit" class="btn_search" value="submit">
-                        </span>
-                    </div>
-                </div>
-            </form>
         </div><!-- End sub_content -->
     </div><!-- End subheader -->
     <div id="count" class="hidden-xs">
@@ -98,8 +100,6 @@
                     <?= $welcome->content ?>
                 </li> 
             <?php } ?>     
-            <!--li><span class="number">5350</span> </li>
-            <li><span class="number">12350</span> </li-->
         </ul>
     </div>
 </section><!-- End section -->
