@@ -10,72 +10,128 @@
 <footer>
     <div class="container">
         <div class="row">
+            
             <div class="col-md-4 col-sm-3">
-                <h3>Secure payments with</h3>
-                <p>
-                    <img src="/images/cards.png" alt="" class="img-responsive">
-                </p>
-            </div>
-            <div class="col-md-3 col-sm-3">
+                <h3>Contact</h3>
+                <ul>
+                    <?php 
+                        $mobile = Yii::$app->setting->get('mobile'); 
+                        if($mobile != null){ ?>
+                        <li>
+                            <a href="tel:<?=$mobile?>">
+                                <i class="icon_mobile" ></i><?=$mobile?>
+                            </a>
+                        </li>
+                    <?php } ?>
+                    
+                    <?php 
+                        $phone = Yii::$app->setting->get('phone'); 
+                        if($phone != null){?>
+                        <li>
+                            <a href="tel:<?=$phone?>">
+                                <i class="icon_phone" style="margin:4px;"></i><?=$phone?>
+                            </a>
+                        </li>
+                    <?php } ?>
+                    
+                    <?php 
+                        $email = Yii::$app->setting->get('email'); 
+                        if($email != null){?>
+                        <li>
+                            <a href="tel:<?=$email?>">
+                                <i class="icon_mail_alt"  style="margin:4px;"></i><?=$email?>
+                            </a>
+                        </li>
+                    <?php } ?>   
+                    
+                    <?php 
+                        $address = Yii::$app->setting->get('address'); 
+                        if($address != null){?>
+                        <li>
+                            <i class="icon_pin_alt"  style="margin:4px;"></i><?=$address?>
+                        </li>
+                    <?php } ?>                               
+                </ul>
+            </div>     
+            
+            <div class="col-md-4 col-sm-3">
+                <h3>Opening Hour</h3>
+                <ul style="">
+                    <?php 
+                        $openinghour = Yii::$app->getHtmlBlock('openinghour-footer'); 
+                        if($openinghour != null){
+                            echo($openinghour->content);
+                        }
+                    ?>
+                </ul>
+            </div>                       
+            
+            <div class="col-md-4 col-sm-3">
                 <h3>About</h3>
                 <ul>
                     <li><a href="about.html">About us</a></li>
-                    <li><a href="faq.html">Faq</a></li>
-                    <li><a href="contacts.html">Contacts</a></li>
+                    <li><a href="menu.html">Menu</a></li>
                     <li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a></li>
                     <li><a href="#0" data-toggle="modal" data-target="#register">Register</a></li>
-                    <li><a href="#0">Terms and conditions</a></li>
+                    <li>
+                        Supported Payment<img src="/images/cards.png" alt="" class="img-responsive">
+                    </li>
                 </ul>
-            </div>
-            <div class="col-md-3 col-sm-3" id="newsletter">
-                <h3>Newsletter</h3>
-                <p>
-                    Join our newsletter to keep be informed about offers and news.
-                </p>
-                <div id="message-newsletter_2">
-                </div>
-                <form method="post" action="assets/newsletter.php" name="newsletter_2" id="newsletter_2">
-                    <div class="form-group">
-                        <input name="email_newsletter_2" id="email_newsletter_2" type="email" value="" placeholder="Your mail" class="form-control">
-                    </div>
-                    <input type="submit" value="Subscribe" class="btn_1" id="submit-newsletter_2">
-                </form>
-            </div>
-            <div class="col-md-2 col-sm-3">
-                <h3>Settings</h3>
-                <div class="styled-select">
-                    <select class="form-control" name="lang" id="lang">
-                        <option value="English" selected>English</option>
-                        <option value="French">French</option>
-                        <option value="Spanish">Spanish</option>
-                        <option value="Russian">Russian</option>
-                    </select>
-                </div>
-                <div class="styled-select">
-                    <select class="form-control" name="currency" id="currency">
-                        <option value="USD" selected>USD</option>
-                        <option value="EUR">EUR</option>
-                        <option value="GBP">GBP</option>
-                        <option value="RUB">RUB</option>
-                    </select>
-                </div>
             </div>
         </div><!-- End row -->
         <div class="row">
             <div class="col-md-12">
                 <div id="social_footer">
                     <ul>
-                        <li><a href="#0"><i class="icon-facebook"></i></a></li>
-                        <li><a href="#0"><i class="icon-twitter"></i></a></li>
-                        <li><a href="#0"><i class="icon-google"></i></a></li>
-                        <li><a href="#0"><i class="icon-instagram"></i></a></li>
-                        <li><a href="#0"><i class="icon-pinterest"></i></a></li>
-                        <li><a href="#0"><i class="icon-vimeo"></i></a></li>
-                        <li><a href="#0"><i class="icon-youtube-play"></i></a></li>
+                        <?php 
+                            $facebook = Yii::$app->setting->get('facebook');
+                            if($facebook != null){ ?>
+                        <li><a href="<?=$facebook?>" target="_blank"><i class="icon-facebook"></i></a></li>
+                        <?php } ?>
+
+                        <?php 
+                            $google = Yii::$app->setting->get('google');
+                            if($google != null){ ?>
+                            <li><a href="<?=$google?>"><i class="icon-google"></i></a></li>
+                        <?php } ?>
+
+                        <?php 
+                            $instagram = Yii::$app->setting->get('instagram');
+                            if($instagram != null){ ?>
+                            <li><a href="<?=$instagram?>"><i class="icon-instagram"></i></a></li>
+                        <?php } ?>
+                            
+                        <?php 
+                            $twitter = Yii::$app->setting->get('twitter');
+                            if($twitter != null){ ?>
+                            <li><a href="<?=$twitter?>"><i class="icon-twitter"></i></a></li>
+                        <?php } ?>
+                            
+                        <?php 
+                            $pinterest = Yii::$app->setting->get('pinterest');
+                            if($pinterest != null){ ?>
+                            <li><a href="<?=$pinterest?>"><i class="icon-pinterest"></i></a></li>
+                        <?php } ?>
+                            
+                        <?php 
+                            $vimeo = Yii::$app->setting->get('vimeo');
+                            if($vimeo != null){ ?>
+                            <li><a href="<?=$vimeo?>"><i class="icon-vimeo"></i></a></li>
+                        <?php } ?>
+                            
+                        <?php 
+                            $youtube = Yii::$app->setting->get('youtube');
+                            if($youtube != null){ ?>
+                            <li><a href="<?=$youtube?>"><i class="icon-youtube-play"></i></a></li>
+                        <?php } ?>
                     </ul>
-                    <p>
-                        © Quick Food 2015
-                    </p>
+                    <?php 
+                        $copyright = Yii::$app->setting->get('copyright'); 
+                        if($copyright != null){ ?>
+                        <p>
+                            <?= $copyright?>
+                        </p>
+                    <?php } ?>
                 </div>
             </div>
         </div><!-- End row -->
