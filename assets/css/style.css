@@ -7,8 +7,7 @@ Author URI: http://themeforest.net/user/Ansonika/
 [Table of contents] 
 
 1. SITE STRUCTURE and TYPOGRAPHY
-- 1.1 Typography
-- 1.2 Buttons
+- 1.1 Typography- 1.2 Buttons
 - 1.3 Structure
 
 2. CONTENT
@@ -947,13 +946,26 @@ a.strip_list:hover h3{
 	border-top-right-radius: 3px;
 	font-size:18px;
 }
-a.remove_item{
-	color:#ddd;
-	font-size:14px;
+
+a.delete_item{
+	color:#ec008c;
+	font-size:20px;
 }
+
+a.minus_item{
+	color:#ec008c;
+	font-size:20px;
+}
+
+a.add_item{
+	color:#ec008c;
+	font-size:20px;
+}
+
 a.remove_item:hover{
 	color: #C33;
 }
+
 #cart_box hr {
 	margin-left:-15px;
 	margin-right:-15px;
@@ -1090,7 +1102,11 @@ ul.additional_links li:first-child{
 }
 
 .table.table_summary td {
-	border-top:0
+	border-top:0;
+}
+
+.dashedcartlist{
+        border-bottom:#ccc dashed 1px;
 }
 .table.table_summary td.total{
 	font-weight:bold;
@@ -1645,7 +1661,7 @@ s.checkbox-holder {
 }
 .btn.btn-submit {
 	width: 100%;
-	margin-top: 30px;
+	margin-top: 10px;
 	color: #85c99d;
 	padding:10px;
 	background: #fff;
@@ -2684,4 +2700,8 @@ ul.plan-features {
 }
 .plan-tall + .plan {
 	border-left: 0;
+}
+
+.text-left label{
+    color:#ffffff;
 }

@@ -8,47 +8,19 @@
 
 <div class="theiaStickySidebar">
     <div id="cart_box" >
-        <h3>Your order <i class="icon_cart_alt pull-right"></i></h3>
+        <h3>Your Cart <i class="icon_cart_alt pull-right"></i></h3>
         <table class="table table_summary">
             <tbody>
                 <tr>
                     <td>
-                        <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>1x</strong> Enchiladas
+                        <a href="#0" class="remove_item">
+                            <i class="icon_minus_alt"></i>
+                        </a> 
+                        <strong>1x</strong> Enchiladas
                     </td>
+                    
                     <td>
                         <strong class="pull-right">$11</strong>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>2x</strong> Burrito
-                    </td>
-                    <td>
-                        <strong class="pull-right">$14</strong>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>1x</strong> Chicken
-                    </td>
-                    <td>
-                        <strong class="pull-right">$20</strong>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>2x</strong> Corona Beer
-                    </td>
-                    <td>
-                        <strong class="pull-right">$9</strong>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="#0" class="remove_item"><i class="icon_minus_alt"></i></a> <strong>2x</strong> Cheese Cake
-                    </td>
-                    <td>
-                        <strong class="pull-right">$12</strong>
                     </td>
                 </tr>
             </tbody>

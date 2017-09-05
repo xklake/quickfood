@@ -13,8 +13,11 @@
             <?=$content?>
         </div>
 
-        <div class="col-md-3">
-            <?= $this->render('@frontend/web/template/quickfood/layouts/rightside.php') ?>
+        <div class="col-md-3" id="cart">
+            <?php
+                echo frontend\web\template\quickfood\widgets\Cart::widget();
+                //    $this->render('@frontend/web/template/quickfood/layouts/rightside.php') 
+            ?>
         </div>            
     </div>
 </div>        

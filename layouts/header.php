@@ -13,6 +13,10 @@
     } else{
         $logo_mobile = $logo_mobile->image;
     }    
+    
+    if(!isset(Yii::$app->params['mainMenu'])){
+        funson86\blog\controllers\frontend\DefaultController::updateMainMenu();
+    }
 ?>
 
 <header>
@@ -61,6 +65,25 @@
                                     ?>
                                 </li>                        
                             <?php } ?>
+                        <?php } ?>
+                                
+                        <?php if(Yii::$app->user->isGuest){?>
+                        <li>
+                            <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['site/login'])?>" target="_self">
+                                <i class="fa fa-user"></i>Login
+                            </a>
+                        </li>
+                        <?php } else { ?>
+                        <li>
+                            <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['site/logout'])?>" target="_self">
+                                Logout
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['user'])?>" target="_self">
+                                <i class='icon_profile'></i><?=Yii::$app->user->identity->profile->surname?>
+                            </a>
+                        </li>
                         <?php } ?>
                     </ul>
                 </div>

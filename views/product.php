@@ -1,3 +1,7 @@
+<?php 
+        Yii::$app->session['step'] = 1;
+?>
+
 <div class="box_style_2" id="main_menu">
 <?php
     $mainMenu = Yii::$app->params['mainMenu'];
@@ -55,8 +59,8 @@
                         <strong><?=$item->price?></strong>
                     </td>
                     <td class="options text-left">
-                        <a href="#" class="addtocart">
-                            <i class="icon_plus_alt2"></i>
+                        <a href="#" class="addproduct">
+                            <i class="icon_plus_alt2" id="<?=$item->id?>"></i>
                         </a>
                     </td>
                 </tr>
@@ -66,3 +70,36 @@
         <hr/>
     <?php }} ?>        
 </div><!-- End box_style_1 -->
+
+
+<?php
+$urlAddToCart = Yii::$app->urlManager->createAbsoluteUrl(['cart/add-to-cart']);
+$urlLogin = Yii::$app->urlManager->createAbsoluteUrl(['site/login']);
+
+$this->registerJs('
+var product = {' . 'csrf:"' . Yii::$app->request->getCsrfToken() . '"};
+var user = {id:' . (Yii::$app->user->isGuest ? 0 : Yii::$app->user->id) . ', ' . '};
+var urlCartAdd = "' . Yii::$app->urlManager->createAbsoluteUrl(['cart/ajax-add']) . '";');
+
+$js = <<<JS
+jQuery(".icon_plus_alt2").click(function(){
+    var number = 1;
+
+        
+    param = {
+        productId : $(this).attr('id'),
+        number : number,
+        _csrf : product.csrf
+    };
+
+    $.post(urlCartAdd, param, function(data) {
+        if (data.status > 0) {
+            $(this).removeClass("icon_plus_alt2");
+            $(this).addClass("icon_check_alt2");
+        }
+    }, "json");
+});
+JS;
+
+$this->registerJs($js);
+?>
