@@ -28,13 +28,13 @@ $realdelieveryfee = 0;
                         <strong><?=$product['number']?>x</strong> <?=$product['name']?>
                         <br/>
                         <a href="#" class="delete_item">
-                            <i class="icon_close_alt2"></i>
+                            <i class="icon_close_alt2" name="<?=$product['product_id']?>" count="<?=0 - $product['number']?>"></i>
                         </a> 
                         <a href="#" class="minus_item">
-                            <i class="icon_minus_alt"></i>
+                            <i class="icon_minus_alt" name="<?=$product['product_id']?>"  count="-1"></i>
                         </a> 
                         <a href="#0" class="add_item">
-                            <i class="icon_plus_alt2" name="<?=$product['product_id']?>"></i>
+                            <i class="icon_plus_alt2" name="<?=$product['product_id']?>" count='1'></i>
                         </a>                     
                     </td>
 

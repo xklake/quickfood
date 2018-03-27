@@ -60,7 +60,7 @@
                     </td>
                     <td class="options text-left">
                         <a href="#" class="addproduct">
-                            <i class="icon_plus_alt2" name="<?=$item->id?>"></i>
+                            <i class="icon_plus_alt2" name="<?=$item->id?>" count='1'></i>
                         </a>
                     </td>
                 </tr>
@@ -84,25 +84,31 @@ var urlUpdateCart = "'.$urlUpdateCart.'";
 var urlCartAdd = "' . Yii::$app->urlManager->createAbsoluteUrl(['cart/ajax-add']) . '";');
 
 $js = <<<JS
-jQuery(document).on('click', ".icon_plus_alt2", function(e){
-    var number = 1;
         
-    param = {
-        productId : $(this).attr('name'),
-        number : number,
-        _csrf : product.csrf
-    };
+    function cartops()
+    {
+        param = {
+            productId : $(this).attr('name'),
+            number : $(this).attr('count'),
+            _csrf : product.csrf
+        };
 
-    $.post(urlCartAdd, param, function(data) {
-        if (data.status > 0) {
-        $.get(urlUpdateCart, function(carthtml){
-            jQuery('#cart').html(carthtml);
-        });
-        }
-    }, "json");
-});
-        
-        
+        $.post(urlCartAdd, param, function(data) 
+            {
+                if (data.status > 0) 
+                {
+                    $.get(urlUpdateCart, function(carthtml)
+                        {
+                            jQuery('#cart').html(carthtml);
+                        }
+                    )
+                }
+            },'json');
+    }
+
+    jQuery(document).on('click', ".icon_plus_alt2", cartops);
+    jQuery(document).on('click', ".icon_minus_alt", cartops);
+    jQuery(document).on('click', ".icon_close_alt2", cartops);
 JS;
 
 $this->registerJs($js);
