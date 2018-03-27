@@ -60,7 +60,7 @@
                     </td>
                     <td class="options text-left">
                         <a href="#" class="addproduct">
-                            <i class="icon_plus_alt2" name="<?=$item->id?>" count='1'></i>
+                            <i class="icon_plus_alt2" name="<?=$item->id?>" count='1    '></i>
                         </a>
                     </td>
                 </tr>
