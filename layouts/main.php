@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 use frontend\web\template\quickfood\QuickfoodAssets;
 

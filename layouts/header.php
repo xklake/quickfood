@@ -50,19 +50,9 @@
                                     </a>
                                 </li>
                             <?php } else { ?>
-                                <li> <!-- class='dropdown' -->
+                                <li> 
                                     <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['blog/default/catalog', 'id' => $item['id']]) ?>" class="show-submenu"><?= $item['surname'] ?>
-                                        <!--i class="icon-down-open-mini"></i-->
                                     </a>
-                                    <?php
-                                        /*<ul>
-                                            <?php foreach ($sons as $subcata) { ?>
-                                                <li>
-                                                    <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['blog/default/catalog', 'id' => $subcata->id]) ?>"><?= $subcata['surname'] ?></a>
-                                                </li>
-                                            <?php } ?>
-                                        </ul>*/
-                                    ?>
                                 </li>                        
                             <?php } ?>
                         <?php } ?>
@@ -73,6 +63,11 @@
                                 <i class="fa fa-user"></i>Login
                             </a>
                         </li>
+                        <li>
+                            <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['site/signup'])?>" target="_self">
+                                <i class="fa fa-user"></i>Registry
+                            </a>
+                        </li>                        
                         <?php } else { ?>
                         <li>
                             <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['site/logout'])?>" target="_self">

@@ -17,7 +17,6 @@ $freedeliverymin = Yii::$app->setting->get('freedeliverymin');
 
 $realdelieveryfee = 0;
 ?>
-<div id="cart_box" >
     <h3>Your Cart <i class="icon_cart_alt pull-right"></i></h3>
     <table class="table table_summary">
         <tbody>
@@ -35,7 +34,7 @@ $realdelieveryfee = 0;
                             <i class="icon_minus_alt"></i>
                         </a> 
                         <a href="#0" class="add_item">
-                            <i class="icon_plus_alt2"></i>
+                            <i class="icon_plus_alt2" name="<?=$product['product_id']?>"></i>
                         </a>                     
                     </td>
 
@@ -100,4 +99,3 @@ $realdelieveryfee = 0;
     </table>
     <hr>
     <a class="btn_full" href="<?=Yii::$app->urlManager->createAbsoluteUrl('cart/checkout')?>">Check Out</a>
-</div><!-- End cart_box -->

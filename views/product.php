@@ -60,7 +60,7 @@
                     </td>
                     <td class="options text-left">
                         <a href="#" class="addproduct">
-                            <i class="icon_plus_alt2" id="<?=$item->id?>"></i>
+                            <i class="icon_plus_alt2" name="<?=$item->id?>"></i>
                         </a>
                     </td>
                 </tr>
@@ -73,32 +73,36 @@
 
 
 <?php
-$urlAddToCart = Yii::$app->urlManager->createAbsoluteUrl(['cart/add-to-cart']);
+//$urlAddToCart = Yii::$app->urlManager->createAbsoluteUrl(['cart/add-to-cart']);
 $urlLogin = Yii::$app->urlManager->createAbsoluteUrl(['site/login']);
+$urlUpdateCart = Yii::$app->urlManager->createAbsoluteUrl(['cart/updatecart']);
 
 $this->registerJs('
 var product = {' . 'csrf:"' . Yii::$app->request->getCsrfToken() . '"};
 var user = {id:' . (Yii::$app->user->isGuest ? 0 : Yii::$app->user->id) . ', ' . '};
+var urlUpdateCart = "'.$urlUpdateCart.'";
 var urlCartAdd = "' . Yii::$app->urlManager->createAbsoluteUrl(['cart/ajax-add']) . '";');
 
 $js = <<<JS
-jQuery(".icon_plus_alt2").click(function(){
+jQuery(document).on('click', ".icon_plus_alt2", function(e){
     var number = 1;
-
         
     param = {
-        productId : $(this).attr('id'),
+        productId : $(this).attr('name'),
         number : number,
         _csrf : product.csrf
     };
 
     $.post(urlCartAdd, param, function(data) {
         if (data.status > 0) {
-            $(this).removeClass("icon_plus_alt2");
-            $(this).addClass("icon_check_alt2");
+        $.get(urlUpdateCart, function(carthtml){
+            jQuery('#cart').html(carthtml);
+        });
         }
     }, "json");
 });
+        
+        
 JS;
 
 $this->registerJs($js);

@@ -19,14 +19,10 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="" id="login_2" tabindex="-1" role="dialog" aria-labelledby="myLogin" aria-hidden="true">
                     <div class="modal-content modal-popup">
                         <?php $form = ActiveForm::begin(['id' => 'myLogin', 'options' => ['class'=> 'popup-form']]); ?>
-                        <!--form action="#" class="popup-form" id="myLogin"-->
                             <div class="login_icon"><i class="icon_lock_alt"></i></div>
                             <?= Html::activeTextInput($model, 'username', ['class' => 'form-control form-white', 'placeholder' => "Username"]) ?>
 
-                            <!--input type="text" class="form-control form-white" placeholder="Username"-->
-                            <!--input type="text" class="form-control form-white" placeholder="Password" -->
                             <?= Html::activePasswordInput($model, 'password', ['class' => 'form-control form-white', 'placeholder' => "Password"]) ?>
-
                             <div class="text-left">
                                 <a href="<?=Yii::$app->urlManager->createAbsoluteUrl(['site/requestpasswordreset'])?>">Forgot Password?</a>  
                                 <?= Html::activeCheckbox($model, 'rememberMe', []) ?>
