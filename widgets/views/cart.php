@@ -17,7 +17,8 @@ $freedeliverymin = Yii::$app->setting->get('freedeliverymin');
 
 $realdelieveryfee = 0;
 ?>
-    <h3>Your Cart <i class="icon_cart_alt pull-right"></i></h3>
+<div class='box_style_2'>
+    <h2 class='inner'>Your Cart <i class="icon_cart_alt pull-right"></i></h2>
     <table class="table table_summary">
         <tbody>
             <?php foreach($data as $product){ 
@@ -99,3 +100,4 @@ $realdelieveryfee = 0;
     </table>
     <hr>
     <a class="btn_full" href="<?=Yii::$app->urlManager->createAbsoluteUrl('cart/checkout')?>">Check Out</a>
+</div>

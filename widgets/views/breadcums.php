@@ -5,14 +5,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-    $catalog = Yii::$app->params['catalog'];
-    $cataurl = null;
-    $cataname = null;
-    
-    if($catalog != null){
+
+	if(isset(Yii::$app->params['catalog'])){
+		
+	    $catalog = Yii::$app->params['catalog'];
+
         $cataurl = Yii::$app->urlManager->createAbsoluteUrl(['blog/default/catalog', 'id'=>$catalog->id]);
         $cataname = $catalog->surname;
-    }    
 ?>
 
 <div id="position">
@@ -32,3 +31,5 @@
         </ul>
     </div>
 </div>
+
+<?php } ?>

@@ -2,7 +2,7 @@
         Yii::$app->session['step'] = 1;
 ?>
 
-<div class="box_style_2" id="main_menu">
+<div class="box_style_2" id="main">
 <?php
     $mainMenu = Yii::$app->params['mainMenu'];
     $allMenu = Yii::$app->params['allMenu'];
