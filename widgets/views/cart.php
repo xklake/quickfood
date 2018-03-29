@@ -46,24 +46,49 @@ $realdelieveryfee = 0;
             <?php } ?>
         </tbody>
     </table>
-    <hr>
     
     <?php if ($total > $minorder) { ?>
-        <div class="row">
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-                <label><input type="radio" value="" checked name="option_2"> Delivery </label>
+    <div class="row" >
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6" style="margin-top:5px;">
+                <label>
+                    <div class="iradio_square-grey" style="position: relative;">
+                        <input type="radio" class="icheck" checked name="option_2" style='position: absolute; opacity: 0;'>  
+                        <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>                                    
+                    </div>
+                    Delivery
+                </label>
             </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-                <label><input type="radio" value="" name="option_2"> Collect</label>
+        
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6"  style="margin-top:5px;">
+                <label>
+                    <div class="iradio_square-grey" style="position: relative;">
+                        <input type="radio" class="icheck" name="option_2" style='position: absolute; opacity: 0;'>  
+                        <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>                                    
+                    </div>
+                    Collect
+                </label>
             </div>
         </div>
     <?php } else { ?>
         <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-                <label><input type="radio" value="" checked name="option_2" ><?= $minorder ?><?= $symbol ?> Min order</label>
+                <label>
+                    <div class="iradio_square-grey" style="position: relative;">
+                        <input type="radio" class="icheck" name="option_2" style='position: absolute; opacity: 0;'>  
+                        <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>                                    
+                    </div>
+                    <?= $minorder ?><?= $symbol ?> Min order
+                </label>
             </div>
+            
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-                <label><input type="radio" value="" name="option_2" > Collect</label>
+                <label>
+                    <div class="iradio_square-grey" style="position: relative;">
+                        <input type="radio" class="icheck" checked name="option_2" style='position: absolute; opacity: 0;'>  
+                        <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>                                    
+                    </div>
+                    Collect
+                </label>
             </div>
         </div>
     <?php } ?>
@@ -76,6 +101,7 @@ $realdelieveryfee = 0;
                     Subtotal <span class="pull-right"><?=$total?></span>
                 </td>
             </tr>
+            
             <tr>
                 <td>
                     Delivery Fee 
@@ -93,7 +119,7 @@ $realdelieveryfee = 0;
             </tr>
             <tr>
                 <td class="total">
-                    TOTAL <span class="pull-right"><?=$total + $realdelieveryfee?></span>
+                    TOTAL <span class="pull-right"  id='totalpay'><?=$total + $realdelieveryfee?></span>
                 </td>
             </tr>
         </tbody>

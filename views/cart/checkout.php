@@ -1,167 +1,190 @@
 <?php
+
 use funson86\courier\models\CourierFee;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\ArrayHelper;
 
-    /* @var $this yii\web\View */
-    $totalProduct = 0;
-    $totalPrice = 0;
-    $courier = null;
+$this->title = 'Order details';
+$i = 0;
 
-    foreach($products as $product) {
-        if($product->source == 3)
-        {
-            $courier = $product;
-        }
-        $totalProduct += $product->number;
-        $totalPrice += $product->number * $product->price;
-    }
-
-    $shipmentFee = 0;
-
-    if ($totalPrice < floatval(Yii::$app->setting->get('freedelivery'))) {
-        $shipmentFee = floatval(Yii::$app->setting->get('shippmentfee'));
-    }
-    $totalPrice += $shipmentFee;
-
-    $i = 0;
-
-    $this->title = 'Order information confirmation'; 
 ?>
-
 <div class="box_style_2" id="main">
-	<h2>Checkout</h2>
-    <div class="row" style="margin-top:100px; margin-bottom: 100px;">
-        <div class="col-md-4 col-md-offset-4 col-xs-12 col-sm-8 col-md-offset-4 col-sm-offset-2">
-            <div class="" id="checkout" tabindex="-1" role="dialog" aria-labelledby="checkout" aria-hidden="true">
-            <?php $form = ActiveForm::begin(['id' => 'checkoutform']); ?>
-                <?= Html::activeHiddenInput($model, 'payment_method', ['value' => \common\models\Order::PAYMENT_METHOD_PAY]) ?>
-                <?= Html::activeHiddenInput($model, 'shipment_fee', ['value' => $shipmentFee]) ?>
+    <h2 class='inner'>Order details</h2>
+    <div class="row">
+        <div>
+            <?php $form = ActiveForm::begin(['id' => 'checkoutform','class'=> 'popup-form']); ?>
+            <?= Html::activeHiddenInput($model, 'payment_method', ['value' => \common\models\Order::PAYMENT_METHOD_PAY]) ?>
 
-                <div class='uk-panel uk-panel-box-secondary uk-panel-box'>
-                <div>
-                    <span class=''> Please confirm delievery information </span> 
-                </div>
-
-                <ul class="uk-list uk-margin-large-left">
-                    <?php foreach ($addresses as $address) { ?>
-                        <li class="uk-margin-top uk-text-muted"> 
-                            <?php 
-                                $add = ''; 
-
-                                if(isset($address['country'])){
-                                    $add = $address['country']; 
-                                } else {
-                                    $add = '&nbsp;'; 
-                                }
-
-                                if(isset($address['province'])){
-                                    $add = $add . $address['province']; 
-                                } else {
-                                    $add = $add . '&nbsp;'; 
-                                }
-
-                                if(isset($address['city'])){
-                                    $add = $add . $address['city']; 
-                                } else {
-                                    $add = $add . '&nbsp;'; 
-                                }
-
-                                if(isset($address['district'])){
-                                    $add = $add . $address['district']; 
-                                } else {
-                                    $add = $add . '&nbsp;'; 
-                                }
-
-                                if(isset($address['consignee'])){
-                                    $add = $add . $address['consignee']; 
-                                } else {
-                                    $add = $add . '&nbsp;'; 
-                                }
-
-                                $add = $add . $address['address1'] . '('. $address['consignee'] . '     ' . $address['mobile']. ')';
-                            ?>
-
-                            <?= Html::radio('address_id', ($i === 0), [
-                                'value' => $address->id,
-                                'label' => $address->name . $add ,
-                                'class' => 'uk-grid-margin'
-                            ]); ?>
-                        </li>
-                    <?php } ?>
-                </ul>
-
-                <div> 
-                    <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['cart/address']) ?>" id="add-newaddr">New Address</a> 
-                </div>
-
-
-                <div id='use-jifen-1' class='uk-grid-margin'> 
-                    <input type='checkbox' id='use_point_checkbox' name='use_point_checkbox'> Use points
-                    <input type="hidden" value="<?= Yii::$app->user->identity->point ?>" name="user-point" id="user-point">
-                </div>
-
-                <div class='uk-panel uk-panel-box uk-panel-box-primary uk-margin-small' style='display:none;' id='use_point_con'>
-                    <div >
-                        You can get point from this order：<span id="point-total" class="uk-text-danger">
-                        <?= Yii::$app->user->identity->point ?></span>，as<span class="red">￥<?= Yii::$app->user->identity->point / 100 ?></span>
-                    </div>
-
-                    <div class='uk-grid-divider'></div>
-
-                    <div>
-                        <span id='point-form'>
-                            Use points this time <input type='text' class='uk-text-middle  uk-margin-small-left uk-width-1-4' id='point_used'>
-                        </span>
-                        <span class='uk-button uk-button-danger' id='point-submit'>Confirm</span>
-                    </div>
-                </div>
-
-                <div class='uk-grid-margin'>
-                    <?php if ($totalPrice >= floatval(Yii::$app->setting->get('freedelivery'))) { ?>
-                        <span class="uk-text-success  uk-float-right">It is free delivery！</span>
-                    <?php } else { ?>
-                        <span class="uk-text-danger uk-float-right">Delivery charge<?= Yii::$app->setting->get('shippmentfee') ?>元，满<?= Yii::$app->setting->get('freedelivery') ?>元包邮（对于通过折扣信息购买的直邮产品不包邮）</span>
-                    <?php } ?>
-                </div>
-
-                <div class='uk-panel uk-panel-box uk-panel-box-secondary uk-width-1-1'>
-                    <div class='uk-grid uk-margin-small-top uk-width-1-1'>
-                        <div class='uk-width-1-2'>
-                            <div> Note: </div>
-                            <div>
-                                <?= Html::activeTextarea($model, 'remark', ['class' => 'uk-width-1-1', 'maxlength' => '500', 'style' => "color: rgb(51, 51, 51);", 'rows' => '4']) ?>
-                            </div>
-                        </div>
-                        
-                        <div class='uk-width-1-2'>
-                            <div class="uk-clearfix">
-                                <div class='uk-align-right'> Total： <?= Html::hiddenInput('totalPrice', $totalPrice) ?>
-                                    <span class='uk-text-muted uk-text-large uk-icon-rmb uk-text-bold'><em id="total-price"><?= $totalPrice ?></em></span>
-                                </div>
-                            </div>
-
-                            <div class='uk-clearfix uk-display-block'>
-                                <div class='uk-align-right'> 
-                                    Points Gained：<span id="earnpoints"><?= intval($totalPrice) ?></span>
-                                </div>
-                            </div>
-
-                            <div class=' uk-clearfix uk-display-block'>
-                                <div class='uk-align-right'>
-                                    <?= Html::submitButton( Yii::t('app', 'Confirm'), ['class' => 'uk-button uk-button-danger']) ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div style="margin-bottom:10px;">
+                <label>
+                    Please confirm delievery information 
+                </label> 
             </div>
 
-            <?php ActiveForm::end(); ?>
+            <div style='margin:0px;padding:0px;' >
+                <?php foreach ($addresses as $address) { ?>
+                    <?php
+                    $add = '';
+
+                    if (isset($address['country'])) {
+                        $add = $address['country'];
+                    } else {
+                        $add = '&nbsp;';
+                    }
+
+                    if (isset($address['province'])) {
+                        $add = $add . $address['province'];
+                    } else {
+                        $add = $add . '&nbsp;';
+                    }
+
+                    if (isset($address['city'])) {
+                        $add = $add . $address['city'];
+                    } else {
+                        $add = $add . '&nbsp;';
+                    }
+
+                    if (isset($address['district'])) {
+                        $add = $add . $address['district'];
+                    } else {
+                        $add = $add . '&nbsp;';
+                    }
+
+                    if (isset($address['consignee'])) {
+                        $add = $add . $address['consignee'];
+                    } else {
+                        $add = $add . '&nbsp;';
+                    }
+
+                    $add = $add . $address['address1'] . '(' . $address['consignee'] . '     ' . $address['mobile'] . ')';
+                    ?>
+                
+                    <div class="col-lg-12">
+                        <label>
+                            <div class="iradio_square-grey" style="position: relative;">
+                                <?=
+                                    Html::radio('address_id', ($i === 0), [
+                                        'value' => $address->id,
+                                        'class' => 'icheck',
+                                        'style' => 'position: absolute; opacity: 0;',
+                                        'name' =>'selected_address'
+                                    ]);
+                                ?>
+                                <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>                                    
+                            </div>
+                            <?=$address->name.':'.$add?>
+                        </label>
+                    </div>
+                <?php } ?>
+            </div>
+            
+            <label style='padding-left:15px;'>
+                <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['cart/address']) ?>" id="add-newaddr" style='font-size:0.8rem;'>New Address</a> 
+            </label>
+
+            <div class='dashedcartlist' style='margin:20px 0px;'></div>
+            
+            <div  id='usepoints' >
+                <label>
+                    <input type="hidden" value="" id='user-point'>
+                    <div class="icheckbox_square-grey" style="position: relative;" name="div_use_point_checkbox" id="div_use_point_checkbox">
+                        <input type="checkbox" class="icheck" style="position: absolute; opacity: 0;" name="use_point_checkbox" id="use_point_checkbox">
+                        <ins  class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;">
+                        </ins>
+                    </div> Use your points
+                </label>            
+            </div>
+            
+            <!-- show points -->
+            <div style='display:none;background-color:#eee;margin: 0px;padding:10px;font-size:0.95rem;' id='use_point_con'>
+                <div>
+                    You have 
+                    <span id="usertotalpoints"> 
+                        <?= isset(Yii::$app->user->identity->point)?Yii::$app->user->identity->point: 0?>
+                    </span> points，as <span class=""><?=isset(Yii::$app->params['currency'])?Yii::$app->params['currency']->symbol:''?><?= Yii::$app->user->identity->point / 100 ?></span>
+                </div>
+                
+                <div>
+                    <span id='point-form'>
+                        Use points this time <input type='text' id='point_used'>
+                    </span>
+                    <span class='btn_1_small' id='point-submit'>Confirm</span>
+                </div>
+            </div>
+            
+            <div class='dashedcartlist' style='margin:20px 0px;'></div>
+            
+            <div class="payment_select">
+                <label class=""><div class="iradio_square-grey checked" style="position: relative;"><input type="radio" value="" checked="" name="payment_method" class="icheck" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>Credit card</label>
+                <i class="icon_creditcard"></i>
+            </div>
+            
+            <div class="form-group">
+                <label>Name on card</label>
+                <input type="text" class="form-control" id="name_card_order" name="name_card_order" placeholder="First and last name">
+            </div>
+            
+            <div class="form-group">
+                <label>Card number</label>
+                <input type="text" id="card_number" name="card_number" class="form-control" placeholder="Card number">
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Expiration date</label>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <input type="text" id="expire_month" name="expire_month" class="form-control" placeholder="mm">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <input type="text" id="expire_year" name="expire_year" class="form-control" placeholder="yyyy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <label>Security code</label>
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" id="ccv" name="ccv" class="form-control" placeholder="CCV">
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-6">
+                                <img src="/images/icon_ccv.gif" width="50" height="29" alt="ccv"><small>Last 3 digits</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--End row -->
+            <div class="payment_select" id="paypal">
+                <label class=""><div class="iradio_square-grey" style="position: relative;"><input type="radio" value="" name="payment_method" class="icheck" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>Pay with paypal</label>
+            </div>
+            <div class="payment_select nomargin">
+                <label class=""><div class="iradio_square-grey" style="position: relative;"><input type="radio" value="" name="payment_method" class="icheck" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>Pay with cash</label>
+                <i class="icon_wallet"></i>
+            </div>
+            
+            <div class='dashedcartlist' style='margin:20px 0px;'></div>
+
+            <div>
+                <div>
+                    <label> Note: </label>
+                    <div>
+                        <?= Html::activeTextarea($model, 'remark', ['class' => 'form-control', 'maxlength' => '500', 'rows' => '4']) ?>
+                    </div>
+                </div>
+            </div>            
         </div>
+    <?php ActiveForm::end(); ?>
     </div>
 </div>
+
 
 <?php
 $urlHelpCoupon = Yii::$app->urlManager->createAbsoluteUrl(['/cms/default/page', 'id' => 14, 'surname' => 'coupon']);
@@ -244,23 +267,23 @@ jQuery("input[name='checkbox-collect-fee']").click(function(){
 );
 
 
-jQuery("input[name='use_point_checkbox']").click(function(){
-    if ($("#use_point_checkbox").is(":checked")) {
-        $('#use_point_con').css('display', 'block');
-    } else {
+//因为css的效果，其实逻辑上是反过来的
+jQuery("#div_use_point_checkbox").click(function(){
+    if ($("#div_use_point_checkbox").children().first().hasClass("checked")) {
         $('#use_point_con').css('display', 'none');
+    } else {
+        $('#use_point_con').css('display', 'block');
     }
 });
 
 jQuery("#point-submit").click(function(){
-
-    var usePoint = parseInt($('#point_used').val());
-    var ownPoint = parseInt($("#user-point").val());
+    var usePoint = parseInt($('#point_used').val()) || 0;
+    var ownPoint = parseInt($("#usertotalpoints").html()) || 0;
     if (usePoint > ownPoint) {
-        alert('您本次最多可以使用' + ownPoint + '个积分');
+        alert('You can only use ' + ownPoint + ' points.');
     } else {
         var usePointYuan = usePoint / 100;
-        $("#point-form").html("优惠" + usePointYuan + "元" + '<input type="hidden" name="point" value="' + usePoint +'" />');
+        $("#point-form").html("You saved " + usePointYuan + "" + '<input type="hidden" name="point" value="' + usePoint +'" />');
         $("#total-price").html(parseFloat($("#total-price").html()) - usePointYuan);
         $('#point-submit').hide();
     }

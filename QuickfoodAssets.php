@@ -17,6 +17,7 @@ class QuickfoodAssets extends AssetBundle
 
     public $css = [
         'css/base.css',
+        'css/skins/square/grey.css',
         //'css/font-awesome.css',
         //'css/fancybox/jquery.fancybox.css',
         //'css/flexslider.css',

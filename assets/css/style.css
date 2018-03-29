@@ -125,6 +125,32 @@ a.btn_1, .btn_1{
 a.btn_1:hover, .btn_1:hover{
 	background:#333;
 }
+
+a.btn_1_small, .btn_1_small{
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	color:#fff;
+	background: #85c99d;
+	cursor: pointer;
+	padding: 5px 10px;
+	outline: none;
+	font-size:6px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	text-transform:uppercase;
+	font-weight:600;
+	display:inline-block;
+	text-align:center;
+}
+a.btn_1:hover, .btn_1:hover{
+	background:#333;
+}
+
 a.btn_full, .btn_full{
 	border: none;
 	font-family: inherit;
