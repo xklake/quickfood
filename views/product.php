@@ -1,5 +1,6 @@
 <?php 
-        Yii::$app->session['step'] = 1;
+    Yii::$app->session['step'] = 1;
+    Yii::$app->params['checkout'] = false;        
 ?>
 
 <div class="box_style_2" id="main">
@@ -71,45 +72,26 @@
     <?php }} ?>        
 </div><!-- End box_style_1 -->
 
+<?php 
 
-<?php
-//$urlAddToCart = Yii::$app->urlManager->createAbsoluteUrl(['cart/add-to-cart']);
-$urlLogin = Yii::$app->urlManager->createAbsoluteUrl(['site/login']);
 $urlUpdateCart = Yii::$app->urlManager->createAbsoluteUrl(['cart/updatecart']);
-
-$this->registerJs('
-var product = {' . 'csrf:"' . Yii::$app->request->getCsrfToken() . '"};
-var user = {id:' . (Yii::$app->user->isGuest ? 0 : Yii::$app->user->id) . ', ' . '};
-var urlUpdateCart = "'.$urlUpdateCart.'";
-var urlCartAdd = "' . Yii::$app->urlManager->createAbsoluteUrl(['cart/ajax-add']) . '";');
+$csrf = Yii::$app->request->getCsrfToken();
+$this->registerJs('var urlUpdateCart = "'.$urlUpdateCart.'";'.
+                'var csrf="'.$csrf.'";'); 
 
 $js = <<<JS
+    /*cartparam = {
+        checkout:false, 
+        _csrf:csrf 
+   };
         
-    function cartops()
-    {
-        param = {
-            productId : $(this).attr('name'),
-            number : $(this).attr('count'),
-            _csrf : product.csrf
-        };
-
-        $.post(urlCartAdd, param, function(data) 
-            {
-                if (data.status > 0) 
-                {
-                    $.get(urlUpdateCart, function(carthtml)
-                        {
-                            jQuery('#cart').html(carthtml);
-                        }
-                    )
-                }
-            },'json');
-    }
-
-    jQuery(document).on('click', ".icon_plus_alt2", cartops);
-    jQuery(document).on('click', ".icon_minus_alt", cartops);
-    jQuery(document).on('click', ".icon_close_alt2", cartops);
+    $.post(urlUpdateCart,cartparam,function(carthtml)
+        {
+            jQuery('#cart').html(carthtml);
+        }
+    );   */     
 JS;
-
 $this->registerJs($js);
+        
+
 ?>

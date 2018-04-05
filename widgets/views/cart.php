@@ -11,11 +11,6 @@ if($currency){
 }
 
 $total = 0; 
-$deliveryfee = Yii::$app->setting->get('deliveryfee');
-$minorder = Yii::$app->setting->get('minorder');
-$freedeliverymin = Yii::$app->setting->get('freedeliverymin');
-
-$realdelieveryfee = 0;
 ?>
 <div class='box_style_2'>
     <h2 class='inner'>Your Cart <i class="icon_cart_alt pull-right"></i></h2>
@@ -36,7 +31,7 @@ $realdelieveryfee = 0;
                         </a> 
                         <a href="#0" class="add_item">
                             <i class="icon_plus_alt2" name="<?=$product['product_id']?>" count='1'></i>
-                        </a>                     
+                        </a>      
                     </td>
 
                     <td>
@@ -47,83 +42,70 @@ $realdelieveryfee = 0;
         </tbody>
     </table>
     
-    <?php if ($total > $minorder) { ?>
-    <div class="row" >
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6" style="margin-top:5px;">
-                <label>
-                    <div class="iradio_square-grey" style="position: relative;">
-                        <input type="radio" class="icheck" checked name="option_2" style='position: absolute; opacity: 0;'>  
-                        <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>                                    
-                    </div>
-                    Delivery
-                </label>
-            </div>
-        
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6"  style="margin-top:5px;">
-                <label>
-                    <div class="iradio_square-grey" style="position: relative;">
-                        <input type="radio" class="icheck" name="option_2" style='position: absolute; opacity: 0;'>  
-                        <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>                                    
-                    </div>
-                    Collect
-                </label>
-            </div>
-        </div>
-    <?php } else { ?>
-        <div class="row">
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-                <label>
-                    <div class="iradio_square-grey" style="position: relative;">
-                        <input type="radio" class="icheck" name="option_2" style='position: absolute; opacity: 0;'>  
-                        <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>                                    
-                    </div>
-                    <?= $minorder ?><?= $symbol ?> Min order
-                </label>
-            </div>
-            
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6">
-                <label>
-                    <div class="iradio_square-grey" style="position: relative;">
-                        <input type="radio" class="icheck" checked name="option_2" style='position: absolute; opacity: 0;'>  
-                        <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>                                    
-                    </div>
-                    Collect
-                </label>
-            </div>
-        </div>
-    <?php } ?>
-  
-    <hr>
     <table class="table table_summary">
         <tbody>
             <tr>
                 <td>
-                    Subtotal <span class="pull-right"><?=$total?></span>
-                </td>
-            </tr>
-            
-            <tr>
-                <td>
-                    Delivery Fee 
-                    <span class="pull-right">
-                        <?php 
-                            if($total > $freedeliverymin){
-                                $realdelieveryfee = 0;
-                            } else {
-                                $realdelieveryfee = $deliveryfee;
-                            }
-                            echo($realdelieveryfee);
-                        ?>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="total">
-                    TOTAL <span class="pull-right"  id='totalpay'><?=$total + $realdelieveryfee?></span>
+                    Subtotal:<span class="pull-right" id='totalpricecart' name='totalpricecart'><?=$symbol.$total?></span>
                 </td>
             </tr>
         </tbody>
     </table>
+    
     <hr>
-    <a class="btn_full" href="<?=Yii::$app->urlManager->createAbsoluteUrl('cart/checkout')?>">Check Out</a>
+        <a class="btn_full" href="<?=Yii::$app->urlManager->createAbsoluteUrl('cart/checkout')?>" id='btnCheckout'>Check Out</a>
+        
+    <div id='cartloading' style="display:none;text-align: center;">
+        <i class="icon-spin6 animate-spin"></i>
+    </div>
 </div>
+
+<?php
+$urlUpdateCart = Yii::$app->urlManager->createAbsoluteUrl(['cart/updatecart']);
+
+$this->registerJs('
+    var product = {' . 'csrf:"' . Yii::$app->request->getCsrfToken() . '"};
+    var user = {id:' . (Yii::$app->user->isGuest ? 0 : Yii::$app->user->id) . ', ' . '};
+    var urlUpdateCart = "'.$urlUpdateCart.'";
+    var urlCartAdd = "' . Yii::$app->urlManager->createAbsoluteUrl(['cart/ajax-add']) . '";');
+    
+    $js = <<<JS
+        alert('haha');    
+        $('#totalpricecheckout').html($('#totalpricecart').html());   
+
+        function cartops()
+        {
+            param = {
+                productId : $(this).attr('name'),
+                number : $(this).attr('count'),
+                _csrf : product.csrf
+            };
+            $("#cartloading").css("display","block");
+
+            $.post(urlCartAdd, param, function(data) 
+                {
+                    if (data.status > 0) 
+                    {
+                        var cartparam = {
+                            _csrf : product.csrf
+                        }; 
+            
+                        $.post(urlUpdateCart,cartparam, function(carthtml)
+                            {
+                                jQuery('#cart').html(carthtml);
+                            }
+                        )
+                        $("#cartloading").css("display","none");
+                    }else{
+                        $("#cartloading").css("display","none");
+                    }
+                },'json');
+        }
+
+        jQuery(document).on('click', ".icon_plus_alt2", cartops);
+        jQuery(document).on('click', ".icon_minus_alt", cartops);
+        jQuery(document).on('click', ".icon_close_alt2", cartops);
+JS;
+
+$this->registerJs($js);
+?>

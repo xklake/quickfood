@@ -7,9 +7,7 @@
  */
 
 	if(isset(Yii::$app->params['catalog'])){
-		
 	    $catalog = Yii::$app->params['catalog'];
-
         $cataurl = Yii::$app->urlManager->createAbsoluteUrl(['blog/default/catalog', 'id'=>$catalog->id]);
         $cataname = $catalog->surname;
 ?>

@@ -15,7 +15,7 @@
 
         <div class="col-md-3" id="cart">
             <?php
-                echo frontend\web\template\quickfood\widgets\Cart::widget();
+                echo frontend\web\template\quickfood\widgets\FixedCart::widget();
             ?>
         </div>            
     </div>
