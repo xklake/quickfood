@@ -46,7 +46,7 @@ $total = 0;
         <tbody>
             <tr>
                 <td>
-                    Subtotal:<span class="pull-right" id='totalpricecart' name='totalpricecart'><?=$symbol.$total?></span>
+                    Product price:<span class="pull-right" id='totalpricecart' name='totalpricecart'><?=$symbol.$total?></span>
                 </td>
             </tr>
         </tbody>

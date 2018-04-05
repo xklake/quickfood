@@ -236,7 +236,7 @@ if($currency){
                     <tbody>
                         <tr>
                             <td>
-                                Total product value:<span class="pull-right" id="totalpricecheckout"><?=$totalprice?></span>
+                                Product price:<span class="pull-right" id="totalpricecheckout"><?=$totalprice?></span>
                                 <span class="pull-right">£</span>
                             </td>
                         </tr>
