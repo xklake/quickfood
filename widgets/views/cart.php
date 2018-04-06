@@ -70,8 +70,6 @@ $this->registerJs('
     var urlCartAdd = "' . Yii::$app->urlManager->createAbsoluteUrl(['cart/ajax-add']) . '";');
     
     $js = <<<JS
-        alert('haha');    
-        $('#totalpricecheckout').html($('#totalpricecart').html());   
 
         function cartops()
         {

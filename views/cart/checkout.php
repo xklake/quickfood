@@ -1,25 +1,25 @@
 <?php
+    use funson86\courier\models\CourierFee;
+    use yii\helpers\Html;
+    use yii\bootstrap\ActiveForm;
+    use yii\helpers\ArrayHelper;
 
-use funson86\courier\models\CourierFee;
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-use yii\helpers\ArrayHelper;
 
-$this->title = 'Order details';
-$i = 0;
-$total = 0.00;
-$deliveryfee = Yii::$app->setting->get('deliveryfee');
-$minorder = Yii::$app->setting->get('minorder');
-$freedeliverymin = Yii::$app->setting->get('freedeliverymin');
-$realdelieveryfee = 0;
-Yii::$app->params['checkout'] = true;
+    $this->title = 'Order details';
+    $i = 0;
+    $total = 0.00;
+    $deliveryfee = Yii::$app->setting->get('deliveryfee');
+    $minorder = Yii::$app->setting->get('minorder');
+    $freedeliverymin = Yii::$app->setting->get('freedeliverymin');
+    $realdelieveryfee = 0;
+    Yii::$app->params['checkout'] = true;
 
-$currency = Yii::$app->params['currency']; 
-if($currency){
-    $symbol = $currency->symbol;
-}
-
+    $currency = Yii::$app->params['currency']; 
+    if($currency){
+        $symbol = $currency->symbol;
+    }
 ?>
+
 <div class="box_style_2" id="main">
     <h2 class='inner'>Order details</h2>
     <div class="row">
@@ -204,6 +204,8 @@ if($currency){
 
             <div class='dashedcartlist' style='margin:20px 0px;'></div>
             
+            <?= Html::activeHiddenInput($model, 'shipment_id', ['value' => 2]) ?>
+            
             <div class="row" id="delivery_options">
                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-6" style="margin-top:5px;">
                     <label>
@@ -276,7 +278,8 @@ if($currency){
             </div> 
 
             <div class='dashedcartlist' style='margin:20px 0px;'></div>
-            <a class="btn_full" href="<?=Yii::$app->urlManager->createAbsoluteUrl('cart/checkout')?>">Submit</a>
+            
+            <?= Html::submitButton( Yii::t('app', 'Submit'), ['class' => 'btn_full', 'name' => 'submit']) ?>
             <?php ActiveForm::end(); ?>
         </div>
     </div>
@@ -299,8 +302,9 @@ $('#').html(
 jQuery('#delivery_options ins').click(function(){
         if($(this).attr("value") == 2)
         {
-            $('#totalDeliveryCharge').html(0);
+            $('#totalDeliveryCharge').html(0.00);
             $("#totalpay").html($('#totalprice').html());
+            $("#shipment_id").val(2);
         } 
         else
         {
@@ -309,6 +313,7 @@ jQuery('#delivery_options ins').click(function(){
                 alert("Order must be over $minorder to have delivery option"); 
                 $(this).removeClass("checked");
                 $('#deliverymethod2').addClass("checked");
+                $("#shipment_id").val(2);
                 event.stopPropagation();
                 return;
             }
@@ -323,6 +328,7 @@ jQuery('#delivery_options ins').click(function(){
                 $("#totalDeliveryCharge").html($deliveryfee);
                 $("#totalpay").html($deliveryfee + parseFloat($('#totalpricecheckout').html()));
             }
+            $("#shipment_id").val(1);
         }
     }
 );
