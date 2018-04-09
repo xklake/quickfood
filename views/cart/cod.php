@@ -20,54 +20,16 @@
 				<h4>Summary</h4>
 				<table class="table table-striped nomargin">
 				<tbody>
-				<tr>
-					<td>
-						<strong>1x</strong> Enchiladas
-					</td>
-					<td>
-						<strong class="pull-right">$11</strong>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<strong>2x</strong> Burrito
-					</td>
-					<td>
-						<strong class="pull-right">$14</strong>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<strong>1x</strong> Chicken
-					</td>
-					<td>
-						<strong class="pull-right">$20</strong>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<strong>2x</strong> Corona Beer
-					</td>
-					<td>
-						<strong class="pull-right">$9</strong>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<strong>2x</strong> Cheese Cake
-					</td>
-					<td>
-						<strong class="pull-right">$12</strong>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						 Delivery schedule <a href="#" class="tooltip-1" data-placement="top" title="" data-original-title="Please consider 30 minutes of margin for the delivery!"><i class="icon_question_alt"></i></a>
-					</td>
-					<td>
-						<strong class="pull-right">Today 07.30 pm</strong>
-					</td>
-				</tr>
+                    <?php foreach($model->orderProducts as $product) { ?>
+                        <tr>
+                            <td>
+                                <strong><?=$product['number']?>x</strong> <?=$product['name']?>
+                            </td>
+                            <td>
+                                <strong class="pull-right"><?=$product['price']?></strong>
+                            </td>
+                        </tr>
+                    <?php } ?>
 
                 <tr>
 					<td>

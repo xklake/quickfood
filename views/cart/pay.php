@@ -2,11 +2,6 @@
 use common\models\Region;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-//$this->registerCssFile('@web/css/pay.css', ['depends' => \frontend\assets\AppAsset::className()]);
-\frontend\assets\UikitAsset::register($this);
-
-//$this->registerCssFile('@web/css/pay.css', ['depends' => \frontend\assets\UikitAsset::className()]);
 $query = new \yii\db\Query();
 $result = $query->select('sum(number) as number')->from('order_product')->where(['order_id' => $model->id])->createCommand()->queryOne();
 $totalNumber = $result['number'];
@@ -47,7 +42,7 @@ $this->title = '订单已提交，请支付';
         
         <div class='uk-width-1-1 uk-grid-margin'>
             <?php $form = ActiveForm::begin(['id' => 'payform', 'action' => Yii::$app->urlManager->createAbsoluteUrl(['pay/submit']), 'options' => ['name' => 'payform', 'target' => '_blank']]); ?>
-                <?= \yii\helpers\Html::hiddenInput('sn', Yii::$app->request->get('sn')) ?>
+                <?= \yii\helpers\Html::hiddenInput('sn', $model->sn) ?>
                 <table class='uk-table'> 
                     <div> 
                         <span class='uk-text-large uk-text-bold'>平台支付</span>
