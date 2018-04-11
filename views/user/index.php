@@ -8,6 +8,12 @@ use \common\models\Profile;
 $this->title = Yii::t('app', 'User Center');
 $this->params['breadcrumbs'][] = $this->title;
 $i = 0;
+
+
+$currency = Yii::$app->params['currency']; 
+if($currency){
+    $symbol = $currency->symbol;
+}
 ?>
 <div class="content">
     <section id="section-3">
@@ -76,8 +82,43 @@ $i = 0;
     <section id="section-2">
         <div class="indent_title_in">
             <i class="icon_document_alt"></i>
-            <h3>Edit menu list</h3>
-            <p>Partem diceret praesent mel et, vis facilis alienum antiopam ea, vim in sumo diam sonet. Illud ignota cum te, decore elaboraret nec ea. Quo ei graeci repudiare definitionem. Vim et malorum ornatus assentior, exerci elaboraret eum ut, diam meliore no mel.</p>
+            <h3>Your order history</h3>
+            
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Order#</th>
+                    <th>Details</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <?php foreach($orders as $order){ ?>
+                    <tr>
+                        <td><?=$order->sn?></td>
+                        <td class="small">
+                            <?php 
+                                foreach($order->orderProducts as $product){
+                            ?>        
+                                <?= $product->name .'x'.$product->number?><br/>
+                            <?php }    
+                            ?>
+                            Total Price:<?=$symbol.$order->amount?>    
+                            Paid:<?=$symbol.$order->payment_fee?>
+                        </td>
+                        <td>Payment Status:<?= common\models\Order::getStatusLabels($order->payment_status)?><br/>
+                            Order Status:<?= common\models\Order::getStatusLabels($order->status)?>
+                        </td>
+                        <td>
+                            <?php 
+                                echo(\Yii::$app->formatter->asDatetime($order->created_at, "php:d-m-Y H:i:s"));
+                            ?>
+                        </td>
+                      </tr>
+                <?php } ?>
+                </tbody>
+            </table>
         </div>
     </section><!-- End section 2 -->
 
