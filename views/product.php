@@ -71,27 +71,3 @@
         <hr/>
     <?php }} ?>        
 </div><!-- End box_style_1 -->
-
-<?php 
-
-$urlUpdateCart = Yii::$app->urlManager->createAbsoluteUrl(['cart/updatecart']);
-$csrf = Yii::$app->request->getCsrfToken();
-$this->registerJs('var urlUpdateCart = "'.$urlUpdateCart.'";'.
-                'var csrf="'.$csrf.'";'); 
-
-$js = <<<JS
-    /*cartparam = {
-        checkout:false, 
-        _csrf:csrf 
-   };
-        
-    $.post(urlUpdateCart,cartparam,function(carthtml)
-        {
-            jQuery('#cart').html(carthtml);
-        }
-    );   */     
-JS;
-$this->registerJs($js);
-        
-
-?>
