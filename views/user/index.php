@@ -42,7 +42,7 @@ $i = 0;
                 <div class="wrapper_indent">
                     <div class="form-group">
                         <label>New email</label>
-                        <input class="form-control" name="new_email" id="new_email" type="email" placeholder="<?=$user->email?>">
+                        <input class="form-control" name="new_email" id="new_email" placeholder="<?=$user->email?>">
                     </div>
                 </div><!-- End wrapper_indent -->
             </div>
@@ -56,13 +56,13 @@ $i = 0;
                 <div class="wrapper_indent">
                     <div class="form-group">
                         <label>Nickname</label>
-                        <input class="form-control" name="surname" id="surname" type="<?=isset($user->profile)? $user->profile->surname:$user->username?>">
+                        <input class="form-control" name="surname" id="surname" placeholder="<?=isset($user->profile)? $user->profile->surname:$user->username?>">
                     </div>
                 </div><!-- End wrapper_indent -->
             </div>     
 
-            <div class="col-md-8 col-sm-8 add_bottom_15" style="display: none;">
-                <label id="msg"></label>
+            <div class="col-md-8 col-sm-8 add_bottom_15 text-center text-danger text-bold" style="display: none;">
+                <span id="msg"></span>
             </div>
 
             <div class="col-md-8 col-sm-8 add_bottom_15">
