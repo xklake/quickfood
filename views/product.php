@@ -51,9 +51,9 @@
                 <tr>
                     <td>
                         <figure class="thumb_menu_list"><img src="<?='/'.$item->thumb?>" alt="thumb"></figure>
-                        <h5><?=$item->name?></h5>
+                        <h5><?=trim($item->name)?></h5>
                         <p>
-                            <?=$item->content?>
+                            <?=trim($item->content)?>
                         </p>
                     </td>
                     <td>
