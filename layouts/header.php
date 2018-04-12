@@ -76,7 +76,7 @@
                         </li>
                         <li>
                             <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['user'])?>" target="_self">
-                                <i class='icon_profile'></i><?=Yii::$app->user->identity->profile->surname?>
+                                <i class='icon-user-7'></i><?=Yii::$app->user->identity->profile->surname?>
                             </a>
                         </li>
                         <?php } ?>

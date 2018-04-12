@@ -74,8 +74,11 @@ if($currency){
             <div class="col-md-8 col-sm-8 add_bottom_15">
                 <button type="submit" class="btn_full" id="btn_profile">Submit Now</button>
             </div>
-        </div><!-- End row -->
 
+            <div class="col-md-8 col-sm-8 add_bottom_15">
+                <a href="<?=Yii::$app->urlManager->createAbsoluteUrl(['site/logout'])?>" target="_blank" class="btn_full">Logout</a>
+            </div>
+        </div><!-- End row -->
         <hr class="styled_2">
     </section><!-- End section 3 -->    
     
