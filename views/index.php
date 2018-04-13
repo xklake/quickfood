@@ -1,5 +1,5 @@
 <?php
-/**
+    /**
     * Created by PhpStorm.
     * User: qiang
     * Date: 6/9/16
@@ -18,6 +18,92 @@
 ?>
 
 <!-- Content ================================================== -->
+
+
+<div class="white_bg">
+    <div class="container margin_60">
+        <div class="main_title">
+            <h2 class="nomargin_top">Choose from Most Popular</h2>
+            <p>
+                Follow, follow, will not make a mistake
+            </p>
+        </div>
+
+        <div class="row">
+            <?php foreach($topsale as $item){ ?>
+                <div class="col-md-6">
+                    <a class="strip_list">
+                        <div class="desc">
+                            <div class="ribbon_1"></div>
+
+                            <div class="thumb_strip">
+                                <img src="<?='/'.$item->thumb?>" alt="<?=$item->name?>">
+                            </div>
+                            
+                            <div>
+                                <label><?=$item->name?></label>
+                            </div>
+
+                            <div class="location">
+                                <?=trim($item->content)?> 
+                                <div class="options text-left" style="display:inline;">
+                                    <div class="addproduct" style="display:inline;">
+                                        <span class="text-danger" style="margin-left:4px;"><?=$symbol?><?=$item->price?></span> 
+                                        <i class="icon_plus_alt2 pull-right text-danger" name="<?=$item->id?>" count="1"></i>
+                                    </div>
+                                </div>                         
+                            </div>
+                        </div><!-- End desc-->
+                    </a><!-- End strip_list-->
+                </div>
+            <?php } ?>
+        </div>
+    </div><!-- End container -->
+</div><!-- End white_bg -->
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 nopadding features-intro-img">
+			<div class="features-bg">
+				<div class="features-img">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 nopadding">
+			<div class="features-content">
+				<h3>"Ex vero mediocrem"</h3>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+				</p>
+				<p>
+					Per ea erant aeque corpora, an agam tibique nec. At recusabo expetendis vim. Tractatos principes mel te, dolor solet viderer usu ad.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="high_light">
+    <div class="container">
+        <h3>Choose from over 100 dishes from our website</h3>
+        <p>You click, we delivery, amazing, isn't?.</p>
+        <a href="list_page.html">Ordering Now</a>
+    </div><!-- End container -->
+</div><!-- End hight_light -->
+
+<section class="parallax-window" data-parallax="scroll" data-image-src="<?=$home_paralle == null? '':$home_paralle->image?>" data-natural-width="1200" data-natural-height="600">
+    <div class="parallax-content">
+        <div class="sub_content">
+            <i class="icon_mug"></i>
+            <h3>We also deliver to your office</h3>
+            <p>
+                Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.
+            </p>
+        </div><!-- End sub_content -->
+    </div><!-- End subheader -->
+</section><!-- End section -->
+<!-- End Content =============================================== -->
+
 <div class="container margin_60">
     <div class="main_title">
         <h2 class="nomargin_top" style="padding-top:0">How it works</h2>
@@ -64,98 +150,19 @@
             </div>
         </div>
     </div><!-- End row -->
-
-    <div id="delivery_time" class="hidden-xs">
-        <strong><span>3</span><span>0</span></strong>
-        <h4>The minutes that usually takes to deliver!</h4>
-    </div>
 </div><!-- End container -->
 
-<div class="white_bg">
-    <div class="container margin_60">
-        <div class="main_title">
-            <h2 class="nomargin_top">Choose from Most Popular</h2>
-            <p>
-                Follow, follow, will not make a mistake
-            </p>
-        </div>
-
-        <div class="row">
-            <?php foreach($topsale as $item){ ?>
-                <div class="col-md-6">
-                    <a class="strip_list">
-                        <div class="desc">
-                            <div class="ribbon_1"></div>
-
-                            <div class="thumb_strip">
-                                <img src="<?='/'.$item->thumb?>" alt="<?=$item->name?>">
-                            </div>
-                            
-                            <div>
-                                <label><?=$item->name?></label>
-                            </div>
-
-                            <div class="location">
-                                <?=trim($item->content)?> 
-                                <div class="options text-left" style="display:inline;">
-                                    <div class="addproduct" style="display:inline;">
-                                        <span class="text-danger" style="margin-left:4px;"><?=$symbol?><?=$item->price?></span> 
-                                        <i class="icon_plus_alt2 pull-right text-danger" name="<?=$item->id?>" count="1"></i>
-                                    </div>
-                                </div>                         
-                            </div>
-                        </div><!-- End desc-->
-                    </a><!-- End strip_list-->
-                </div>
-            <?php } ?>
-        </div>
-    </div><!-- End container -->
-</div><!-- End white_bg -->
-
-<div class="high_light">
-    <div class="container">
-        <h3>Choose from over 100 dishes from our website</h3>
-        <p>You click, we delivery, amazing, isn't?.</p>
-        <a href="list_page.html">Ordering Now</a>
-    </div><!-- End container -->
-</div><!-- End hight_light -->
-
-<section class="parallax-window" data-parallax="scroll" data-image-src="<?=$home_paralle == null? '':$home_paralle->image?>" data-natural-width="1200" data-natural-height="600">
-    <div class="parallax-content">
-        <div class="sub_content">
-            <i class="icon_mug"></i>
-            <h3>We also deliver to your office</h3>
-            <p>
-                Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.
-            </p>
-        </div><!-- End sub_content -->
-    </div><!-- End subheader -->
-</section><!-- End section -->
-<!-- End Content =============================================== -->
-
-<div class="container margin_60">
-    <div class="main_title margin_mobile">
-        <h2 class="nomargin_top">Work with Us</h2>
+<div class="container-fluid">
+    <div class="main_title">
+        <h2 class="nomargin_top" style="padding-top:0;margin-bottom:10px;">How to find us</h2>
         <p>
-            Cum doctus civibus efficiantur in imperdiet deterruisset.
+            <a href="tel://<?=Yii::$app->setting->get('phone')?>" class="phone">
+                <i class="icon-phone-circled"></i>  <?=Yii::$app->setting->get('phone')?>
+            </a>
         </p>
     </div>
-    <div class="row">
-        <div class="col-md-4 col-md-offset-2">
-            <a class="box_work" href="submit_restaurant.html">
-                <img src="/images/submit_restaurant.jpg" width="848" height="480" alt="" class="img-responsive">
-                <h3>Submit your Restaurant<span>Start to earn customers</span></h3>
-                <p>Lorem ipsum dolor sit amet, ut virtute fabellas vix, no pri falli eloquentiam adversarium. Ea legere labore eam. Et eum sumo ocurreret, eos ei saepe oratio omittantur, legere eligendi partiendo pro te.</p>
-                <div class="btn_1">Read more</div>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a class="box_work" href="submit_driver.html">
-                <img src="/images/delivery.jpg" width="848" height="480" alt="" class="img-responsive">
-                <h3>We are looking for a Driver<span>Start to earn money</span></h3>
-                <p>Lorem ipsum dolor sit amet, ut virtute fabellas vix, no pri falli eloquentiam adversarium. Ea legere labore eam. Et eum sumo ocurreret, eos ei saepe oratio omittantur, legere eligendi partiendo pro te.</p>
-                <div class="btn_1">Read more</div>
-            </a>
-        </div>
-    </div><!-- End row -->
+    
+    <div class='row' style='height:400px;'>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317718.69319292053!2d-0.3817765050863085!3d51.528307984912544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon!5e0!3m2!1sen!2suk!4v1523617240377" width="2000" height="600" frameborder="0" style="border:1" allowfullscreen></iframe>
+    </div>
 </div><!-- End container -->
