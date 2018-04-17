@@ -6,7 +6,6 @@
  * Time: 5:32 PM
  */
 $banners = Yii::$app->getImageByGroup('banner1');
-
 $currency = Yii::$app->params['currency'];
 if ($currency) {
     $symbol = $currency->symbol;
@@ -14,11 +13,93 @@ if ($currency) {
 
 $home_paralle = Yii::$app->getImages('home-paralle');
 $chefrecommend = Yii::$app->getImages('chefrecommend');
-$this->registerJsFile('/quickfood/assets/js/parallax.js',  ['depends' => [\yii\web\JqueryAsset::className()]]);
-        
+$this->registerJsFile('/quickfood/assets/js/parallax.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 ?>
 
 <!-- Content ================================================== -->
+<div class="white_bg">
+    <div class="container margin_60">
+        <div class="main_title">
+            <h2 class="nomargin_top">Choose from Most Popular</h2>
+            <p>
+                Follow, follow, will not make a mistake
+            </p>
+        </div>
+
+        <div class="row">
+            <?php foreach ($topsale as $item) { ?>
+                <div class="col-md-6">
+                    <a class="strip_list">
+                        <div class="desc">
+                            <div class="ribbon_1"></div>
+
+                            <div class="thumb_strip">
+                                <img src="<?= '/' . $item->thumb ?>" alt="<?= $item->name ?>">
+                            </div>
+
+                            <div>
+                                <label><?= $item->name ?></label>
+                            </div>
+
+                            <div class="location">
+                                <?= trim($item->content) ?> 
+                                <div class="options text-left" style="display:inline;">
+                                    <div class="addproduct" style="display:inline;">
+                                        <span class="text-danger" style="margin-left:4px;"><?= $symbol ?><?= $item->price ?></span> 
+                                        <i class="icon_plus_alt2 pull-right text-danger" name="<?= $item->id ?>" count="1"></i>
+                                    </div>
+                                </div>                         
+                            </div>
+                        </div><!-- End desc-->
+                    </a><!-- End strip_list-->
+                </div>
+            <?php } ?>
+        </div>
+    </div><!-- End container -->
+</div><!-- End white_bg -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 nopadding features-intro-img">
+            <div class="features-bg">
+                <div class="features-img">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 nopadding">
+            <div class="features-content">
+                <h3>"Ex vero mediocrem"</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                </p>
+                <p>
+                    Per ea erant aeque corpora, an agam tibique nec. At recusabo expetendis vim. Tractatos principes mel te, dolor solet viderer usu ad.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="high_light">
+    <div class="container">
+        <h3>Choose from over 100 dishes from our website</h3>
+        <p>You click, we delivery, amazing, isn't?.</p>
+        <a href="list_page.html">Ordering Now</a>
+    </div><!-- End container -->
+</div><!-- End hight_light -->
+
+<section class="parallax-window" data-parallax="scroll" data-image-src="<?= $home_paralle == null ? '' : $home_paralle->image ?>" data-natural-width="1200" data-natural-height="600">
+    <div class="parallax-content">
+        <div class="sub_content">
+            <i class="icon_mug"></i>
+            <h3>We also deliver to your office</h3>
+            <p>
+                Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.
+            </p>
+        </div><!-- End sub_content -->
+    </div><!-- End subheader -->
+</section><!-- End section -->
+<!-- End Content =============================================== -->
 
 <div class="white_bg">
     <div class='container margin_60'>
@@ -49,91 +130,7 @@ $this->registerJsFile('/quickfood/assets/js/parallax.js',  ['depends' => [\yii\w
                 </div><!-- End col-md-3-->                
             <?php } ?>
         </div>
-    </div>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6 nopadding features-intro-img">
-                <div class="features-bg">
-                    <div class="features-img">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 nopadding">
-                <div class="features-content">
-                    <h3>"Ex vero mediocrem"</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                    </p>
-                    <p>
-                        Per ea erant aeque corpora, an agam tibique nec. At recusabo expetendis vim. Tractatos principes mel te, dolor solet viderer usu ad.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="white_bg">
-        <div class="container margin_60">
-            <div class="main_title">
-                <h2 class="nomargin_top">Choose from Most Popular</h2>
-                <p>
-                    Follow, follow, will not make a mistake
-                </p>
-            </div>
-
-            <div class="row">
-                <?php foreach ($topsale as $item) { ?>
-                    <div class="col-md-6">
-                        <a class="strip_list">
-                            <div class="desc">
-                                <div class="ribbon_1"></div>
-
-                                <div class="thumb_strip">
-                                    <img src="<?= '/' . $item->thumb ?>" alt="<?= $item->name ?>">
-                                </div>
-
-                                <div>
-                                    <label><?= $item->name ?></label>
-                                </div>
-
-                                <div class="location">
-                                    <?= trim($item->content) ?> 
-                                    <div class="options text-left" style="display:inline;">
-                                        <div class="addproduct" style="display:inline;">
-                                            <span class="text-danger" style="margin-left:4px;"><?= $symbol ?><?= $item->price ?></span> 
-                                            <i class="icon_plus_alt2 pull-right text-danger" name="<?= $item->id ?>" count="1"></i>
-                                        </div>
-                                    </div>                         
-                                </div>
-                            </div><!-- End desc-->
-                        </a><!-- End strip_list-->
-                    </div>
-                <?php } ?>
-            </div>
-        </div><!-- End container -->
-    </div><!-- End white_bg -->
-
-    <div class="high_light">
-        <div class="container">
-            <h3>Choose from over 100 dishes from our website</h3>
-            <p>You click, we delivery, amazing, isn't?.</p>
-            <a href="list_page.html">Ordering Now</a>
-        </div><!-- End container -->
-    </div><!-- End hight_light -->
-
-    <section class="parallax-window" data-parallax="scroll" data-image-src="<?= $home_paralle == null ? '' : $home_paralle->image ?>" data-natural-width="1200" data-natural-height="600">
-        <div class="parallax-content">
-            <div class="sub_content">
-                <i class="icon_mug"></i>
-                <h3>We also deliver to your office</h3>
-                <p>
-                    Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.
-                </p>
-            </div><!-- End sub_content -->
-        </div><!-- End subheader -->
-    </section><!-- End section -->
-    <!-- End Content =============================================== -->
+    </div>    
 
     <div class="container margin_60">
         <div class="main_title">
@@ -198,3 +195,48 @@ $this->registerJsFile('/quickfood/assets/js/parallax.js',  ['depends' => [\yii\w
         </div>
     </div><!-- End container -->
 </div>
+
+
+
+<?php
+$urlUpdateCart = Yii::$app->urlManager->createAbsoluteUrl(['cart/updatecart']);
+
+$this->registerJs('
+    var product = {' . 'csrf:"' . Yii::$app->request->getCsrfToken() . '"};
+    var user = {id:' . (Yii::$app->user->isGuest ? 0 : Yii::$app->user->id) . ', ' . '};
+    var urlUpdateCart = "'.$urlUpdateCart.'";
+    var urlCartAdd = "' . Yii::$app->urlManager->createAbsoluteUrl(['cart/ajax-add']) . '";');
+    
+    $js = <<<JS
+
+        function cartops()
+        {
+            param = {
+                productId : $(this).attr('name'),
+                number : $(this).attr('count'),
+                _csrf : product.csrf
+            };
+            
+            var ele = $(this);
+            ele.removeClass("icon_plus_alt2").addClass("icon-spin6 animate-spin");
+
+            $.post(urlCartAdd, param, function(data) 
+                {
+                    if (data.status > 0) 
+                    {
+                        var cartparam = {
+                            _csrf : product.csrf
+                        }; 
+            
+                        $.post(urlUpdateCart,cartparam);
+                    }
+            
+                    ele.removeClass("icon-spin6 animate-spin").addClass("icon_plus_alt2");
+                },'json');
+        }
+
+        jQuery(document).on('click', ".icon_plus_alt2", cartops);
+JS;
+
+$this->registerJs($js);
+?>

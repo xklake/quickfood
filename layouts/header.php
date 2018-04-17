@@ -14,6 +14,13 @@
         $logo_mobile = $logo_mobile->image;
     }    
     
+    $banner_background = Yii::$app->getImages('banner_background'); 
+    if($banner_background == null){
+        $banner_background = "/images/sub_header_home.jpg";
+    } else{
+        $banner_background = $banner_background->image;
+    }    
+    
     if(!isset(Yii::$app->params['mainMenu'])){
         funson86\blog\controllers\frontend\DefaultController::updateMainMenu();
     }
@@ -87,7 +94,7 @@
     </div>
 </header>
 <!-- end header -->
-<section class="parallax-window" id="home" data-parallax="scroll" data-image-src="/images/sub_header_home.jpg" data-natural-width="1400" data-natural-height="550">
+<section class="parallax-window" id="home" data-parallax="scroll" data-image-src="<?=$banner_background?>" data-natural-width="1400" data-natural-height="550">
     <div id="subheader">
         <div id="sub_content">
             <h1>
