@@ -19,7 +19,7 @@
                         if($mobile != null){ ?>
                         <li>
                             <a href="tel:<?=$mobile?>">
-                                <i class="icon_mobile" ></i><?=$mobile?>
+                                <i class="icon_headphones" style="margin-right:4px;"></i><?=$mobile?>
                             </a>
                         </li>
                     <?php } ?>
@@ -29,7 +29,7 @@
                         if($phone != null){?>
                         <li>
                             <a href="tel:<?=$phone?>">
-                                <i class="icon_phone" style="margin:4px;"></i><?=$phone?>
+                                <i class="icon_headphones" style="margin-right:4px;"></i><?=$phone?>
                             </a>
                         </li>
                     <?php } ?>
@@ -39,7 +39,7 @@
                         if($email != null){?>
                         <li>
                             <a href="tel:<?=$email?>">
-                                <i class="icon_mail_alt"  style="margin:4px;"></i><?=$email?>
+                                <i class="icon_mail_alt" style="margin-right:4px;"></i><?=$email?>
                             </a>
                         </li>
                     <?php } ?>   
@@ -48,14 +48,14 @@
                         $address = Yii::$app->setting->get('address'); 
                         if($address != null){?>
                         <li>
-                            <i class="icon_pin_alt"  style="margin:4px;"></i><?=$address?>
+                            <i class="icon_pin_alt" style="margin-right:4px;"></i><?=$address?>
                         </li>
                     <?php } ?>                               
                 </ul>
             </div>     
             
             <div class="col-md-3 col-sm-3">
-                <h3>Opening Hour</h3>
+                <h3><i class='icon_clock_alt' style="margin-right:4px;"></i>Opening Hour</h3>
                 <ul style="">
                     <?php 
                         $openinghour = Yii::$app->getHtmlBlock('openinghour-footer'); 
@@ -69,15 +69,33 @@
             <div class="col-md-3 col-sm-3">
                 <h3>About</h3>
                 <ul>
-                    <li><a href="about.html">About us</a></li>
-                    <li><a href="menu.html">Menu</a></li>
-                    <li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a></li>
-                    <li><a href="#0" data-toggle="modal" data-target="#register">Register</a></li>
+                    <!--li><a href="about.html">About us</a></li>
+                    <li><a href="menu.html">Menu</a></li-->
+                        <?php
+                        foreach (Yii::$app->params['mainMenu'] as $item) {
+                            $sons = \funson86\blog\models\BlogCatalog::find()->where(['parent_id' => $item['id']])->andWhere(['status' => \funson86\blog\models\Status::STATUS_ACTIVE])->all();
+                            if (count($sons) == 0) {
+                                ?>
+                                <li>
+                                    <a href="<?= Yii::$app->urlManager->getHostInfo() . $item['url'] ?>">
+                                        <?= $item['surname'] ?>
+                                    </a>
+                                </li>
+                            <?php } else { ?>
+                                <li> 
+                                    <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['blog/default/catalog', 'id' => $item['id']]) ?>" class="show-submenu"><?= $item['surname'] ?>
+                                    </a>
+                                </li>                        
+                            <?php } ?>
+                        <?php } ?>                    
+                    
+                    <li><a href="<?=Yii::$app->urlManager->createAbsoluteUrl(['site/login'])?>" >Login</a></li>
+                    <li><a href="<?=Yii::$app->urlManager->createAbsoluteUrl(['site/signup'])?>" >Register</a></li>
                 </ul>
             </div>
             
             <div class="col-md-3 col-sm-3">
-                <h3>Supported Payment</h3>
+                <h3><i class='icon_creditcard' style="margin-right:4px;"></i>Supported Payment</h3>
                 <img src="/images/cards.png" alt="" class="img-responsive">
             </div>            
         </div><!-- End row -->
@@ -131,7 +149,7 @@
                         $copyright = Yii::$app->setting->get('copyright'); 
                         if($copyright != null){ ?>
                         <p>
-                            <?= $copyright?>
+                            <?= $copyright?><?=date("Y")?>
                         </p>
                     <?php } ?>
                 </div>

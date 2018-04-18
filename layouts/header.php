@@ -24,6 +24,7 @@
     if(!isset(Yii::$app->params['mainMenu'])){
         funson86\blog\controllers\frontend\DefaultController::updateMainMenu();
     }
+    
 ?>
 
 <header>
@@ -72,7 +73,7 @@
                         </li>
                         <li>
                             <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['site/signup'])?>" target="_self">
-                                <i class="fa fa-user"></i>Registry
+                                <i class="fa fa-user"></i>Register   
                             </a>
                         </li>                        
                         <?php } else { ?>

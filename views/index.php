@@ -14,6 +14,9 @@ if ($currency) {
 $home_paralle = Yii::$app->getImages('home-paralle');
 $chefrecommend = Yii::$app->getImages('chefrecommend');
 $this->registerJsFile('/quickfood/assets/js/parallax.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
+
+$home_foodstyle = Yii::$app->getHtmlBlock('home-foodstyle');
+$home_parallax = Yii::$app->getHtmlBlock('home-parallax');
 ?>
 
 <!-- Content ================================================== -->
@@ -43,10 +46,10 @@ $this->registerJsFile('/quickfood/assets/js/parallax.js', ['depends' => [\yii\we
 
                             <div class="location">
                                 <?= trim($item->content) ?> 
-                                <div class="options text-left" style="display:inline;">
+                                <div class="text-left" style="display:inline;">
                                     <div class="addproduct" style="display:inline;">
                                         <span class="text-danger" style="margin-left:4px;"><?= $symbol ?><?= $item->price ?></span> 
-                                        <i class="icon_plus_alt2 pull-right text-danger" name="<?= $item->id ?>" count="1"></i>
+                                        <i class="icon_plus_alt2 text-danger" name="<?= $item->id ?>" count="1"></i>
                                     </div>
                                 </div>                         
                             </div>
@@ -68,13 +71,7 @@ $this->registerJsFile('/quickfood/assets/js/parallax.js', ['depends' => [\yii\we
         </div>
         <div class="col-md-6 nopadding">
             <div class="features-content">
-                <h3>"Ex vero mediocrem"</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lorem quis neque interdum consequat ut sed sem. Duis quis tempor nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                </p>
-                <p>
-                    Per ea erant aeque corpora, an agam tibique nec. At recusabo expetendis vim. Tractatos principes mel te, dolor solet viderer usu ad.
-                </p>
+                <?= $home_foodstyle == null?"":$home_foodstyle->content?>
             </div>
         </div>
     </div>
@@ -84,7 +81,7 @@ $this->registerJsFile('/quickfood/assets/js/parallax.js', ['depends' => [\yii\we
     <div class="container">
         <h3>Choose from over 100 dishes from our website</h3>
         <p>You click, we delivery, amazing, isn't?.</p>
-        <a href="list_page.html">Ordering Now</a>
+        <a href="<?=Yii::$app->urlManager->createAbsoluteUrl(['blog/default/catalog', 'id' => 52])?>">Ordering Now</a>
     </div><!-- End container -->
 </div><!-- End hight_light -->
 
@@ -92,10 +89,7 @@ $this->registerJsFile('/quickfood/assets/js/parallax.js', ['depends' => [\yii\we
     <div class="parallax-content">
         <div class="sub_content">
             <i class="icon_mug"></i>
-            <h3>We also deliver to your office</h3>
-            <p>
-                Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.
-            </p>
+            <?= $home_parallax == null? "":$home_parallax->content?>
         </div><!-- End sub_content -->
     </div><!-- End subheader -->
 </section><!-- End section -->
