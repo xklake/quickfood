@@ -23,13 +23,13 @@ $total = 0;
                     <td class="">
                         <strong><?=$product['number']?>x</strong> <?=$product['name']?>
                         <br/>
-                        <a href="#" class="delete_item">
+                        <a class="delete_item">
                             <i class="icon_close_alt2" name="<?=$product['product_id']?>" count="<?=0 - $product['number']?>"></i>
                         </a> 
-                        <a href="#" class="minus_item">
+                        <a class="minus_item">
                             <i class="icon_minus_alt" name="<?=$product['product_id']?>"  count="-1"></i>
                         </a> 
-                        <a href="#0" class="add_item">
+                        <a class="add_item">
                             <i class="icon_plus_alt2" name="<?=$product['product_id']?>" count='1'></i>
                         </a>      
                     </td>
@@ -53,11 +53,7 @@ $total = 0;
     </table>
     
     <hr>
-        <a class="btn_full" href="<?=Yii::$app->urlManager->createAbsoluteUrl('cart/checkout')?>" id='btnCheckout'>Check Out</a>
-        
-    <div id='cartloading' style="display:none;text-align: center;">
-        <i class="icon-spin6 animate-spin"></i>
-    </div>
+    <a class="btn_full" href="<?=Yii::$app->urlManager->createAbsoluteUrl('cart/checkout')?>" id='btnCheckout'>Check Out</a>
 </div>
 
 <?php
@@ -78,8 +74,11 @@ $this->registerJs('
                 number : $(this).attr('count'),
                 _csrf : product.csrf
             };
-            $("#cartloading").css("display","block");
-
+            var ele = $(this);
+            var oldclass = ele.attr("class");
+            
+            ele.removeClass(oldclass).addClass("icon-spin6 animate-spin");
+            
             $.post(urlCartAdd, param, function(data) 
                 {
                     if (data.status > 0) 
@@ -93,9 +92,9 @@ $this->registerJs('
                                 jQuery('#cart').html(carthtml);
                             }
                         )
-                        $("#cartloading").css("display","none");
+                        ele.removeClass("icon-spin6 animate-spin").addClass(oldclass);
                     }else{
-                        $("#cartloading").css("display","none");
+                        ele.removeClass("icon-spin6 animate-spin").addClass(oldclass);
                     }
                 },'json');
         }

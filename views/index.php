@@ -53,8 +53,7 @@ $home_parallax = Yii::$app->getHtmlBlock('home-parallax');
                                     </div>
                                 </div>                         
                             </div>
-                        </div><!-- End desc-->
-                    </a><!-- End strip_list-->
+                        </div><!-- End desc-->                    </a><!-- End strip_list-->
                 </div>
             <?php } ?>
         </div>
@@ -212,7 +211,8 @@ $this->registerJs('
             };
             
             var ele = $(this);
-            ele.removeClass("icon_plus_alt2").addClass("icon-spin6 animate-spin");
+            var oldclass = ele.attr("class");
+            ele.removeClass(oldclass).addClass("icon-spin6 animate-spin");
 
             $.post(urlCartAdd, param, function(data) 
                 {
@@ -225,7 +225,7 @@ $this->registerJs('
                         $.post(urlUpdateCart,cartparam);
                     }
             
-                    ele.removeClass("icon-spin6 animate-spin").addClass("icon_plus_alt2");
+                    ele.removeClass("icon-spin6 animate-spin").addClass(oldclass);
                 },'json');
         }
 
