@@ -7,6 +7,11 @@ table td:first-child {
 <?php 
     Yii::$app->session['step'] = 1;
     Yii::$app->params['checkout'] = false;        
+    
+	$currency = Yii::$app->params['currency']; 
+	if($currency){
+	    $symbol = $currency->symbol;
+	}    
 ?>
 
 <div class="box_style_2" id="main">
@@ -41,10 +46,9 @@ table td:first-child {
                         Item
                     </th>
                     <th>
-                        Price
+                        Price(<?=$symbol?>)
                     </th>
                     <th>
-                        Order
                     </th>
                 </tr>
             </thead>
@@ -67,7 +71,7 @@ table td:first-child {
 				                        <?=trim($ShortName)?>
 				                    </td>
 				                    <td style="border-top: 0px;">
-				                        <strong><?=$item->price?></strong>
+				                        <strong><?=$symbol?><?=$item->price?></strong>
 				                    </td>
 				                    <td class="options text-left" style="border-top: 0px;">
 				                        <a class="addproduct">
@@ -96,7 +100,7 @@ table td:first-child {
 				                        <?=trim($ShortName)?>
 				                    </td>
 				                    <td style="border-top: 0px;">
-				                        <strong><?=$item->price?></strong>
+				                        <strong><?=$symbol?><?=$item->price?></strong>
 				                    </td>
 				                    <td class="options text-left" style="border-top: 0px;">
 				                        <a class="addproduct">
@@ -116,7 +120,7 @@ table td:first-child {
 			                        </p>
 			                    </td>
 			                    <td>
-			                        <strong><?=$item->price?></strong>
+			                        <strong><?=$symbol?><?=$item->price?></strong>
 			                    </td>
 			                    <td class="options text-left">
 			                        <a class="addproduct">
