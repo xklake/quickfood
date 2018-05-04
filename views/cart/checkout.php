@@ -131,7 +131,7 @@
             <div class="payment_select">
                 <label class="">
                     <div class="iradio_square-grey" style="position: relative;">
-                        <input type="radio" value="1"  id='payment_method' name="payment_method" class="icheck" style="position: absolute; opacity: 0;" checked>
+                        <input type="radio" value="1"  id='payment_methodv' name="payment_methodv" class="icheck" style="position: absolute; opacity: 0;" checked>
                         <ins name="payment_method_ins" value="2" class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
                     </div>Pay with cash
                 </label>
@@ -141,7 +141,7 @@
             <div class="payment_select">
                 <label class="">
                     <div class="iradio_square-grey" style="position: relative;">
-                        <input type="radio" value="2"  id='payment_method'  name="payment_method" class="icheck" style="position: absolute; opacity: 0;">
+                        <input type="radio" value="2"  id='payment_methodv'  name="payment_methodv" class="icheck" style="position: absolute; opacity: 0;">
                         <ins  name="payment_method_ins"  value="1" class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
                     </div>Pay with paypal
                 </label>
@@ -150,15 +150,12 @@
             <div class="payment_select">
                 <label class="">
                     <div class="iradio_square-grey " style="position: relative;">
-                        <input type="radio" value="4" id='payment_method' name="payment_method" class="icheck" style="position: absolute; opacity: 0;">
+                        <input type="radio" value="4" id='payment_methodv' name="payment_methodv" class="icheck" style="position: absolute; opacity: 0;">
                         <ins  name="payment_method_ins" value="1" class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>
                     </div>Credit card
                 </label>
                 <i class="icon_creditcard"></i>
             </div>
-            
-            <?= Html::activeHiddenInput($model, 'payment_method', ['value' => 2]) ?>
-            
             
             <div  style="margin:0px;padding:0px;display:none;" id='creditPaymentDetail'>
                 <div class="form-group">

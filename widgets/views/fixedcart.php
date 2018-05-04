@@ -21,7 +21,7 @@ $total = 0;
             ?>
                 <tr class="dashedcartlist">
                     <td class="">
-                        <strong><?=$product['number']?>x</strong> <?=$product['name']?>
+                        <strong><?=$product['number']?>x</strong><?=str_replace("]]", "", str_replace("[[", " - ", $product['name']))?>
                     </td>
 
                     <td>

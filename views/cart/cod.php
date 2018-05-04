@@ -11,10 +11,7 @@
 					<i class="icon_check_alt2"></i>
 					<h3>Thank you!</h3>
 					<p>
-						You order has been confirmed, we will email the details. Your order is 
-                        <a target="_blank" class="view_detail" href="<?= Yii::$app->urlManager->createAbsoluteUrl(['/order/view', 'id' => $model->id]) ?>">
-                            <?= $model->sn ?>
-                        </a>.We will dispatch your order asap. 
+						You order has been confirmed, we will email the details. Your order is <?= $model->sn ?>, please go to user center to check the status of this order.We will dispatch your order asap. 
 					</p>
 				</div>
 				<h4>Summary</h4>
@@ -23,7 +20,7 @@
                     <?php foreach($model->orderProducts as $product) { ?>
                         <tr>
                             <td>
-                                <strong><?=$product['number']?>x</strong> <?=$product['name']?>
+                                <strong><?=$product['number']?>x</strong> <?=str_replace("]]", "", str_replace("[[", " - ", $product['name']))?>
                             </td>
                             <td>
                                 <strong class="pull-right"><?=$product['price']?></strong>

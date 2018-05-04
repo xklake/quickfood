@@ -23,25 +23,20 @@ $home_parallax = Yii::$app->getHtmlBlock('home-parallax');
 <div class="white_bg">
     <div class="container margin_60">
         <div class="main_title">
-            <h2 class="nomargin_top">Choose from Most Popular</h2>
-            <p>
-                Follow, follow, will not make a mistake
-            </p>
+            <h2 class="nomargin_top">Choose from Most Popular Dishes</h2>
         </div>
 
         <div class="row">
-            <?php foreach ($topsale as $item) { ?>
-                <div class="col-md-6">
-                    <a class="strip_list">
+            <?php foreach ($hotSale as $item) { ?>
+                <div class="col-md-3">
+                    <a class="strip_list grid">
                         <div class="desc">
-                            <div class="ribbon_1"></div>
-
-                            <div class="thumb_strip">
-                                <img src="<?= '/' . $item->thumb ?>" alt="<?= $item->name ?>">
+                            <div class="thumb_stripex">
+                                <img src="<?= '/' . $item->thumb ?>" alt="<?=  str_replace('[[',' ',str_replace(']]','', $item->name))?>">
                             </div>
 
                             <div>
-                                <label><?= $item->name ?></label>
+                                <label><?=str_replace('[[',' ',str_replace(']]','', $item->name)) ?></label>
                             </div>
 
                             <div class="location">
@@ -53,7 +48,8 @@ $home_parallax = Yii::$app->getHtmlBlock('home-parallax');
                                     </div>
                                 </div>                         
                             </div>
-                        </div><!-- End desc-->                    </a><!-- End strip_list-->
+                        </div>
+                   	</a>
                 </div>
             <?php } ?>
         </div>
@@ -106,12 +102,11 @@ $home_parallax = Yii::$app->getHtmlBlock('home-parallax');
             <?php foreach ($recommends as $item) { ?>
                 <div class="col-md-3 col-sm-3 wow zoomIn animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: zoomIn;">
                     <a class="strip_list grid">
-                        <div class="ribbon_1">Recommended</div>
                         <div class="desc">
-                            <div class="thumb_strip">
-                                <img src="<?= '/' . $item->thumb ?>" alt="<?= $item->name ?>">
+                            <div class="thumb_stripex">
+                                <img src="<?= '/' . $item->thumb ?>" alt="<?=str_replace('[[',' ',str_replace(']]','', $item->name))?>">
                             </div>
-                            <h3><?= $item->name ?></h3>
+                            <h3><?= str_replace('[[',' ',str_replace(']]','', $item->name))?></h3>
                             <div class="rating">
                                 <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i>
                             </div>                            
@@ -184,7 +179,7 @@ $home_parallax = Yii::$app->getHtmlBlock('home-parallax');
         </div>
 
         <div class='row' style='height:400px;'>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317718.69319292053!2d-0.3817765050863085!3d51.528307984912544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon!5e0!3m2!1sen!2suk!4v1523617240377" width="2000" height="600" frameborder="0" style="border:1" allowfullscreen></iframe>
+            <iframe src="<?= Yii::$app->setting->get('googlemap') ?>" width="2000" height="600" frameborder="0" style="border:1" allowfullscreen></iframe>
         </div>
     </div><!-- End container -->
 </div>

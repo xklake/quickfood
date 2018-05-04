@@ -29,15 +29,16 @@
             
 			<div class="col-md-8">
 				<div class="box_style_2">
-					<h2 class="inner">Description</h2>
+					<h2 class="inner">Store Address</h2>
                     <?php 
                         $address = Yii::$app->setting->get('address');
                         if($address != null){
                     ?>        
                     <div style="margin-bottom: 10px;">
-                            <strong>Address:</strong><?=$address?>
-                        </div>
+                        <strong></strong><?=$address?>
+                    </div>
                     <?php } ?>
+
                     <?php 
                         $googlemap = Yii::$app->setting->get('googlemap');
                         if($googlemap != null){

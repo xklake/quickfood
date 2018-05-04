@@ -890,6 +890,20 @@ a.strip_list:hover h3{
 	text-align:center;
 	box-sizing: border-box;
 }
+
+.thumb_stripex{
+	top:0;
+	overflow:hidden;
+	padding:5px;
+	text-align:center;
+	box-sizing: border-box;	
+}
+
+.thumb_stripex img{
+	width: 100%;
+	height:auto;
+}
+
 .thumb_strip img{
 	width:98px;
 	height:auto;

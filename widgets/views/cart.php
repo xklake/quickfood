@@ -13,7 +13,7 @@ if($currency){
 $total = 0; 
 ?>
 <div class='box_style_2'>
-    <h2 class='inner'>Your Cart <i class="icon_cart_alt pull-right"></i></h2>
+    <h2 class='inner'>Your Cart<i class="icon_cart_alt pull-right"></i></h2>
     <table class="table table_summary">
         <tbody>
             <?php foreach($data as $product){ 
@@ -45,8 +45,10 @@ $total = 0;
     <table class="table table_summary">
         <tbody>
             <tr>
-                <td>
-                    Product price:<span class="pull-right" id='totalpricecart' name='totalpricecart'><?=$symbol.$total?></span>
+                <td >
+                    <strong>
+	                    Product price:<span class="pull-right" id='totalpricecart' name='totalpricecart'><?=$symbol.(number_format($total,2))?></span>
+                    </strong>
                 </td>
             </tr>
         </tbody>
