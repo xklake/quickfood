@@ -47,7 +47,7 @@ $total = 0;
             <tr>
                 <td >
                     <strong>
-	                    Product price:<span class="pull-right" id='totalpricecart' name='totalpricecart'><?=$symbol.(number_format($total,2))?></span>
+	                    Total:<span class="pull-right" id='totalpricecart' name='totalpricecart'><?=$symbol.(number_format($total,2))?></span>
                     </strong>
                 </td>
             </tr>
