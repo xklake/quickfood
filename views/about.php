@@ -13,14 +13,6 @@
 <div class="container margin_60_35">
 		<div class="row">
 			<div class="col-md-4">
-				<div class='box_style_2'>
-                    <?php 
-                        $storeimage = Yii::$app->getImages('storeimage');
-                        if($storeimage != null){
-                    ?>  
-                        <img src='<?='/'.$storeimage->image?>' class='img-thumbnail'>
-                    <?php } ?>
-				</div>
                 <?php 
                     echo \frontend\web\template\quickfood\widgets\Contact::widget();
                     echo \frontend\web\template\quickfood\widgets\OpeningHour::widget();
@@ -29,13 +21,21 @@
             
 			<div class="col-md-8">
 				<div class="box_style_2">
-					<h2 class="inner">Store Address</h2>
+					<h2 class="inner">About US</h2>
+
+                    <?php 
+                        $aboutus = Yii::$app->getHtmlBlock('aboutus');
+                        if($aboutus != null){
+                            echo($aboutus->content);
+                        } 
+                    ?>
+                    
                     <?php 
                         $address = Yii::$app->setting->get('address');
                         if($address != null){
                     ?>        
-                    <div style="margin-bottom: 10px;">
-                        <strong></strong><?=$address?>
+                    <div style="margin-bottom: 10px;margin-top: 20px;">
+                        <strong>Address:</strong><?=$address?>
                     </div>
                     <?php } ?>
 
@@ -48,13 +48,6 @@
                         </div>
                     <?php } ?>
 
-                    <h3>About us</h3>
-                    <?php 
-                        $aboutus = Yii::$app->getHtmlBlock('aboutus');
-                        if($aboutus != null){
-                            echo($aboutus->content);
-                        } 
-                    ?>
                 </div>
 			</div>
 		</div><!-- End row -->

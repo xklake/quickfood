@@ -960,7 +960,7 @@ a.strip_list:hover h3{
 	color:#999;
 }
 .box_style_2#help a.phone{
-	font-size:26px;
+	font-size:14px;
 	display:block;
 	margin-bottom:0;
 	color:#85c99d;
@@ -1293,11 +1293,11 @@ ul.opening_list{
 }
 ul.opening_list li{
 	margin-bottom:8px;
-	font-weight:600;
+	font-weight:300;
 }
 ul.opening_list li span{
 	float:right;
-	font-weight:400;
+	font-weight:300;
 }
 /*2.6 About*/
 .features-bg {

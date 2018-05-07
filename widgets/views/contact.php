@@ -32,7 +32,7 @@
     $email = Yii::$app->setting->get('email');
     if ($email != null) {
         ?>
-        <a href="<?= 'tel:' . $email ?>" class="email">
+        <a href="<?= 'tel:' . $email ?>" class="phone">
             <?= $email ?>
         </a>
     <?php } ?>
