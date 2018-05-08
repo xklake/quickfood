@@ -15,7 +15,7 @@ $home_paralle = Yii::$app->getImages('home-paralle');
 $chefrecommend = Yii::$app->getImages('chefrecommend');
 $this->registerJsFile('/quickfood/assets/js/parallax.js', ['depends' => [\yii\web\JqueryAsset::className()]]);
 
-$home_foodstyle = Yii::$app->getHtmlBlock('home-foodstyle');
+$home_foodstyle = Yii::$app->getHtmlBlock('home-foodstyle'); 
 $home_parallax = Yii::$app->getHtmlBlock('home-parallax');
 ?>
 
