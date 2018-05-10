@@ -15,7 +15,7 @@ $totalNumber = $result['number'];
 		<div class="col-md-offset-3 col-md-6">
 			<div class="box_style_2">
 				<h2 class="inner" style="background: #ec008c;">Warning</h2>
-				<h3>			This is demo website, you will need apply for payment gateway to receive cash from client, please call us for more details. 
+				<h3>This is demo website, you will need apply for payment gateway to receive payment from client, please call us for more details. 
 		</h3>
 			</div>
 		</div>

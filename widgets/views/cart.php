@@ -47,7 +47,8 @@ $total = 0;
             <tr>
                 <td >
                     <strong>
-	                    Total:<span class="pull-right" id='totalpricecart' name='totalpricecart'><?=$symbol.(number_format($total,2))?></span>
+	                    Subtotal:<span class="pull-right" id='totalpricecart' name='totalpricecart'><?=(number_format($total,2))?></span>
+	                    <span class='pull-right'><?=$symbol?></span>
                     </strong>
                 </td>
             </tr>

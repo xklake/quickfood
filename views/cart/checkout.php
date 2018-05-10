@@ -25,9 +25,8 @@
     <div class="row">
         <div>
             <?php $form = ActiveForm::begin(['id' => 'checkoutform','class'=> 'popup-form']); ?>
-            <?= Html::activeHiddenInput($model, 'payment_method', ['value' => \common\models\Order::PAYMENT_METHOD_PAY]) ?>
-            <input type="hidden" id='deliverycharge' value="0">
-            
+            <?= Html::activeHiddenInput($model, 'payment_method', ['value' => \common\models\Order::PAYMENT_METHOD_COD]) ?>
+
             <?= Html::activeHiddenInput($model, 'deliverycharge', ['value' => 0]) ?>
 
             <div style="margin-bottom:10px;">
@@ -238,7 +237,7 @@
                     <tbody>
                         <tr>
                             <td>
-                                Product price:<span class="pull-right" id="totalpricecheckout"><?=$totalprice?></span>
+                                Product price:<span class="pull-right" id="totalpricecheckout"><?=number_format($totalprice,2)?></span>
                                 <span class="pull-right">£</span>
                             </td>
                         </tr>
@@ -259,7 +258,7 @@
                         
                         <tr>
                             <td>
-                                Total To Pay:<span class="pull-right" id="totalpay"><?=$totalprice?></span>
+                                Total To Pay:<span class="pull-right" id="totalpay"><?=number_format($totalprice,2)?></span>
                                 <span class="pull-right"><?=$symbol?></span>
                             </td>
                         </tr>
@@ -302,13 +301,14 @@ $('#').html(
 jQuery('#delivery_options ins').click(function(){
         if($(this).attr("value") == 2)
         {
-            $('#totalDeliveryCharge').html(0.00);
+        	var fee = 0;
+            $('#totalDeliveryCharge').html(fee.toFixed(2));
             $("#totalpay").html($('#totalprice').html());
             $("#shipment_id").val(2);
         } 
         else
         {
-            if($('#totalprice').html() < $minorder)
+            if($('#totalprice').html()< $minorder)
             {
                 alert("Order must be over $minorder to have delivery option"); 
                 $(this).removeClass("checked");
@@ -319,14 +319,16 @@ jQuery('#delivery_options ins').click(function(){
             }
             else if($('#totalprice').html() > $freedeliverymin)
             {
-                $('#deliveryfee').val(0);
-                $("#totalDeliveryCharge").html(0.00);
+            	var fee = 0;
+                $('#deliveryfee').val(fee.toFixed(2));
+                $("#totalDeliveryCharge").html(fee.toFixed(2));
             } 
             else
             {
-                $('#deliveryfee').val($deliveryfee);
-                $("#totalDeliveryCharge").html($deliveryfee);
-                $("#totalpay").html($deliveryfee + parseFloat($('#totalpricecheckout').html()));
+            	var fee = $deliveryfee;
+                $('#deliveryfee').val(fee.toFixed(2));
+                $("#totalDeliveryCharge").html(fee.toFixed(2));
+                $("#totalpay").html(($deliveryfee + parseFloat($('#totalpricecheckout').html())).toFixed(2));
             }
             $("#shipment_id").val(1);
         }
@@ -336,13 +338,13 @@ jQuery('#delivery_options ins').click(function(){
 jQuery('[name="payment_method_ins"]').click(function(){
         if($(this).attr("value") == 4)
         {
-            jQuery("#creditPaymentDetail").css("display", "block");
+            $("#creditPaymentDetail").css("display", "block");
         } else
         {
-            jQuery("#creditPaymentDetail").css("display", "none");
+            $("#creditPaymentDetail").css("display", "none");
         }
         
-        jQuery("#payment_method").val($(this).attr("value"));
+        $("#order-payment_method").val($(this).attr("value"));
    }
 );        
 

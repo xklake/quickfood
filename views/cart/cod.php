@@ -1,5 +1,11 @@
 <?php
 /* @var $this yii\web\View */
+
+$currency = Yii::$app->params['currency']; 
+if($currency){
+    $symbol = $currency->symbol;
+}
+
 ?>
 
 <div class="container margin_60_35">
@@ -23,7 +29,7 @@
                                 <strong><?=$product['number']?>x</strong> <?=str_replace("]]", "", str_replace("[[", " - ", $product['name']))?>
                             </td>
                             <td>
-                                <strong class="pull-right"><?=$product['price']?></strong>
+                                <strong class="pull-right"><?=$symbol?><?=$product['price']?></strong>
                             </td>
                         </tr>
                     <?php } ?>
@@ -33,16 +39,16 @@
 						 Points earned from this order
 					</td>
 					<td >
-						<strong class="pull-right"><?= $model->amount ?></strong>
+						<strong class="pull-right"><?= number_format($model->amount,0) ?></strong>
 					</td>
 				</tr>
-                
+				
 				<tr>
 					<td class="total_confirm">
 						 TOTAL PAID
 					</td>
 					<td class="total_confirm">
-						<span class="pull-right"><?= $model->amount ?></span>
+						<span class="pull-right"><?=$symbol?><?= $model->amount ?></span>
 					</td>
 				</tr>
 				</tbody>

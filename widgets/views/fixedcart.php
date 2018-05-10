@@ -36,8 +36,10 @@ $total = 0;
         <tbody>
             <tr>
                 <td>
-                    Subtotal:<span class="pull-right" id='totalprice'><?=$total?></span>
-                    <span class="pull-right"><?=$symbol?></span>
+                	<strong>
+                    Subtotal:<span class="pull-right" id='totalprice'><?=(number_format($total,2))?></span>
+                    <span class='pull-right'><?=$symbol?></span>
+                   </strong>
                 </td>
             </tr>
         </tbody>

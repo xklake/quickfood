@@ -109,6 +109,7 @@ if($currency){
                             ?>
                             Total Price:<?=$symbol.$order->amount?>    
                             Paid:<?=$symbol.$order->payment_fee?>
+                           	Points earned:<?=number_format($order->payment_fee,0)?>
                         </td>
                         <td>Payment Status:<?= common\models\Order::getStatusLabels($order->payment_status)?><br/>
                             Order Status:<?= common\models\Order::getStatusLabels($order->status)?>

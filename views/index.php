@@ -75,7 +75,7 @@ $home_parallax = Yii::$app->getHtmlBlock('home-parallax');
 <div class="high_light">
     <div class="container">
         <h3>Choose from over 100 dishes from our website</h3>
-        <p>You click, we delivery, amazing, isn't?.</p>
+        <p>You click, we delivery</p>
         <a href="<?=Yii::$app->urlManager->createAbsoluteUrl(['blog/default/catalog', 'id' => 52])?>">Ordering Now</a>
     </div><!-- End container -->
 </div><!-- End hight_light -->
