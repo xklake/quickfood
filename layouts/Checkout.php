@@ -5,15 +5,12 @@
 
 <div class="container margin_60_35">
     <div class="row">
-        <div class="col-md-3">
-            <?= $this->render('@frontend/web/template/quickfood/layouts/leftside.php') ?>
-        </div>
 
-        <div class="col-md-6">
+        <div class="col-md-8">
             <?=$content?>
         </div>
 
-        <div class="col-md-3" id="cart">
+        <div class="col-md-4" id="cart">
             <?php
                 echo frontend\web\template\quickfood\widgets\FixedCart::widget();
             ?>
