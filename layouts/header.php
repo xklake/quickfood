@@ -84,7 +84,7 @@
                         </li>
                         <li>
                             <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['user'])?>" target="_self">
-                                <i class='icon-user-7'></i><?=Yii::$app->user->identity->profile->surname?>
+                                <i class='icon-user-7'></i><?=isset(Yii::$app->user->identity->profile->surname) ? Yii::$app->user->identity->profile->surname : Yii::$app->user->identity->username?>
                             </a>
                         </li>
                         <?php } ?>
