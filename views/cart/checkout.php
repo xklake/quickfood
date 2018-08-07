@@ -31,7 +31,7 @@
 
             <div style="margin-bottom:10px;">
                 <label>
-                    Please confirm delievery information 
+                    Please confirm delivery information 
                 </label> 
             </div>
 

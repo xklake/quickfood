@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="login_icon"><i class="icon_lock_alt"></i></div>
                     <h4><?=Yii::t('app', 'sign up')?></h4>
 
-                    <?= Html::activeTextInput($model, 'username', ['class' => 'form-control form-white', 'placeholder' => "User Name"]) ?>
+                    <?php /*Html::activeTextInput($model, 'username', ['class' => 'form-control form-white', 'placeholder' => "User Name"]) */?>
                     <?= Html::activeTextInput($model, 'email', ['class' => 'form-control form-white', 'placeholder' => "Email"]) ?>
                     <?= Html::activePasswordInput($model, 'password', ['class' => 'form-control', 'placeholder' => "Password"]) ?>
 
