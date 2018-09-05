@@ -5,35 +5,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+    $storeaddress = null;
+    if(isset(Yii::$app->params['storeaddress'])){
+        $storeaddress = Yii::$app->params['storeaddress'];
+    }
+    else{
+        $storeaddress = common\models\Address::find()->where(['=', 'user_id', 1])->andWhere(['=', 'default', 1])->one();
+        Yii::$app->params['storeaddress'] = $storeaddress;
+    }
 ?>
 
 <div class="box_style_2" id="help">
     <i class="icon_lifesaver"></i>
     <h4><span>Contact Us</span></h4>
-    <?php
-    $phone = Yii::$app->setting->get('phone');
-    if ($phone != null) {
-        ?>
-        <a href="<?= 'tel:' . $phone ?>" class="phone">
-            <?= $phone ?>
-        </a>
-    <?php } ?>
+    <a href="<?= 'tel:' . $storeaddress->phone ?>" class="phone">
+        <?= $storeaddress->phone ?>
+    </a>
 
-    <?php
-    $mobile = Yii::$app->setting->get('mobile');
-    if ($mobile != null) {
-        ?>
-        <a href="<?= 'tel:' . $mobile ?>" class="phone">
-            <?= $mobile ?>
-        </a>
-    <?php } ?>    
-
-    <?php
-    $email = Yii::$app->setting->get('email');
-    if ($email != null) {
-        ?>
-        <a href="<?= 'tel:' . $email ?>" class="phone">
-            <?= $email ?>
-        </a>
-    <?php } ?>
+    <a href="<?= 'tel:' . $storeaddress->mobile ?>" class="phone">
+        <?= $storeaddress->mobile ?>
+    </a>
+    <a href="<?= 'mailto:' . $storeaddress->email ?>" class="phone">
+        <?= $storeaddress->email ?>
+    </a>
 </div>

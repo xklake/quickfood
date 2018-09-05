@@ -5,6 +5,28 @@
  * Date: 6/9/16
  * Time: 5:16 PM
  */
+    if(isset(Yii::$app->params['storeaddress'])){
+        $storeaddress = Yii::$app->params['storeaddress'];
+    }
+    else{
+        $storeaddress = common\models\Address::find()->where(['=', 'user_id', 1])->andWhere(['=', 'default', 1])->one();
+        Yii::$app->params['storeaddress'] = $storeaddress;
+    }
+
+    if($storeaddress == null){
+        Yii::error('Can not find store address for admin'); 
+    }
+    
+    $address = $storeaddress->address1;
+    if(isset($storeaddress->address2)){
+        $address = $address . ',' .$storeaddress->address2;
+    }
+    
+    if(isset($storeaddress->city)){
+        $address = $address . ',' .$storeaddress->city;
+    }
+    
+    $address = $address . ',' . $storeaddress->zipcode;
 ?>
 <!-- Footer ================================================== -->
 <footer>
@@ -14,43 +36,27 @@
             <div class="col-md-3 col-sm-3">
                 <h3>Contact</h3>
                 <ul>
-                    <?php 
-                        $mobile = Yii::$app->setting->get('mobile'); 
-                        if($mobile != null){ ?>
-                        <li>
-                            <a href="tel:<?=$mobile?>">
-                                <i class="icon_headphones" style="margin-right:4px;"></i><?=$mobile?>
-                            </a>
-                        </li>
-                    <?php } ?>
+                    <li>
+                        <a href="tel:<?=$storeaddress->phone?>">
+                            <i class="icon_headphones" style="margin-right:4px;"></i><?=$storeaddress->phone?>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="tel:<?=$storeaddress->phone?>">
+                            <i class="icon_headphones" style="margin-right:4px;"></i><?=$storeaddress->phone?>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="tel:<?=$storeaddress->email?>">
+                            <i class="icon_mail_alt" style="margin-right:4px;"></i><?=$storeaddress->email?>
+                        </a>
+                    </li>
                     
-                    <?php 
-                        $phone = Yii::$app->setting->get('phone'); 
-                        if($phone != null){?>
-                        <li>
-                            <a href="tel:<?=$phone?>">
-                                <i class="icon_headphones" style="margin-right:4px;"></i><?=$phone?>
-                            </a>
-                        </li>
-                    <?php } ?>
-                    
-                    <?php 
-                        $email = Yii::$app->setting->get('email'); 
-                        if($email != null){?>
-                        <li>
-                            <a href="tel:<?=$email?>">
-                                <i class="icon_mail_alt" style="margin-right:4px;"></i><?=$email?>
-                            </a>
-                        </li>
-                    <?php } ?>   
-                    
-                    <?php 
-                        $address = Yii::$app->setting->get('address'); 
-                        if($address != null){?>
-                        <li>
-                            <i class="icon_pin_alt" style="margin-right:4px;"></i><?=$address?>
-                        </li>
-                    <?php } ?>                               
+                    <li>
+                        <i class="icon_pin_alt" style="margin-right:4px;"></i><?=$address?>
+                    </li>
                 </ul>
             </div>     
             
