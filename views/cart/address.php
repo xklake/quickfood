@@ -30,10 +30,10 @@ $this->title = 'Order Address';
                 <?= Html::activeTextInput($model, 'zipcode', ['class' => 'form-control', 'placeholder' => "Postcode"]) ?>
             </div>
             <div class="form-group">
-                <?= Html::activeTextInput($model, 'address1', ['class' => 'form-control', 'placeholder' => "Address"]) ?>
+                <?= Html::activeTextInput($model, 'address1', ['class' => 'form-control', 'placeholder' => "Street"]) ?>
             </div>
             <div class="form-group">
-                <?= Html::activeTextInput($model, 'address2', ['class' => 'form-control', 'placeholder' => "Address"]) ?>
+                <?= Html::activeTextInput($model, 'address2', ['class' => 'form-control', 'placeholder' => "Town"]) ?>
             </div>
 
             <div class="form-group">
