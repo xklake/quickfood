@@ -11,7 +11,31 @@
     $deliveryfee = Yii::$app->setting->get('deliveryfee');
     $minorder = Yii::$app->setting->get('minorder');
     $freedeliverymin = Yii::$app->setting->get('freedeliverymin');
-    $realdelieveryfee = 0;
+    
+    $startupuptodistance = floatval(Yii::$app->setting->get('startupuptodistance'));
+    $distanceBased = Yii::$app->setting->get('distancebased') == 1;
+    $onwardsfeeperUnit = floatval(Yii::$app->setting->get('onwardsfeeperunit'));
+    $distanceUint = Yii::$app->setting->get('distanceunit');
+    $maxdeliverydistance = Yii::$app->setting->get('maxdeliverydistance');
+    
+    if($distanceUint == 'Mile'){
+        $distance =  $distance /  (1000 * 1.609344);
+    }else{
+        $distance = $distance / 1000;
+    }
+       
+    if($distanceBased){
+        if($distance <= $startupuptodistance){
+            $distanceCharge = $deliveryfee;
+        }
+        else{
+            $distanceCharge = $deliveryfee + floor($distance - $startupuptodistance) * $onwardsfeeperUnit;
+        }
+    }
+    else{
+        $distanceCharge = $deliveryfee;
+    }
+    
     Yii::$app->params['checkout'] = true;
 
     $currency = Yii::$app->params['currency']; 
@@ -35,7 +59,7 @@
                 </label> 
             </div>
 
-            <div style='margin:0px;padding:0px;' >
+            <div style='margin:0px;padding:0px;' id="addresses" >
                 <?php foreach ($addresses as $address) { ?>
                     <?php
                     $add = '';
@@ -77,13 +101,13 @@
                         <label>
                             <div class="iradio_square-grey" style="position: relative;">
                                 <?=
-                                    Html::radio('address_id', ($i === 0), [
+                                    Html::radio('address_id', $address->default, [
                                         'value' => $address->id,
                                         'class' => 'icheck',
                                         'style' => 'position: absolute; opacity: 0;'
                                     ]);
                                 ?>
-                                <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>                                    
+                                <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;" link="<?=Yii::$app->urlManager->createAbsoluteUrl(['api/getdistance', 'id'=>$address->id])?>"></ins>                                    
                             </div>
                             <?=$address->name.':'.$add?>
                         </label>
@@ -92,12 +116,15 @@
             </div>
             
             <label style='padding-left:15px;'>
-                <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['cart/address']) ?>" id="add-newaddr" style='font-size:0.8rem;'>New Address</a> 
+                <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['cart/address']) ?>" id="add-newaddr" style='font-size:0.95rem;'>New Address</a> 
+                <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['cart/editaddress']) ?>" id="add-editaddr" style='font-size:0.95rem;margin-left:20px;'>Edit Address</a> 
+                <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['cart/defaultaddress']) ?>" id="add-defaultaddr" style='font-size:0.95rem;margin-left:20px;'>Make it default Address</a> 
+                <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['cart/deladdress']) ?>" id="add-deladdr" style='font-size:0.95rem;margin-left:20px;'>Delete Address</a> 
             </label>
 
             <div class='dashedcartlist' style='margin:20px 0px;'></div>
             
-            <div  id='usepoints' >
+            <div  id='usepoints'>
                 <label>
                     <input type="hidden" value="" id='user-point'>
                     <div class="icheckbox_square-grey" style="position: relative;" name="div_use_point_checkbox" id="div_use_point_checkbox">
@@ -254,7 +281,19 @@
                                 Point Claimed:<span class="pull-right" id="pointClaimed">0.00</span>
                                 <span class="pull-right"><?=$symbol?></span>
                             </td>
-                        </tr>                        
+                        </tr>      
+                        
+                        <tr>
+                            <td>
+                                Distance ( <?=$distanceUint?> ):<span class="pull-right" id="Distance">
+                                    <?php 
+                                    if($distanceUint == 'Mile'){
+                                        echo number_format($distance, 1);
+                                    }
+                                    ?>
+                                </span>
+                            </td>
+                        </tr>                         
                         
                         <tr>
                             <td>
@@ -289,48 +328,76 @@
 $urlHelpCoupon = Yii::$app->urlManager->createAbsoluteUrl(['/cms/default/page', 'id' => 14, 'surname' => 'coupon']);
 $urlCoupon = Yii::$app->urlManager->createAbsoluteUrl(['cart/json-coupon']);
 $urlCouponCode = Yii::$app->urlManager->createAbsoluteUrl(['cart/ajax-coupon-code']);
-$js = <<<JS
 
-/*
-if($
-if($('#totalprice').val >         
-$('#deliveryfee').html =         
-$('#').html(       
-*/    
+$js = <<<JS
+    jQuery('#addresses ins').click(function(){
+        var link = $(this).attr('link');
+        $.get(link, function(ret) {
+            if (ret.status == "success") {
+                var distance = ret.distance;
+                $("#Distance").html(distance.toFixed(1));
         
-jQuery('#delivery_options ins').click(function(){
+                //handle based on distance 
+                if($("#shipment_id").val() == 1 && $distanceBased == 1){
+                    $('#totalDeliveryCharge').html(ret.deliveryfee.toFixed(2));
+                    $('#totalpay').html((ret.deliveryfee + parseFloat($('#totalpricecheckout').html())).toFixed(2));
+                }
+            }else{
+                alert('Invalid address');
+                return;
+            }
+        });
+        });
+   
+    jQuery('#delivery_options ins').click(function(){
         if($(this).attr("value") == 2)
         {
-        	var fee = 0;
+            var fee = 0;
             $('#totalDeliveryCharge').html(fee.toFixed(2));
             $("#totalpay").html($('#totalprice').html());
             $("#shipment_id").val(2);
         } 
         else
         {
-            if($('#totalprice').html()< $minorder)
+            if($distance > $maxdeliverydistance)
             {
-                alert("Order must be over $minorder to have delivery option"); 
+                alert('It is out of our delivery distance!');
                 $(this).removeClass("checked");
                 $('#deliverymethod2').addClass("checked");
                 $("#shipment_id").val(2);
                 event.stopPropagation();
                 return;
             }
-            else if($('#totalprice').html() > $freedeliverymin)
-            {
-            	var fee = 0;
-                $('#deliveryfee').val(fee.toFixed(2));
-                $("#totalDeliveryCharge").html(fee.toFixed(2));
-            } 
-            else
-            {
-            	var fee = $deliveryfee;
-                $('#deliveryfee').val(fee.toFixed(2));
-                $("#totalDeliveryCharge").html(fee.toFixed(2));
-                $("#totalpay").html(($deliveryfee + parseFloat($('#totalpricecheckout').html())).toFixed(2));
+        
+            if($distanceBased){
+                $("#totalDeliveryCharge").html($distanceCharge.toFixed(2));
+                $("#totalpay").html(($distanceCharge + parseFloat($('#totalpricecheckout').html())).toFixed(2));        
             }
-            $("#shipment_id").val(1);
+            else{
+                if($('#totalprice').html()< $minorder)
+                {
+                    alert("Order must be over $minorder to have delivery option"); 
+                    $(this).removeClass("checked");
+                    $('#deliverymethod2').addClass("checked");
+                    $("#shipment_id").val(2);
+                    event.stopPropagation();
+                    return;
+                }
+                else if($('#totalprice').html() > $freedeliverymin)
+                {
+                    var fee = 0;
+                    $('#deliveryfee').val(fee.toFixed(2));
+                    $("#totalDeliveryCharge").html(fee.toFixed(2));
+                } 
+                else
+                {
+                    var fee = $deliveryfee;
+                    $('#deliveryfee').val(fee.toFixed(2));
+                    $("#totalDeliveryCharge").html(fee.toFixed(2));
+                    $("#totalpay").html(($deliveryfee + parseFloat($('#totalpricecheckout').html())).toFixed(2));
+                }
+                $("#shipment_id").val(1);
+            }
         }
     }
 );
