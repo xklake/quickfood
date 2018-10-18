@@ -68,12 +68,12 @@
                         <?php if(Yii::$app->user->isGuest){?>
                         <li>
                             <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['site/login'])?>" target="_self">
-                                <i class="fa fa-user"></i>Login
+                                <i class="fa fa-user"></i>Sign In
                             </a>
                         </li>
                         <li>
                             <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['site/signup'])?>" target="_self">
-                                <i class="fa fa-user"></i>Register   
+                                <i class="fa fa-user"></i>Sign Up   
                             </a>
                         </li>                        
                         <?php } else { ?>

@@ -288,7 +288,11 @@
                                 Distance ( <?=$distanceUint?> ):<span class="pull-right" id="Distance">
                                     <?php 
                                     if($distanceUint == 'Mile'){
-                                        echo number_format($distance, 1);
+                                        if(($distance - 0) > 0.1){
+                                            echo number_format($distance, 1);
+                                        }else{
+                                            echo '0.0';
+                                        }
                                     }
                                     ?>
                                 </span>
