@@ -109,7 +109,19 @@
                                 ?>
                                 <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;" link="<?=Yii::$app->urlManager->createAbsoluteUrl(['api/getdistance', 'id'=>$address->id])?>"></ins>                                    
                             </div>
-                            <?=$address->name.':'.$add?>
+                            <?php  
+                            if($address->default){
+                                echo '&#9734; '. $address->name.$add;
+                            }
+                            else {
+                                echo $address->name.':'.$add;
+                            }
+                            ?> 
+                                <?php if(!$address->default){ ?>
+                                    <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['cart/defaultaddress', 'id' => $address->id]) ?>" id="add-defaultaddr" style='font-size:0.95rem;margin-left:20px;'>Default</a> 
+                                <?php } ?>
+                                <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['cart/address', 'id' => $address->id]) ?>" id="add-editaddr" style='font-size:0.95rem;margin-left:20px;'>Edit</a> 
+                                <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['cart/deladdress', 'id' => $address->id]) ?>" id="add-deladdr" style='font-size:0.95rem;margin-left:20px;'>Delete</a> 
                         </label>
                     </div>
                 <?php } ?>
@@ -117,9 +129,6 @@
             
             <label style='padding-left:15px;'>
                 <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['cart/address']) ?>" id="add-newaddr" style='font-size:0.95rem;'>New Address</a> 
-                <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['cart/editaddress']) ?>" id="add-editaddr" style='font-size:0.95rem;margin-left:20px;'>Edit Address</a> 
-                <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['cart/defaultaddress']) ?>" id="add-defaultaddr" style='font-size:0.95rem;margin-left:20px;'>Make it default Address</a> 
-                <a href="<?= Yii::$app->urlManager->createAbsoluteUrl(['cart/deladdress']) ?>" id="add-deladdr" style='font-size:0.95rem;margin-left:20px;'>Delete Address</a> 
             </label>
 
             <div class='dashedcartlist' style='margin:20px 0px;'></div>
@@ -289,9 +298,9 @@
                                     <?php 
                                     if($distanceUint == 'Mile'){
                                         if(($distance - 0) > 0.1){
-                                            echo number_format($distance, 1);
+                                            echo number_format($distance, 2);
                                         }else{
-                                            echo '0.0';
+                                            echo number_format(0,2);
                                         }
                                     }
                                     ?>

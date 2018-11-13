@@ -9,7 +9,13 @@ $this->title = 'Order Address';
 ?>
 
 <div class="box_style_2" id="main">
-    <h2 class='inner'>Create New Address</h2>
+    <h2 class='inner'>
+        <?php if($model->id > 0){ ?>
+        Edit Address
+        <?php } else { ?>
+        Create New Address
+        <?php } ?>
+    </h2>
     <div class="row">
         <div>
             <?php $form = ActiveForm::begin(['id' => 'newaddress', 'class' => 'popup-form']); ?>
