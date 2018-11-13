@@ -39,8 +39,13 @@ $this->params['breadcrumbs'][] = $this->title;
                                     ]
                                 ])
                             ?>
-
+                            
+                            <?php if($error){ ?>
+                                <p style="color:#a94442"><?=$error?></p>
+                            <?php } ?>
+                                
                             <?= Html::submitButton( Yii::t('app', 'Login'), ['class' => 'btn btn-submit', 'name' => 'login-button']) ?>
+                            <?= Html::a(Yii::t('app', 'Sign Up'),Yii::$app->urlManager->createAbsoluteUrl(['site/signup']), ['class' =>'btn btn-submit']) ?>
                         <!--/form-->
                         <?php ActiveForm::end(); ?>
                     </div>

@@ -26,6 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         </label>
                     </div>
 
+                    <?php if($error){ ?>
+                        <p style="color:#a94442"><?=$error?></p>
+                    <?php } ?>
+                    
                     <?= Html::submitButton(Yii::t('app', 'sign up'), ['class' => 'form-control', 'name' => 'login-button']) ?>
                     <?php ActiveForm::end(); ?>
                 </div>
