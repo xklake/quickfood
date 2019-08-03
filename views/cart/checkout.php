@@ -383,11 +383,12 @@ $js = <<<JS
             }
         
             if($distanceBased){
-                $("#totalDeliveryCharge").html($distanceCharge.toFixed(2));
+                var distanceFee = $distanceCharge;
+                $("#totalDeliveryCharge").html(distanceFee.toFixed(2));
                 $("#totalpay").html(($distanceCharge + parseFloat($('#totalpricecheckout').html())).toFixed(2));        
             }
             else{
-                if($('#totalprice').html()< $minorder)
+                if($('#totalpricecheckout').html()< $minorder)
                 {
                     alert("Order must be over $minorder to have delivery option"); 
                     $(this).removeClass("checked");
@@ -396,7 +397,7 @@ $js = <<<JS
                     event.stopPropagation();
                     return;
                 }
-                else if($('#totalprice').html() > $freedeliverymin)
+                else if($('#totalpricecheckout').html() >= $freedeliverymin)
                 {
                     var fee = 0;
                     $('#deliveryfee').val(fee.toFixed(2));
