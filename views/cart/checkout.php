@@ -19,9 +19,7 @@
     $maxdeliverydistance = Yii::$app->setting->get('maxdeliverydistance');
     
     if($distanceUint == 'Mile'){
-        $distance =  $distance /  (1000 * 1.609344);
-    }else{
-        $distance = $distance / 1000;
+        $distance =  $distance /  1.609344;
     }
        
     if($distanceBased){
@@ -42,6 +40,8 @@
     if($currency){
         $symbol = $currency->symbol;
     }
+    
+    $defaultAddressId = -1;
 ?>
 
 <div class="box_style_2" id="main">
@@ -99,7 +99,7 @@
                 
                     <div class="col-lg-12">
                         <label>
-                            <div class="iradio_square-grey" style="position: relative;">
+                            <div class="iradio_square-grey" style="position: relative;" id="div_<?=$address->id?>">
                                 <?=
                                     Html::radio('address_id', $address->default, [
                                         'value' => $address->id,
@@ -107,11 +107,14 @@
                                         'style' => 'position: absolute; opacity: 0;'
                                     ]);
                                 ?>
-                                <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;" link="<?=Yii::$app->urlManager->createAbsoluteUrl(['api/getdistance', 'id'=>$address->id])?>"></ins>                                    
+                                <ins id="<?=$address->id?>" class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;" 
+                                     link="<?=Yii::$app->urlManager->createAbsoluteUrl(['api/getdistance', 'id'=>$address->id])?>">
+                                </ins>                                    
                             </div>
                             <?php  
                             if($address->default){
                                 echo '&#9734; '. $address->name.$add;
+                                $defaultAddressId = $address->id;
                             }
                             else {
                                 echo $address->name.':'.$add;
@@ -268,7 +271,7 @@
             <input type="hidden" value="0" id="deliveryfee">
 
             <div class="box_style_2">
-                <h2 class="inner">Order Sumary</h2>
+                <h2 class="inner">Order Summary</h2>
                 <table class="table table_summary">
                     <tbody>
                         <tr>
@@ -278,7 +281,7 @@
                             </td>
                         </tr>
                         
-                        <tr>
+                        <tr style="display:none;" id="tr_deliveryCharge">
                             <td>
                                 Delivery Charge:<span class="pull-right" id="totalDeliveryCharge">0.00</span>
                                 <span class="pull-right"><?=$symbol?></span>
@@ -292,7 +295,7 @@
                             </td>
                         </tr>      
                         
-                        <tr>
+                        <tr style="display:none;" id="tr_distance">
                             <td>
                                 Distance ( <?=$distanceUint?> ):<span class="pull-right" id="Distance">
                                     <?php 
@@ -343,41 +346,73 @@ $urlCoupon = Yii::$app->urlManager->createAbsoluteUrl(['cart/json-coupon']);
 $urlCouponCode = Yii::$app->urlManager->createAbsoluteUrl(['cart/ajax-coupon-code']);
 
 $js = <<<JS
+    var jsDistance = $distance;
+    var jsDeliveryCharge = $distanceCharge;
+    var jsDefaultAddressId = $defaultAddressId;
     jQuery('#addresses ins').click(function(){
         var link = $(this).attr('link');
+        var clickedObject = $("#div_" + $(this).attr("id"));
+        var oldObject = $('#div_' + jsDefaultAddressId);
+        var nextAddressId = $(this).attr("id");
         $.get(link, function(ret) {
             if (ret.status == "success") {
                 var distance = ret.distance;
+                
+                if(distance > $maxdeliverydistance){
+                    alert('It is out of our delivery distance!');
+                    oldObject.children().first().addClass("checked");
+                    clickedObject.children().first().removeClass("checked");
+                    clickedObject.removeClass("checked");
+                    event.stopPropagation();
+                    return;              
+                }
+        
                 $("#Distance").html(distance.toFixed(1));
+                jsDefaultAddressId = nextAddressId;
         
                 //handle based on distance 
-                if($("#shipment_id").val() == 1 && $distanceBased == 1){
-                    $('#totalDeliveryCharge').html(ret.deliveryfee.toFixed(2));
-                    $('#totalpay').html((ret.deliveryfee + parseFloat($('#totalpricecheckout').html())).toFixed(2));
+                $('#totalDeliveryCharge').html(ret.deliverycharge.toFixed(2));
+                $('#totalpay').html((ret.deliverycharge + parseFloat($('#totalpricecheckout').html())).toFixed(2));
+                jsDeliveryCharge = ret.deliverycharge.toFixed(2);
+                jsDistance = ret.distance;
+
+                if($("#order-shipment_id").val() == 1 && $distanceBased == 1){
+                    $('#Distance').parent().parent().show();
+                    $('#totalDeliveryCharge').parent().parent().show();
+                }
+                else{
+                    $('#Distance').parent().parent().hide();
+                    $('#totalDeliveryCharge').parent().parent().hide();
                 }
             }else{
-                alert('Invalid address');
+                alert('Can not find delivery distance of this address, please call us');
+                oldObject.children().first().addClass("checked");
+                clickedObject.children().first().removeClass("checked");
+                clickedObject.removeClass("checked");
+                event.stopPropagation();
                 return;
             }
         });
         });
-   
+    
     jQuery('#delivery_options ins').click(function(){
         if($(this).attr("value") == 2)
         {
             var fee = 0;
             $('#totalDeliveryCharge').html(fee.toFixed(2));
             $("#totalpay").html($('#totalprice').html());
-            $("#shipment_id").val(2);
+            $("#order-shipment_id").val(2);
+            $('#tr_deliveryCharge').hide();
+            $('#tr_distance').hide();
         } 
         else
         {
-            if($distance > $maxdeliverydistance)
+            if(jsDistance > $maxdeliverydistance)
             {
                 alert('It is out of our delivery distance!');
                 $(this).removeClass("checked");
                 $('#deliverymethod2').addClass("checked");
-                $("#shipment_id").val(2);
+                $("#order-shipment_id").val(2);
                 event.stopPropagation();
                 return;
             }
@@ -386,6 +421,9 @@ $js = <<<JS
                 var distanceFee = $distanceCharge;
                 $("#totalDeliveryCharge").html(distanceFee.toFixed(2));
                 $("#totalpay").html(($distanceCharge + parseFloat($('#totalpricecheckout').html())).toFixed(2));        
+                $("#order-shipment_id").val(1);
+                $('#tr_deliveryCharge').show();
+                $('#tr_distance').show();
             }
             else{
                 if($('#totalpricecheckout').html()< $minorder)
@@ -393,7 +431,7 @@ $js = <<<JS
                     alert("Order must be over $minorder to have delivery option"); 
                     $(this).removeClass("checked");
                     $('#deliverymethod2').addClass("checked");
-                    $("#shipment_id").val(2);
+                    $("#order-shipment_id").val(2);
                     event.stopPropagation();
                     return;
                 }
@@ -410,7 +448,9 @@ $js = <<<JS
                     $("#totalDeliveryCharge").html(fee.toFixed(2));
                     $("#totalpay").html(($deliveryfee + parseFloat($('#totalpricecheckout').html())).toFixed(2));
                 }
-                $("#shipment_id").val(1);
+                $("#order-shipment_id").val(1);
+                $('#tr_deliveryCharge').show();
+                $('#tr_distance').show();        
             }
         }
     }
