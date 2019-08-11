@@ -17,6 +17,7 @@
     $onwardsfeeperUnit = floatval(Yii::$app->setting->get('onwardsfeeperunit'));
     $distanceUint = Yii::$app->setting->get('distanceunit');
     $maxdeliverydistance = Yii::$app->setting->get('maxdeliverydistance');
+    $extrafee = Yii::$app->setting->get('extrafeelessthanmini');
     
     if($distanceUint == 'Mile'){
         $distance =  $distance /  1.609344;
@@ -309,7 +310,14 @@
                                     ?>
                                 </span>
                             </td>
-                        </tr>                         
+                        </tr>
+                        
+                        <tr style="display:none;" id="tr_extracharge">
+                            <td>
+                                Extra Charge when order less than minimal order:<span class="pull-right" id="extracharge">0.00</span>
+                                <span class="pull-right"><?=$symbol?></span>
+                            </td>
+                        </tr>                        
                         
                         <tr>
                             <td>
@@ -349,6 +357,8 @@ $js = <<<JS
     var jsDistance = $distance;
     var jsDeliveryCharge = $distanceCharge;
     var jsDefaultAddressId = $defaultAddressId;
+    var jsExtra = $extrafee;
+    var extraFeeToPay = 0;
     jQuery('#addresses ins').click(function(){
         var link = $(this).attr('link');
         var clickedObject = $("#div_" + $(this).attr("id"));
@@ -372,17 +382,30 @@ $js = <<<JS
         
                 //handle based on distance 
                 $('#totalDeliveryCharge').html(ret.deliverycharge.toFixed(2));
-                $('#totalpay').html((ret.deliverycharge + parseFloat($('#totalpricecheckout').html())).toFixed(2));
+                var totalPrice = parseFloat($('#totalpricecheckout').html());
+                
+                if(totalPrice < $minorder){
+                    extraFeeToPay = jsExtra;
+                    $('#tr_extracharge').show();
+                }
+                else{
+                    extraFeeToPay = 0;
+                    $('#tr_extracharge').hide();
+                }
+        
+                $('#totalpay').html((ret.deliverycharge + parseFloat($('#totalpricecheckout').html()) + extraFeeToPay).toFixed(2));
                 jsDeliveryCharge = ret.deliverycharge.toFixed(2);
                 jsDistance = ret.distance;
 
                 if($("#order-shipment_id").val() == 1 && $distanceBased == 1){
                     $('#Distance').parent().parent().show();
                     $('#totalDeliveryCharge').parent().parent().show();
+                    $('#extrafee').parent().parent().show();
                 }
                 else{
                     $('#Distance').parent().parent().hide();
                     $('#totalDeliveryCharge').parent().parent().hide();
+                    $('#extrafee').parent().parent().hide();
                 }
             }else{
                 alert('Can not find delivery distance of this address, please call us');
@@ -404,6 +427,7 @@ $js = <<<JS
             $("#order-shipment_id").val(2);
             $('#tr_deliveryCharge').hide();
             $('#tr_distance').hide();
+            $('#tr_extracharge').hide();
         } 
         else
         {
@@ -420,20 +444,32 @@ $js = <<<JS
             if($distanceBased){
                 var distanceFee = $distanceCharge;
                 $("#totalDeliveryCharge").html(distanceFee.toFixed(2));
-                $("#totalpay").html(($distanceCharge + parseFloat($('#totalpricecheckout').html())).toFixed(2));        
+                
+                var totalPrice = parseFloat($('#totalpricecheckout').html());
+
+                if(totalPrice < $minorder)
+                    extraFeeToPay = jsExtra;
+                else
+                    extraFeeToPay = 0.00;
+        
+                $("#totalpay").html(($distanceCharge + extraFeeToPay + totalPrice).toFixed(2));        
+				$("#extracharge").html(extraFeeToPay.toFixed(2));
+				
                 $("#order-shipment_id").val(1);
                 $('#tr_deliveryCharge').show();
                 $('#tr_distance').show();
+                $('#tr_extracharge').show();
             }
             else{
-                if($('#totalpricecheckout').html()< $minorder)
+                var totalPrice = parseFloat($('#totalpricecheckout').html());
+                if(totalPrice< $minorder)
                 {
-                    alert("Order must be over $minorder to have delivery option"); 
-                    $(this).removeClass("checked");
-                    $('#deliverymethod2').addClass("checked");
-                    $("#order-shipment_id").val(2);
-                    event.stopPropagation();
-                    return;
+                    if(totalPrice < $minorder)
+                        extraFeeToPay = jsExtra;
+                    else
+                        extraFeeToPay = 0.00;
+
+                    $('#extracharge').val(extraFeeToPay.toFixed(2));
                 }
                 else if($('#totalpricecheckout').html() >= $freedeliverymin)
                 {
